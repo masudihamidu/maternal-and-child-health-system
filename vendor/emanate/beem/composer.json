@@ -1,0 +1,73 @@
+{
+    "name": "emanate/beem",
+    "description": "Refactoring way of sending SMS",
+    "keywords": [
+        "emanate",
+        "laravel",
+        "beem-sms"
+    ],
+    "homepage": "https://github.com/wao1ook/beem",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Emanate Software",
+            "email": "hello@emanate.software",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "ext-curl": "*",
+        "guzzlehttp/guzzle": "^7.0",
+        "illuminate/support": "^8.0|^9.0|^10.0"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.2",
+        "nunomaduro/collision": "^6.1|^7.0",
+        "nunomaduro/larastan": "^2.0.1",
+        "orchestra/testbench": "^7.0",
+        "phpunit/phpunit": "^9.5|^10.0"
+    },
+    "autoload": {
+        "files": [
+            "src/helpers.php"
+        ],
+        "psr-4": {
+            "Emanate\\BeemSms\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Emanate\\BeemSms\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "pint": "vendor/bin/pint",
+        "test": "vendor/bin/phpunit",
+        "analyse-code": "vendor/bin/phpstan analyse",
+        "check": [
+            "@pint",
+            "@analyse-code"
+        ]
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": false,
+            "phpstan/extension-installer": false,
+            "dealerdirect/phpcodesniffer-composer-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Emanate\\BeemSms\\BeemSmsServiceProvider"
+            ],
+            "aliases": {
+                "BeemSms": "Emanate\\BeemSms\\Facades\\BeemSms"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
