@@ -19,8 +19,14 @@ class MotherController extends Controller
 
     }
 
+    public function showClinicProgress()
+    {
+        return view('clinicProgress');
+
+    }
+
     public function showRegisteredExpectant(){
-        $mother = Mother::select('mother_firstname','mother_dob','mother_phone_number','education','occupation','marital_status')
+        $mother = Mother::select('id','mother_firstname','mother_lastname','mother_dob','mother_phone_number','education','occupation','marital_status')
         ->orderBY('mother_firstname')
         ->get();
 
@@ -76,7 +82,7 @@ class MotherController extends Controller
         return Mother:: whereDate('created_at', Carbon::today())->count();
     }
 
-  
+
 
 
 

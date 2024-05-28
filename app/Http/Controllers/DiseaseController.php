@@ -43,8 +43,10 @@ class DiseaseController extends Controller
    {
        $id = $request->query('id');
        $mother_firstname = $request->query('name');
+       $mother_lastname = $request->query('sname');
 
-       return view('motherDisease', compact('id', 'mother_firstname'));
+
+       return view('motherDisease', compact('id', 'mother_firstname','mother_lastname'));
 
    }
 }

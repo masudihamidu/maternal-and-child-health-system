@@ -4,6 +4,8 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+
 
 class Immunity extends Model
 {
@@ -17,12 +19,12 @@ class Immunity extends Model
     protected $fillable = [
         'immunity_name',
         'description',
-        // 'mother_id'
+        'mother_id'
     ];
 
-    // public function mother()
-    // {
-    //     return $this->belongsTo(Mother::class);
-    // }
+    public function mother()
+    {
+        return $this->belongsTo(Mother::class);
+    }
 
 }
