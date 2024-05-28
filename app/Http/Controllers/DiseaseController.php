@@ -20,15 +20,24 @@ class DiseaseController extends Controller
            //disease information
            'disease_name' => 'required|string',
            'description' => 'required|string',
+           'mother_id' => 'required|exists:mothers,id',
+
        ]);
 
        // Create a new DiseaseForm model and save the data
        $disease = Disease::create([
            'disease_name' => $request->input('disease_name'),
            'description' => $request->input('description'),
+           'mother_id' => $request->input('mother_id'),
            'created_at' => Carbon::now(),
            'updated_at' => Carbon::now(),
        ]);
+
+
+        // Find the mother and associate the disease
+        $mother = Mother::findOrFail($request->input('mother_id'));
+        $mother->immunities()->save($disease);
+
 
        // Redirect or return a response
        if ($disease->save()) {

@@ -30,4 +30,9 @@ class Mother extends Model
     {
         return $this->hasMany(Immunity::class);
     }
+
+    public function diseases()
+    {
+        return $this->hasMany(Disease::class);
+    }
 }
