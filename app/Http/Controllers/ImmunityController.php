@@ -19,16 +19,22 @@ class ImmunityController extends Controller
            //immunity information
            'immunity_name' => 'required|string',
            'description' => 'required|string',
+           'mother_id' => 'required|exists:mothers,id',
+
        ]);
 
        // Create a new ImmunityForm model and save the data
        $immunity = Immunity::create([
            'immunity_name' => $request->input('immunity_name'),
            'description' => $request->input('description'),
-           // 'mother_id' => 'required|exists:mothers,id',
+           'mother_id' => $request->input('mother_id'), 
            'created_at' => Carbon::now(),
            'updated_at' => Carbon::now(),
        ]);
+
+        // Find the mother and associate the immunity
+         $mother = Mother::findOrFail($request->input('mother_id'));
+         $mother->immunities()->save($immunity);
 
        // Redirect or return a response
        if ($immunity->save()) {
@@ -44,7 +50,9 @@ class ImmunityController extends Controller
    {
    $id = $request->query('id');
    $mother_firstname = $request->query('name');
+   $mother_lastname = $request->query('sname');
 
-   return view('motherImmunity', compact('id', 'mother_firstname'));
+
+   return view('motherImmunity', compact('id', 'mother_firstname', 'mother_lastname'));
    }
 }

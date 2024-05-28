@@ -36,7 +36,6 @@
                                                 <th data-field="marital_status" data-editable="true">marital status</th>
                                                 <th data-field="immunity">Immunity</th>
                                                 <th data-field="tests">Tests</th>
-
                                             </tr>
                                         </thead>
 
@@ -53,12 +52,12 @@
                                                 <td>{{$item->marital_status}}</td>
                                                 <td>
                                                 <div class="button-style-three ">
-                                                    <a class="btn btn-custon-two btn-success" href="{{ route('motherImmunity.addImmunity', ['id' => $item->id, 'name' => $item->name]) }}" style="color: white;">Immunity</a>
+                                                    <a class="btn btn-custon-two btn-success" href="{{ route('motherImmunity.addImmunity', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Immunity</a>
                                                 </div>
                                                 </td>
                                                 <td>
                                                 <div class="button-style-three ">
-                                                    <a class="btn btn-custon-two btn-success" href="{{ route('motherDisease.addDisease', ['id' => $item->id, 'name' => $item->name]) }}" style="color: white;">Health test</a>
+                                                    <a class="btn btn-custon-two btn-success" href="{{ route('motherDisease.addDisease', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Health test</a>
                                                 </div>
 
                                                 </td>

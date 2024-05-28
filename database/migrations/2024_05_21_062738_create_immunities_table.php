@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('immunity_name', 20);
             $table->string('description');
-            // $table->integer('mother_id');
+            $table->unsignedBigInteger('mother_id'); // Foreign key
             $table->timestamps();
+            $table->foreign('mother_id')->references('id')->on('mothers')->onDelete('cascade');
+
         });
     }
 
