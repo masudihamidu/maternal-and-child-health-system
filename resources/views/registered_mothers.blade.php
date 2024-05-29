@@ -27,7 +27,7 @@
                                         <thead>
                                             <tr>
                                                 <th data-field="state" data-checkbox="true"></th>
-                                                <th data-field="id">ID</th>
+                                                <th data-field="id">No</th>
                                                 <th data-field="mother_firstname" data-editable="true">first name</th>
                                                 <th data-field="mother_dob" data-editable="true">DOB</th>
                                                 <th data-field="mother_phone_number" data-editable="true">phone number</th>
