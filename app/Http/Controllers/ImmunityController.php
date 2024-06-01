@@ -27,7 +27,7 @@ class ImmunityController extends Controller
        $immunity = Immunity::create([
            'immunity_name' => $request->input('immunity_name'),
            'description' => $request->input('description'),
-           'mother_id' => $request->input('mother_id'), 
+           'mother_id' => $request->input('mother_id'),
            'created_at' => Carbon::now(),
            'updated_at' => Carbon::now(),
        ]);
@@ -51,7 +51,6 @@ class ImmunityController extends Controller
    $id = $request->query('id');
    $mother_firstname = $request->query('name');
    $mother_lastname = $request->query('sname');
-
 
    return view('motherImmunity', compact('id', 'mother_firstname', 'mother_lastname'));
    }

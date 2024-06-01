@@ -29,9 +29,8 @@
                                                 <th data-field="state" data-checkbox="true"></th>
                                                 <th data-field="id">No</th>
                                                 <th data-field="mother_firstname" data-editable="true">first name</th>
+                                                <th data-field="mother_lastname" data-editable="true">Surname</th>
                                                  <th data-field="mother_phone_number" data-editable="true">phone number</th>
-                                                <th data-field="education" data-editable="true">education</th>
-                                                <th data-field="occupation" data-editable="true">occupation</th>
                                                 <th data-field="marital_status" data-editable="true">marital status</th>
                                                 <th data-field="immunity">Immunity</th>
                                                 <th data-field="tests">Tests</th>
@@ -43,28 +42,36 @@
                                             @foreach($mother as $index => $item)
                                             <tr>
                                                 <td></td>
-                                                <td>{{$index+1}}</td>
-                                                <td>{{$item->mother_firstname}}</td>
-                                                <td>+{{$item->mother_phone_number}}</td>
-                                                <td>{{$item->education}}</td>
-                                                <td>{{$item->occupation}}</td>
-                                                <td>{{$item->marital_status}}</td>
+                                                <td>
+                                                    {{$index+1}}
+                                                </td>
+                                                <td>
+                                                    {{$item->mother_firstname}}
+                                                </td>
+                                                <td>
+                                                    {{$item->mother_lastname}}
+                                                </td>
+                                                <td>
+                                                    +{{$item->mother_phone_number}}
+                                                </td>
+                                                <td>
+                                                    {{$item->marital_status}}
+                                                </td>
                                                 <td>
                                                 <div class="button-style-three ">
                                                     <a class="btn btn-custon-two btn-success" href="{{ route('motherImmunity.addImmunity', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Immunity</a>
                                                 </div>
                                                 </td>
-                                                <td>
+                                            <td>
                                                 <div class="button-style-three ">
                                                     <a class="btn btn-custon-two btn-success" href="{{ route('motherDisease.addDisease', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Health test</a>
                                                 </div>
-                                                </td>
-                                                <td>
-                                                <div class="button-style-three ">
-                                                <a class="btn btn-custon-two btn-success" href="{{ route('motherInformation.motherDetails') }}" style="color: white;">Details</a>
+                                            </td>
+                                            <td>
+                                                <div class="button-style-three">
+                                                <a class="btn btn-custon-two btn-success" href="{{ route('motherInformation.motherDetails', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Details</a>
                                                 </div>
-                                                </td>
-
+                                            </td>
                                             </tr>
                                         @endforeach
                                         </tbody>

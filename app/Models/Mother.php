@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\hasMany;
+use Illuminate\Database\Eloquent\Relations\hasOne;
+
 
 
 class Mother extends Model
@@ -34,5 +36,25 @@ class Mother extends Model
     public function diseases()
     {
         return $this->hasMany(Disease::class);
+    }
+
+    public function father()
+    {
+        return $this->hasOne(Father::class);
+    }
+
+    public function sibling()
+    {
+        return $this->hasMany(Sibling::class);
+    }
+
+    public function localChairman()
+    {
+        return $this->hasOne(LocalChairman::class);
+    }
+
+    public function healthProfessional()
+    {
+        return $this->hasMany(healthProfessional::class);
     }
 }

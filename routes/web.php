@@ -23,14 +23,17 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/motherImmunity', [ImmunityController::class, 'addImmunity'])->name('motherImmunity.addImmunity');
 Route::get('/motherDisease', [DiseaseController::class, 'addDisease'])->name('motherDisease.addDisease');
+Route::get('/motherInformation', [MotherController::class, 'motherDetails'])->name('motherInformation.motherDetails');
 route ::get('/mother_register',[MotherController::class,'index'])->name('mother_register.index');
 route ::get('registered_mothers',[MotherController::class,'showRegisteredExpectant'])->name('registered_mothers.showRegisteredExpectant');
-Route::get('motherInformation', [MotherController::class, 'motherDetails'])->name('motherInformation.motherDetails');
-
-
 
 Route ::post('/mother_register',[MotherController::class,'store'])->name('mother_register.store');
 Route ::post('/motherImmunity',[ImmunityController::class,'storeImmunity'])->name('motherImmunity.storeImmunity');
 Route ::post('/motherDisease',[DiseaseController::class,'storeDisease'])->name('motherDisease.storeDisease');
+Route ::post('/motherInformation',[MotherController::class,'storeFather'])->name('motherInformation.storeFather');
+Route ::post('/motherInformation',[MotherController::class,'storeSibling'])->name('motherInformation.storeSibling');
+Route ::post('/motherInformation',[MotherController::class,'storeLocalChairman'])->name('motherInformation.storeLocalChairman');
+
+
 
 require __DIR__.'/auth.php';
