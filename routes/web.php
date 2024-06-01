@@ -25,6 +25,9 @@ Route::get('/motherImmunity', [ImmunityController::class, 'addImmunity'])->name(
 Route::get('/motherDisease', [DiseaseController::class, 'addDisease'])->name('motherDisease.addDisease');
 route ::get('/mother_register',[MotherController::class,'index'])->name('mother_register.index');
 route ::get('registered_mothers',[MotherController::class,'showRegisteredExpectant'])->name('registered_mothers.showRegisteredExpectant');
+Route::get('motherInformation', [MotherController::class, 'motherDetails'])->name('motherInformation.motherDetails');
+
+
 
 Route ::post('/mother_register',[MotherController::class,'store'])->name('mother_register.store');
 Route ::post('/motherImmunity',[ImmunityController::class,'storeImmunity'])->name('motherImmunity.storeImmunity');
