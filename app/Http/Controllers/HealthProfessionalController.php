@@ -8,7 +8,7 @@ use App\Models\HealthProfessional;
 
 class HealthProfessionalController extends Controller
 {
-    public function storeLocalChairman(Request $request)
+    public function storeHealthProfessional(Request $request)
     {
         // Validate the request data
         $request->validate([

@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MotherController;
+use App\Http\Controllers\HealthProfessionalController;
 use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\ImmunityController;
 
@@ -33,6 +34,7 @@ Route ::post('/motherDisease',[DiseaseController::class,'storeDisease'])->name('
 Route ::post('/motherInformation',[MotherController::class,'storeFather'])->name('motherInformation.storeFather');
 Route ::post('/motherInformation',[MotherController::class,'storeSibling'])->name('motherInformation.storeSibling');
 Route ::post('/motherInformation',[MotherController::class,'storeLocalChairman'])->name('motherInformation.storeLocalChairman');
+Route ::post('/motherInformation',[HealthProfessionalController::class,'storeHealthProfessional'])->name('motherInformation.storeHealthProfessional');
 
 
 
