@@ -29,13 +29,13 @@
                                                 <th data-field="state" data-checkbox="true"></th>
                                                 <th data-field="id">No</th>
                                                 <th data-field="mother_firstname" data-editable="true">first name</th>
-                                                <th data-field="mother_dob" data-editable="true">DOB</th>
-                                                <th data-field="mother_phone_number" data-editable="true">phone number</th>
+                                                 <th data-field="mother_phone_number" data-editable="true">phone number</th>
                                                 <th data-field="education" data-editable="true">education</th>
                                                 <th data-field="occupation" data-editable="true">occupation</th>
                                                 <th data-field="marital_status" data-editable="true">marital status</th>
                                                 <th data-field="immunity">Immunity</th>
                                                 <th data-field="tests">Tests</th>
+                                                <th data-field="details">Details</th>
                                             </tr>
                                         </thead>
 
@@ -45,7 +45,6 @@
                                                 <td></td>
                                                 <td>{{$index+1}}</td>
                                                 <td>{{$item->mother_firstname}}</td>
-                                                <td>{{$item->mother_dob}}</td>
                                                 <td>+{{$item->mother_phone_number}}</td>
                                                 <td>{{$item->education}}</td>
                                                 <td>{{$item->occupation}}</td>
@@ -59,8 +58,13 @@
                                                 <div class="button-style-three ">
                                                     <a class="btn btn-custon-two btn-success" href="{{ route('motherDisease.addDisease', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Health test</a>
                                                 </div>
-
                                                 </td>
+                                                <td>
+                                                <div class="button-style-three ">
+                                                <a class="btn btn-custon-two btn-success" href="{{ route('motherInformation.motherDetails') }}" style="color: white;">Details</a>
+                                                </div>
+                                                </td>
+
                                             </tr>
                                         @endforeach
                                         </tbody>

@@ -19,6 +19,14 @@ class MotherController extends Controller
 
     }
 
+    public function motherDetails()
+    {
+        return view('motherInformation');
+
+    }
+
+
+
     public function showClinicProgress()
     {
         return view('clinicProgress');
