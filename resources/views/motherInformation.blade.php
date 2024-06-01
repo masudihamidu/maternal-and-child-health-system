@@ -11,6 +11,7 @@
                                     <h1>Expectant father information</h1>
                                     @if(Session::get('success'))
                                     <div class="alert alert-success">{{Session::get('success')}}</div>
+                                    
                                     @endif
                                 </div>
                             </div>
@@ -21,7 +22,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="all-form-element-inner">
 
-                                                <form  method="post" action="" >
+                                                        <form  method="post" action="{{ route('motherInformation.storeFather') }}">
                                                     @csrf
                                                     <div class="form-group-inner">
                                                         <div class="row">
@@ -29,7 +30,7 @@
                                                                 <label class="login2 pull-right pull-right-pro">Expectant ID</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" name="mother_id" value="" id="mother_id" class="form-control" readonly required/>
+                                                                <input type="text" name="mother_id" value="{{ $id }}" id="mother_id" class="form-control" readonly required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -149,7 +150,7 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="all-form-element-inner">
-                                                <form  method="post" action="" >
+                                                <form  method="post" action="{{ route('motherInformation.storeSibling') }}">
                                                     @csrf
                                                     <div class="form-group-inner">
                                                         <div class="row">
@@ -157,7 +158,7 @@
                                                                 <label class="login2 pull-right pull-right-pro">Expectant ID</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" name="mother_id" value="" id="expectant_id" class="form-control" readonly required/>
+                                                                <input type="text" name="mother_id" value="{{ $id }}" id="expectant_id" class="form-control" readonly required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -246,7 +247,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="all-form-element-inner">
 
-                                                <form  method="post" action="" >
+                                                <form  method="post" action="{{ route('motherInformation.storeLocalChairman') }}">
                                                     @csrf
                                                     <div class="form-group-inner">
                                                         <div class="row">
@@ -254,7 +255,7 @@
                                                                 <label class="login2 pull-right pull-right-pro">Expectant ID</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" name="mother_id" value="" id="expectant_id" class="form-control" readonly required/>
+                                                                <input type="text" name="mother_id" value="{{ $id }}" id="expectant_id" class="form-control" readonly required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -262,7 +263,7 @@
                                                     <div class="form-group-inner">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Chairman name</label>
+                                                                <label class="login2 pull-right pull-right-pro">Chairman full name</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                             <input type="text" name="chairman_name" class="form-control" required/>
