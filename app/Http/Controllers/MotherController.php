@@ -205,6 +205,19 @@ class MotherController extends Controller
         return Mother:: whereDate('created_at', Carbon::today())->count();
     }
 
+    public function getTotalThisMonth() {
+        return Mother::whereMonth('created_at', Carbon::now()->month)
+                     ->whereYear('created_at', Carbon::now()->year)
+                     ->count();
+    }
+
+    public function getTotalThisYear() {
+        return Mother::whereYear('created_at', Carbon::now()->year)->count();
+    }
+
+
+
+
 
 
 
