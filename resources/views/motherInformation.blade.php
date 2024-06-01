@@ -11,7 +11,7 @@
                                     <h1>Expectant father information</h1>
                                     @if(Session::get('success'))
                                     <div class="alert alert-success">{{Session::get('success')}}</div>
-                                    
+
                                     @endif
                                 </div>
                             </div>
@@ -321,7 +321,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="all-form-element-inner">
 
-                                                <form  method="post" action="" >
+                                                <form  method="post" action="{{ route('motherInformation.storeHealthProfessional') }}">
                                                     @csrf
                                                     <div class="form-group-inner">
                                                         <div class="row">
