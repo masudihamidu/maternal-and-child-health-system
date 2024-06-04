@@ -11,14 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('fathers', function (Blueprint $table) {
+        Schema::create('local_chairmen', function (Blueprint $table) {
             $table->id();
-            $table->string('father_firstname', 20);
-            $table->string('father_middlename', 20);
-            $table->string('father_surname', 20);
-            $table->string('father_phone_number', 12);
-            $table->string('father_education');
-            $table->string('father_occupation');
+            $table->string('chairman_name', 40);
+            $table->string('chairman_phone_number', 12);
             $table->unsignedBigInteger('mother_id'); // Foreign key
             $table->foreign('mother_id')->references('id')->on('mothers')->onDelete('cascade');
             $table->timestamps();
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('fathers');
+        Schema::dropIfExists('local_chairmen');
     }
 };

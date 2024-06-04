@@ -15,12 +15,12 @@ class Father extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'firstname',
-        'middlename',
-        'surname',
-        'phone_number',
-        'education',
-        'occupation',
+        'father_firstname',
+        'father_middlename',
+        'father_surname',
+        'father_phone_number',
+        'father_education',
+        'father_occupation',
         'mother_id'
     ];
 
