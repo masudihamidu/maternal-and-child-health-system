@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Mother;
 use App\Models\Father;
+use App\Models\MotherBackground;
 use App\Models\Sibling;
+use App\Models\PregnancySummary;
 use App\Models\LocalChairman;
 use App\Models\HealthProfessional;
 use Illuminate\Http\Request;
@@ -99,9 +101,22 @@ class MotherController extends Controller
             'chairman_name' => 'required|string',
             'chairman_phone_number' => ['required', 'string', 'regex:/^255\d{9}$/'],
             // health care professional information
-            'professional_name' =>'require|string',
-            'rank' =>'require|string',
-
+            'professional_name' =>'required|string',
+            'rank' =>'required|string',
+            // pregnancy summary
+            'lnmp' => 'required|date',
+            'edd' => 'required|date',
+            'menstrual_cycle' => 'required|numeric',
+            'normal_cycle' => 'required|string',
+            // mother background
+            'allergy' => 'required|string',
+            'gravidity' => 'required|numeric',
+            'parity' => 'required|numeric',
+            'childrens_born_niti' => 'required|numeric',
+            'miscarriages' => 'required|numeric',
+            'out_of_pocket' => 'required|numeric',
+            'died_child' => 'required|numeric',
+            'living_children' => 'required|numeric',
         ]);
 
         // Retrieve mother_id from the request
@@ -140,18 +155,44 @@ class MotherController extends Controller
             'updated_at' => Carbon::now(),
         ]);
 
-    //    Create and save healthcare professional
-    $healthCareProfessional = HealthProfessional::create([
+      //    Create and save healthcare professional
+       $healthCareProfessional = HealthProfessional::create([
         'professional_name' => $request->input('professional_name'),
         'rank' => $request->input('rank'),
         'mother_id' => $request->input('mother_id'),
         'created_at' => Carbon::now(),
         'updated_at' => Carbon::now(),
-    ]);
+      ]);
+
+        //    Create and save pregnancy summary
+        $pregnancySummary = PregnancySummary::create([
+            'lnmp' => $request->input('lnmp'),
+            'edd' => $request->input('edd'),
+            'menstrual_cycle' => $request->input('menstrual_cycle'),
+            'normal_cycle' => $request->input('normal_cycle'),
+            'mother_id' => $request->input('mother_id'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+          ]);
+
+          //    Create and save mother background
+        $motherBackground = MotherBackground::create([
+            'allergy' => $request->input('allergy'),
+            'gravidity' => $request->input('gravidity'),
+            'parity' => $request->input('parity'),
+            'childrens_born_niti' => $request->input('childrens_born_niti'),
+            'miscarriages' => $request->input('miscarriages'),
+            'out_of_pocket' => $request->input('out_of_pocket'),
+            'died_child' => $request->input('died_child'),
+            'living_children' => $request->input('living_children'),
+            'mother_id' => $request->input('mother_id'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+          ]);
 
 
         // Redirect or return a response
-        if ($father && $sibling && $localChairman && $healthCareProfessional) {
+        if ($father && $sibling && $localChairman && $healthCareProfessional && $pregnancySummary && $motherBackground ) {
             return redirect()->route('motherInformation.motherDetails')->with('success', 'Form saved successfully.');
         } else {
             // Return with an error message if save was not successful
