@@ -57,4 +57,15 @@ class Mother extends Model
     {
         return $this->hasMany(healthProfessional::class);
     }
+
+    public function pregnancySummary()
+    {
+        return $this->hasOne(PregnancySummary::class);
+    }
+
+    public function  motherBackground()
+    {
+        return $this->hasOne(MotherBackground::class);
+    }
+
 }
