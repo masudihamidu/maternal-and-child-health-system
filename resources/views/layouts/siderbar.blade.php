@@ -22,6 +22,14 @@
 </a>
 
                     </li>
+
+                    <li>
+                         <a title="Landing Page" href="{{route('openAI.showAIPage')}}" aria-expanded="false">
+                            <span class="fas fa-baby" aria-hidden="true"></span>
+                            <span class="mini-click-non">AI</span>
+                        </a>
+
+                    </li>
                     </ul>
                 </nav>
             </div>
