@@ -9,7 +9,6 @@ class LocalChairman extends Model
 {
     use HasFactory;
 
-
      /**
      * The attributes that are mass assignable.
      *
@@ -17,10 +16,9 @@ class LocalChairman extends Model
      */
     protected $fillable = [
         'chairman_name',
-        'phone_number',
+        'chairman_phone_number',
         'mother_id'
     ];
-
 
     public function mother()
     {

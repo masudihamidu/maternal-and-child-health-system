@@ -31,11 +31,7 @@ route ::get('registered_mothers',[MotherController::class,'showRegisteredExpecta
 Route ::post('/mother_register',[MotherController::class,'store'])->name('mother_register.store');
 Route ::post('/motherImmunity',[ImmunityController::class,'storeImmunity'])->name('motherImmunity.storeImmunity');
 Route ::post('/motherDisease',[DiseaseController::class,'storeDisease'])->name('motherDisease.storeDisease');
-Route ::post('/motherInformation',[MotherController::class,'storeFather'])->name('motherInformation.storeFather');
-Route ::post('/motherInformation',[MotherController::class,'storeSibling'])->name('motherInformation.storeSibling');
-Route ::post('/motherInformation',[MotherController::class,'storeLocalChairman'])->name('motherInformation.storeLocalChairman');
-Route ::post('/motherInformation',[HealthProfessionalController::class,'storeHealthProfessional'])->name('motherInformation.storeHealthProfessional');
-
+Route::post('/motherInformation', [MotherController::class, 'submitForm'])->name('motherInformation.submitForm');
 
 
 require __DIR__.'/auth.php';

@@ -16,13 +16,12 @@ class Sibling extends Model
      * @var array<int, string>
      */
     protected $fillable = [
-        'firstname',
-        'middlename',
-        'surname',
-        'phone_number',
+        'sibling_firstname',
+        'sibling_middlename',
+        'sibling_surname',
+        'sibling_phone_number',
         'mother_id'
     ];
-
 
     public function mother()
     {

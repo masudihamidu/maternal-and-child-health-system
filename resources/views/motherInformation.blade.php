@@ -22,7 +22,7 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="all-form-element-inner">
 
-                                                        <form  method="post" action="{{ route('motherInformation.storeFather') }}">
+                                                        <form  method="post" action="{{ route('motherInformation.submitForm') }}">
                                                     @csrf
                                                     <div class="form-group-inner">
                                                         <div class="row">
@@ -41,7 +41,7 @@
                                                                 <label class="login2 pull-right pull-right-pro">Firstname</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                            <input type="text" name="firstname" class="form-control" required/>
+                                                            <input type="text" name="father_firstname" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -52,7 +52,7 @@
                                                                 <label class="login2 pull-right pull-right-pro">Middle name</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                            <input type="text" name="middlename" class="form-control" required/>
+                                                            <input type="text" name="father_middlename" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -63,7 +63,7 @@
                                                                 <label class="login2 pull-right pull-right-pro">Surname</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                            <input type="text" name="surname" class="form-control" required/>
+                                                            <input type="text" name="father_surname" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -74,7 +74,7 @@
                                                                 <label class="login2 pull-right pull-right-pro">Phone number</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                            <input type="text" name="phone_number" class="form-control" required/>
+                                                            <input type="text" name="father_phone_number" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -86,7 +86,7 @@
                                                                 <label class="login2 pull-right pull-right-pro">Education level</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <select name="education" class="form-control">
+                                                                <select name="father_education" class="form-control">
                                                                 <option value="illiterate">Illiterate</option>
                                                                     <option value="primary">Primary School</option>
                                                                     <option value="secondary">Secondary School</option>
@@ -106,25 +106,11 @@
                                                                 <label class="login2 pull-right pull-right-pro">Occupation</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-smi-9 col-xs-12">
-                                                                <input type="text" name="occupation" class="form-control"  />
+                                                                <input type="text" name="father_occupation" class="form-control"  />
                                                             </div>
                                                         </div>
                                                     </div>
 
-
-                                                    <div class="form-group-inner">
-                                                        <div class="login-btn-inner">
-                                                            <div class="row">
-                                                                <div class="col-lg-3"></div>
-                                                                <div class="col-lg-9">
-                                                                    <div class="login-horizental cancel-wp pull-left form-bc-ele">
-                                                                        <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -138,9 +124,6 @@
                             <div class="sparkline12-hd">
                                 <div class="main-sparkline12-hd">
                                     <h1>Close relative information</h1>
-                                    @if(Session::get('success'))
-                                    <div class="alert alert-success">{{Session::get('success')}}</div>
-                                    @endif
                                 </div>
                             </div>
                             <br/>
@@ -150,26 +133,13 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="all-form-element-inner">
-                                                <form  method="post" action="{{ route('motherInformation.storeSibling') }}">
-                                                    @csrf
-                                                    <div class="form-group-inner">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Expectant ID</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" name="mother_id" value="{{ $id }}" id="expectant_id" class="form-control" readonly required/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
                                                     <div class="form-group-inner">
                                                         <div class="row">
                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                                 <label class="login2 pull-right pull-right-pro">Firstname</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                            <input type="text" name="firstname" class="form-control" required/>
+                                                            <input type="text" name="sibling_firstname" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -180,7 +150,7 @@
                                                                 <label class="login2 pull-right pull-right-pro">Middle name</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                            <input type="text" name="middle_name" class="form-control" required/>
+                                                            <input type="text" name="sibling_middlename" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -191,7 +161,7 @@
                                                                 <label class="login2 pull-right pull-right-pro">Surname</label>
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                            <input type="text" name="surname" class="form-control" required/>
+                                                            <input type="text" name="sibling_surname" class="form-control" required/>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -202,26 +172,12 @@
                                                                  <label class="login2 pull-right pull-right-pro">Phone number</label>
                                                                 </div>
                                                                  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                 <input type="text" name="phone_number" class="form-control" required/>
+                                                                 <input type="text" name="sibling_phone_number" class="form-control" required/>
 
                                                                  </div>
                                                                 </div>
                                                             </div>
 
-
-                                                    <div class="form-group-inner">
-                                                        <div class="login-btn-inner">
-                                                            <div class="row">
-                                                                <div class="col-lg-3"></div>
-                                                                <div class="col-lg-9">
-                                                                    <div class="login-horizental cancel-wp pull-left form-bc-ele">
-                                                                        <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -234,9 +190,6 @@
                             <div class="sparkline12-hd">
                                 <div class="main-sparkline12-hd">
                                     <h1>Local chairman information</h1>
-                                    @if(Session::get('success'))
-                                    <div class="alert alert-success">{{Session::get('success')}}</div>
-                                    @endif
                                 </div>
                             </div>
                             <br/>
@@ -246,19 +199,6 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="all-form-element-inner">
-
-                                                <form  method="post" action="{{ route('motherInformation.storeLocalChairman') }}">
-                                                    @csrf
-                                                    <div class="form-group-inner">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Expectant ID</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" name="mother_id" value="{{ $id }}" id="expectant_id" class="form-control" readonly required/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
                                                     <div class="form-group-inner">
                                                         <div class="row">
@@ -277,25 +217,11 @@
                                                                  <label class="login2 pull-right pull-right-pro">Phone number</label>
                                                                 </div>
                                                                  <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                 <input type="text" name="phone_number" class="form-control" required/>
+                                                                 <input type="text" name="chairman_phone_number" class="form-control" required/>
                                                                  </div>
                                                                 </div>
                                                             </div>
 
-
-                                                    <div class="form-group-inner">
-                                                        <div class="login-btn-inner">
-                                                            <div class="row">
-                                                                <div class="col-lg-3"></div>
-                                                                <div class="col-lg-9">
-                                                                    <div class="login-horizental cancel-wp pull-left form-bc-ele">
-                                                                        <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -308,9 +234,6 @@
                             <div class="sparkline12-hd">
                                 <div class="main-sparkline12-hd">
                                     <h1>health care professional information</h1>
-                                    @if(Session::get('success'))
-                                    <div class="alert alert-success">{{Session::get('success')}}</div>
-                                    @endif
                                 </div>
                             </div>
                             <br/>
@@ -320,19 +243,6 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="all-form-element-inner">
-
-                                                <form  method="post" action="{{ route('motherInformation.storeHealthProfessional') }}">
-                                                    @csrf
-                                                    <div class="form-group-inner">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Expectant ID</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" name="mother_id" value="" id="expectant_id" class="form-control" readonly required/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
                                                     <div class="form-group-inner">
                                                         <div class="row">
@@ -356,20 +266,6 @@
                                                                 </div>
                                                             </div>
 
-
-                                                    <div class="form-group-inner">
-                                                        <div class="login-btn-inner">
-                                                            <div class="row">
-                                                                <div class="col-lg-3"></div>
-                                                                <div class="col-lg-9">
-                                                                    <div class="login-horizental cancel-wp pull-left form-bc-ele">
-                                                                        <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -382,9 +278,7 @@
                             <div class="sparkline12-hd">
                                 <div class="main-sparkline12-hd">
                                     <h1>Pregnancy summary</h1>
-                                    @if(Session::get('success'))
-                                    <div class="alert alert-success">{{Session::get('success')}}</div>
-                                    @endif
+
                                 </div>
                             </div>
                             <br/>
@@ -394,19 +288,6 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="all-form-element-inner">
-
-                                                <form  method="post" action="" >
-                                                    @csrf
-                                                    <div class="form-group-inner">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Expectant ID</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" name="mother_id" value="" id="expectant_id" class="form-control" readonly required/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
                                                     <div class="form-group-inner">
                                                         <div class="row">
@@ -459,19 +340,6 @@
                                                         </div>
                                                     </div>
 
-                                                    <div class="form-group-inner">
-                                                        <div class="login-btn-inner">
-                                                            <div class="row">
-                                                                <div class="col-lg-3"></div>
-                                                                <div class="col-lg-9">
-                                                                    <div class="login-horizental cancel-wp pull-left form-bc-ele">
-                                                                        <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save</button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
@@ -484,9 +352,6 @@
                             <div class="sparkline12-hd">
                                 <div class="main-sparkline12-hd">
                                     <h1>Expectant background</h1>
-                                    @if(Session::get('success'))
-                                    <div class="alert alert-success">{{Session::get('success')}}</div>
-                                    @endif
                                 </div>
                             </div>
                             <br/>
@@ -496,19 +361,6 @@
                                     <div class="row">
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="all-form-element-inner">
-
-                                                <form  method="post" action="" >
-                                                    @csrf
-                                                    <div class="form-group-inner">
-                                                        <div class="row">
-                                                            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">Expectant ID</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                <input type="text" name="mother_id" value="" id="expectant_id" class="form-control" readonly required/>
-                                                            </div>
-                                                        </div>
-                                                    </div>
 
                                                     <div class="form-group-inner">
                                                         <div class="row">
