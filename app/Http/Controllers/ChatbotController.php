@@ -10,7 +10,7 @@ class ChatbotController extends Controller
     public function sendChat(Request $request){
         $result = OpenAI::completions()->create([
             'max_tokens' => 100,
-            'model' => 'text-davinci-003',
+            'model' => 'gpt-3.5-turbo',
             'prompt' => $request->input
 
         ]);
@@ -20,7 +20,15 @@ class ChatbotController extends Controller
             fn(string $result, array $choice) => $result . $choice['text'], ""
         );
 
-        return $response;
+        dd($response);
 
+        // return $response;
+
+    }
+
+
+    public function showAIPage()
+    {
+        return view('openAI.openAi');
     }
 }
