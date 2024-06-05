@@ -28,7 +28,7 @@ Route::get('/motherDisease', [DiseaseController::class, 'addDisease'])->name('mo
 Route::get('/motherInformation', [MotherController::class, 'motherDetails'])->name('motherInformation.motherDetails');
 route ::get('/mother_register',[MotherController::class,'index'])->name('mother_register.index');
 route ::get('registered_mothers',[MotherController::class,'showRegisteredExpectant'])->name('registered_mothers.showRegisteredExpectant');
-route ::get('/openAI.openAi',[MotherController::class,'showAIPage'])->name('openAI.showAIPage');
+route ::get('/openAI.openAi',[ChatbotController::class,'showAIPage'])->name('openAI.showAIPage');
 
 
 Route ::post('/mother_register',[MotherController::class,'store'])->name('mother_register.store');

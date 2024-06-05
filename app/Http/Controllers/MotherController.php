@@ -19,12 +19,6 @@ class MotherController extends Controller
         return view('mother_register');
     }
 
-    public function showAIPage()
-    {
-        return view('openAI.openAi');
-    }
-
-
     public function motherDetails(Request $request)
     {
         $id = $request->query('id');
