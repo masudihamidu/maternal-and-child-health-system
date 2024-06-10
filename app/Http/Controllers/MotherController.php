@@ -20,17 +20,33 @@ class MotherController extends Controller
     }
 
     public function motherDetails(Request $request)
-    {
-        $id = $request->query('id');
-        $mother_firstname = $request->query('name');
-        $mother_lastname = $request->query('sname');
+{
+    $id = $request->query('id');
+    $mother_firstname = $request->query('name');
+    $mother_lastname = $request->query('sname');
 
-        return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
+    $mother = Mother::find($id);
+
+    // Check if the mother exists
+    if (!$mother) {
+        return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
     }
+
+    // Check if the mother has associated data
+    $hasAssociatedData = $mother->father()->exists() || $mother->siblings()->exists() || $mother->localChairman()->exists();
+
+    if ($hasAssociatedData) {
+        return view('motherDetails', compact('mother'));
+    } else {
+        return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
+
+    }
+}
+
 
     public function showClinicProgress()
     {
-        return view('clinicProgress');
+        return view('motherDetails');
     }
 
     public function showRegisteredExpectant()

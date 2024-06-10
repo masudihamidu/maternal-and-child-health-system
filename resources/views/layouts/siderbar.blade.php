@@ -25,11 +25,21 @@
 
                     <li>
                          <a title="Landing Page" href="{{route('openAI.showAIPage')}}" aria-expanded="false">
-                            <span class="fas fa-baby" aria-hidden="true"></span>
+                            <span class="fa fa-microchip" aria-hidden="true"></span>
                             <span class="mini-click-non">AI</span>
                         </a>
 
                     </li>
+
+
+                    <li>
+                         <a title="Landing Page" href="{{route('motherDetails.showClinicProgress')}}" aria-expanded="false">
+                            <span class="fas fa-book" aria-hidden="true"></span>
+                            <span class="mini-click-non">Clinic card</span>
+                        </a>
+
+                    </li>
+
                     </ul>
                 </nav>
             </div>

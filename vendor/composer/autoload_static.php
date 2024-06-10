@@ -584,6 +584,7 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'App\\Http\\Controllers\\Auth\\PasswordResetLinkController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/PasswordResetLinkController.php',
         'App\\Http\\Controllers\\Auth\\RegisteredUserController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/RegisteredUserController.php',
         'App\\Http\\Controllers\\Auth\\VerifyEmailController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/VerifyEmailController.php',
+        'App\\Http\\Controllers\\ChatbotController' => __DIR__ . '/../..' . '/app/Http/Controllers/ChatbotController.php',
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DiseaseController' => __DIR__ . '/../..' . '/app/Http/Controllers/DiseaseController.php',
         'App\\Http\\Controllers\\HealthProfessionalController' => __DIR__ . '/../..' . '/app/Http/Controllers/HealthProfessionalController.php',
