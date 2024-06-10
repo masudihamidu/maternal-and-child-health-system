@@ -40,6 +40,10 @@
                                                             </div>
                                                             <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                                 <select name="disease_name" class="form-control">
+                                                                    <option value="anemia">Anemia</option>
+                                                                    <option value="blood group">Blood group</option>
+                                                                    <option value="blood pressure">Blood pressure</option>
+                                                                    <option value="ecamplesia">Eclampsia</option>
                                                                     <option value="blood pressure">Blood pressure</option>
                                                                     <option value="haemoglobini">Haemoglobini</option>
                                                                     <option value="urine test">urine test</option>
