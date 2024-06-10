@@ -33,7 +33,12 @@ class MotherController extends Controller
     }
 
     // Check if the mother has associated data
-    $hasAssociatedData = $mother->father()->exists() || $mother->siblings()->exists() || $mother->localChairman()->exists();
+    $hasAssociatedData = $mother->father()->exists() &&
+     $mother->siblings()->exists() &&
+     $mother->localChairman()->exists() &&
+     $mother->healthProfessional()->exists() &&
+     $mother->pregnancySummary()->exists() &&
+     $mother->motherBackground()->exists();
 
     if ($hasAssociatedData) {
         return view('motherDetails', compact('mother'));
@@ -209,7 +214,7 @@ class MotherController extends Controller
 
         // Redirect or return a response
         if ($father && $sibling && $localChairman && $healthCareProfessional && $pregnancySummary && $motherBackground ) {
-            return redirect()->route('motherInformation.motherDetails')->with('success', 'Form saved successfully.');
+            return redirect()->route('motherDetails.showClinicProgress')->with('success', 'Form saved successfully.');
         } else {
             // Return with an error message if save was not successful
             return redirect()->route('motherInformation.motherDetails')->with('error', 'Failed to save the form. Please try again.');

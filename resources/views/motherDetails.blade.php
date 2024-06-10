@@ -22,161 +22,173 @@
         }
     </style>
 
-<h1 style="font-weight: bold; font-size: 25px; text-align: center;">Tests/diagnosis to be done for each attendance</h1>
-<p style="font-weight: bold; font-size: 15px; text-align: center;">This table should be used to remind the healthcare provider and the expectant mother which tests should be conducted and at what stage of pregnancy.</p>
+    <h1 style="font-weight: bold; font-size: 25px; text-align: center;">Tests/diagnosis to be done for each attendance</h1>
+    <p style="font-weight: bold; font-size: 15px; text-align: center;">This table should be used to remind the healthcare provider and the expectant mother which tests should be conducted and at what stage of pregnancy.</p>
 
+    <button onclick="printTable()" style="display: block; margin: 0 auto 20px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Print Table</button>
 
-    <table>
-        <thead>
-            <tr>
-                <th rowspan="2">TESTS/DETAILS ABOUT</th>
-                <th colspan="7">Weeks</th>
-            </tr>
-            <tr>
-                <th>12 wks</th>
-                <th>20 wks</th>
-                <th>26 wks</th>
-                <th>30 wks</th>
-                <th>36 wks</th>
-                <th>38 wks</th>
-                <th>40 wks</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>Anemia</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Blood group</td>
-                <td></td>
-                <td>&#10004;</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Eclampsia</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Proteinuria</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>&#10004;</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Blood pressure</td>
-                <td></td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-            </tr>
-            <tr>
-                <td>Preeclampsia</td>
-                <td></td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-            </tr>
-            <tr>
-                <td>Ask about tobacco use</td>
-                <td></td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-            </tr>
-            <tr>
-                <td>Ask about alcohol/drug use</td>
-                <td></td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-                <td>&#10004;</td>
-            </tr>
-            <tr>
-                <td>Malaria</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>HIV</td>
-                <td></td>
-                <td>&#10004;</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Syphilis</td>
-                <td></td>
-                <td>&#10004;</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Tuberculosis</td>
-                <td></td>
-                <td>&#10004;</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-            <tr>
-                <td>Obstetric ultrasound</td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td>&#10004;</td>
-                <td></td>
-                <td></td>
-                <td></td>
-            </tr>
-        </tbody>
-    </table>
-    <p>The HIV retest for a person without an infection is done between weeks 32 and 36.</p>
+    <div id="printableTable">
+        <table>
+            <thead>
+                <tr>
+                    <th rowspan="2">TESTS/DETAILS ABOUT</th>
+                    <th colspan="7">Weeks</th>
+                </tr>
+                <tr>
+                    <th>12 wks</th>
+                    <th>20 wks</th>
+                    <th>26 wks</th>
+                    <th>30 wks</th>
+                    <th>36 wks</th>
+                    <th>38 wks</th>
+                    <th>40 wks</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Anemia</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Blood group</td>
+                    <td></td>
+                    <td>&#10004;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Eclampsia</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Proteinuria</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>&#10004;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Blood pressure</td>
+                    <td></td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                </tr>
+                <tr>
+                    <td>Preeclampsia</td>
+                    <td></td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                </tr>
+                <tr>
+                    <td>Ask about tobacco use</td>
+                    <td></td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                </tr>
+                <tr>
+                    <td>Ask about alcohol/drug use</td>
+                    <td></td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                    <td>&#10004;</td>
+                </tr>
+                <tr>
+                    <td>Malaria</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>HIV</td>
+                    <td></td>
+                    <td>&#10004;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Syphilis</td>
+                    <td></td>
+                    <td>&#10004;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Tuberculosis</td>
+                    <td></td>
+                    <td>&#10004;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>Obstetric ultrasound</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td>&#10004;</td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>The HIV retest for a person without an infection is done between weeks 32 and 36.</p>
+    </div>
 
+    <script>
+        function printTable() {
+            var printContents = document.getElementById('printableTable').innerHTML;
+            var originalContents = document.body.innerHTML;
+            document.body.innerHTML = printContents;
+            window.print();
+            document.body.innerHTML = originalContents;
+        }
+    </script>
 
                         </div>
                     </div>
