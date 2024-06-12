@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Mother;
 use App\Models\Father;
+use App\Models\Disease;
 use App\Models\MotherBackground;
 use App\Models\Sibling;
 use App\Models\PregnancySummary;
@@ -27,6 +28,9 @@ class MotherController extends Controller
 
     $mother = Mother::find($id);
 
+      // Fetch diseases from the database
+      $diseases = Disease::all();
+
     // Check if the mother exists
     if (!$mother) {
         return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
@@ -41,7 +45,7 @@ class MotherController extends Controller
      $mother->motherBackground()->exists();
 
     if ($hasAssociatedData) {
-        return view('motherDetails', compact('mother'));
+        return view('motherDetails', compact('id', 'mother_firstname', 'mother_lastname', 'diseases'));
     } else {
         return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
 

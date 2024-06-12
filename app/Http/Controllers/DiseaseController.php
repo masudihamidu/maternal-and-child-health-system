@@ -78,6 +78,4 @@ class DiseaseController extends Controller
         $mother_lastname = $request->query('sname');
         return view('motherDisease', compact('id', 'mother_firstname', 'mother_lastname'));
     }
-
-
 }
