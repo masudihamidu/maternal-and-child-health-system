@@ -25,8 +25,6 @@
     <h1 style="font-weight: bold; font-size: 25px; text-align: center;">Tests/diagnosis to be done for each attendance</h1>
     <p style="font-weight: bold; font-size: 15px; text-align: center;">This table should be used to remind the healthcare provider and the expectant mother which tests should be conducted and at what stage of pregnancy.</p>
 
-    <button onclick="printTable()" style="display: block; margin: 0 auto 20px; padding: 10px 20px; font-size: 16px; cursor: pointer;">Print Table</button>
-
     <div id="printableTable">
         <table>
             <thead>
@@ -35,13 +33,13 @@
                     <th colspan="7">Weeks</th>
                 </tr>
                 <tr>
-                    <th>12 wks</th>
-                    <th>20 wks</th>
-                    <th>26 wks</th>
-                    <th>30 wks</th>
-                    <th>36 wks</th>
-                    <th>38 wks</th>
-                    <th>40 wks</th>
+                    <th>12 weeks</th>
+                    <th>20 weeks</th>
+                    <th>26 weeks</th>
+                    <th>30 weeks</th>
+                    <th>36 weeks</th>
+                    <th>38 weeks</th>
+                    <th>40 weeks</th>
                 </tr>
             </thead>
             <tbody>
@@ -178,6 +176,17 @@
             </tbody>
         </table>
         <p>The HIV retest for a person without an infection is done between weeks 32 and 36.</p>
+        <div class="form-group-inner">
+            <div class="login-btn-inner">
+                <div class="row">
+                    <div class="col-lg-3"></div>
+                    <div class="col-lg-9">
+                        <div class="login-horizental cancel-wp pull-left form-bc-ele"><button onclick="printTable()" class="btn btn-sm btn-primary login-submit-cs">Print Table</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
 
     <script>

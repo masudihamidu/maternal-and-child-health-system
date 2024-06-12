@@ -25,8 +25,8 @@
 
                     <li>
                          <a title="Landing Page" href="{{route('openAI.showAIPage')}}" aria-expanded="false">
-                            <span class="fa fa-microchip" aria-hidden="true"></span>
-                            <span class="mini-click-non">AI</span>
+                            <span class="fas fa-comments" aria-hidden="true"></span>
+                            <span class="mini-click-non">Chat</span>
                         </a>
 
                     </li>
