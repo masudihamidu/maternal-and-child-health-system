@@ -18,7 +18,14 @@ class Disease extends Model
     protected $fillable = [
         'disease_name',
         'description',
-        'mother_id'
+        'mother_id',
+        'week12',
+        'week20',
+        'week26',
+        'week30',
+        'week36',
+        'week38',
+        'week40'
     ];
 
     public function mother()
