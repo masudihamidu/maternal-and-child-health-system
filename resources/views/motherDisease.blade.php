@@ -47,7 +47,7 @@
                                                         <label class="login2 pull-right pull-right-pro">Disease name</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <select name="disease_name" class="form-control">
+                                                        <select name="disease_name" class="form-control" required>
                                                             <option value="anemia">Anemia</option>
                                                             <option value="blood group">Blood group</option>
                                                             <option value="blood pressure">Blood pressure</option>
@@ -67,7 +67,7 @@
                                                         <label class="login2 pull-right pull-right-pro">Description</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                        <textarea name="description" class="form-control" rows="4"></textarea>
+                                                        <textarea name="description" class="form-control" rows="4" required></textarea>
                                                     </div>
                                                 </div>
                                             </div>

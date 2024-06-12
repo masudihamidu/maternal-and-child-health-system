@@ -24,6 +24,7 @@ class MotherController extends Controller
 {
     $id = $request->query('id');
     $mother_firstname = $request->query('name');
+    $mother_secondname = $request->query('middlename');
     $mother_lastname = $request->query('sname');
 
     $mother = Mother::find($id);
@@ -45,7 +46,7 @@ class MotherController extends Controller
      $mother->motherBackground()->exists();
 
     if ($hasAssociatedData) {
-        return view('motherDetails', compact('id', 'mother_firstname', 'mother_lastname', 'diseases'));
+        return view('motherDetails', compact('id', 'mother_firstname',  'mother_secondname', 'mother_lastname', 'diseases'));
     } else {
         return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
 

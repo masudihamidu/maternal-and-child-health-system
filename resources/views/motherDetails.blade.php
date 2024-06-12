@@ -24,7 +24,8 @@
 
                         <h1 style="font-weight: bold; font-size: 25px; text-align: center;">Tests/diagnosis to be done for each attendance</h1>
                         <p style="font-weight: bold; font-size: 15px; text-align: center;">This table should be used to remind the healthcare provider and the expectant mother which tests should be conducted and at what stage of pregnancy.</p>
-
+                        <h1 style="font-size: 20px;">Clinic attendance for <b>{{ $mother_firstname }} {{ $mother_secondname }} {{ $mother_lastname }}</b>. </h1>
+                        <br/>
                         <div id="printableTable">
                             <table>
                                 <thead>
@@ -47,13 +48,13 @@
                                     @foreach($diseases as $disease)
                                     <tr>
                                         <td>{{ $disease->disease_name }}</td>
-                                        <td>{{ $disease->week12 ? '&#10004;' : '' }}</td>
-                                        <td>{{ $disease->week20 ? '&#10004;' : '' }}</td>
-                                        <td>{{ $disease->week26 ? '&#10004;' : '' }}</td>
-                                        <td>{{ $disease->week30 ? '&#10004;' : '' }}</td>
-                                        <td>{{ $disease->week36 ? '&#10004;' : '' }}</td>
-                                        <td>{{ $disease->week38 ? '&#10004;' : '' }}</td>
-                                        <td>{{ $disease->week40 ? '&#10004;' : '' }}</td>
+                                        <td>{!! $disease->week12 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $disease->week20 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $disease->week26 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $disease->week30 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $disease->week36 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $disease->week38 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $disease->week40 ? '&#10004;' : '' !!}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
