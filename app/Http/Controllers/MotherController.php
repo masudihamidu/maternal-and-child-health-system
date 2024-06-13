@@ -21,43 +21,61 @@ class MotherController extends Controller
     }
 
     public function motherDetails(Request $request)
+    {
+        $id = $request->query('id');
+        $mother_firstname = $request->query('name');
+        $mother_secondname = $request->query('middlename');
+        $mother_lastname = $request->query('sname');
+
+        // Fetch the mother along with her associated diseases
+        $mother = Mother::with('diseases')->find($id);
+
+        // Check if the mother exists
+        if (!$mother) {
+            return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
+        }
+
+        // Get the diseases associated with the mother
+        $diseases = $mother->diseases;
+
+        // Check if the mother has associated data
+        $hasAssociatedData = $mother->father()->exists() &&
+            $mother->siblings()->exists() &&
+            $mother->localChairman()->exists() &&
+            $mother->healthProfessional()->exists() &&
+            $mother->pregnancySummary()->exists() &&
+            $mother->motherBackground()->exists();
+
+        if ($hasAssociatedData) {
+            return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases'));
+        } else {
+            return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
+        }
+    }
+
+    public function showClinicProgress(Request $request)
 {
     $id = $request->query('id');
     $mother_firstname = $request->query('name');
     $mother_secondname = $request->query('middlename');
     $mother_lastname = $request->query('sname');
 
-    $mother = Mother::find($id);
+    // Fetch the mother with her associated diseases and their details for weeks
+    $mother = Mother::with('diseases')->find($id);
 
-      // Fetch diseases from the database
-      $diseases = Disease::all();
-
-    // Check if the mother exists
     if (!$mother) {
         return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
     }
 
-    // Check if the mother has associated data
-    $hasAssociatedData = $mother->father()->exists() &&
-     $mother->siblings()->exists() &&
-     $mother->localChairman()->exists() &&
-     $mother->healthProfessional()->exists() &&
-     $mother->pregnancySummary()->exists() &&
-     $mother->motherBackground()->exists();
+    // Extract diseases with their details for each week
+    $diseases = $mother->diseases()->get();
 
-    if ($hasAssociatedData) {
-        return view('motherDetails', compact('id', 'mother_firstname',  'mother_secondname', 'mother_lastname', 'diseases'));
-    } else {
-        return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
-
-    }
+    return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases'));
 }
 
 
-    public function showClinicProgress()
-    {
-        return view('motherDetails');
-    }
+
+
 
     public function showRegisteredExpectant()
     {
@@ -72,7 +90,7 @@ class MotherController extends Controller
     {
         // Validate the request data
         $request->validate([
-            //mother information
+            // Mother information
             'mother_firstname' => 'required|string',
             'mother_secondname' => 'required|string',
             'mother_lastname' => 'required|string',
@@ -83,7 +101,7 @@ class MotherController extends Controller
             'marital_status' => 'required|string',
         ]);
 
-        // Create a new ExpectantForm model and save the data
+        // Create a new Mother model and save the data
         $mother = Mother::create([
             'mother_firstname' => $request->input('mother_firstname'),
             'mother_secondname' => $request->input('mother_secondname'),
@@ -100,7 +118,7 @@ class MotherController extends Controller
         // Redirect or return a response
         if ($mother->save()) {
             return redirect()->route('mother_register.index')->with('success', 'Expectant form saved successfully.');
-        }else {
+        } else {
             // Return with an error message if save was not successful
             return redirect()->route('mother_register.index')->with('error', 'Failed to save the expectant form. Please try again.');
         }
