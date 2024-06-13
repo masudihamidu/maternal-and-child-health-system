@@ -1,160 +1,103 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css" integrity="sha512-5A8nwdMOWrSz20fDsjczgUidUBR8liPYU+WymTZP1lmY9G6Oc7HlZv156XqnsgNUzTyMefFTcsFH/tnJE/+xBg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Full Screen Chatbox</title>
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <style>
-        body {
-            background: #343541;
-            color: white;
-            font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            height: 100vh;
+        html, body {
+            height: 100%;
             margin: 0;
+            padding: 0;
         }
-
-        ::-webkit-scrollbar {
-            width: 5px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #2a2b32;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #555555;
-        }
-
-        .header {
-            background: #202123;
-            height: 50px;
-            display: flex;
-            align-items: center;
-            padding: 0 15px;
-            border-bottom: 1px solid #555555;
-        }
-
-        .chat-box {
-            flex: 1;
-            overflow-y: auto;
-            padding: 15px;
-            background: #343541;
-        }
-
-        .message {
-            border-radius: 8px;
-            font-size: 85%;
-            margin-bottom: 10px;
-            padding: 10px;
-            max-width: 80%;
-            clear: both;
-        }
-
-        .user-message {
-            background-color: #4caf50;
-            float: right;
-            text-align: right;
-            margin-left: auto;
-        }
-
-        .bot-response {
-            background-color: #40414F;
-            color: white;
-            float: left;
-            margin-right: auto;
-        }
-
-        .input-container {
-            display: flex;
-            align-items: center;
-            padding: 10px;
-            background: #202123;
-            border-top: 1px solid #555555;
-        }
-
-        .input-container input {
-            background: #555555;
-            border: none;
-            color: white;
-            padding: 10px;
-            border-radius: 5px;
-            flex: 1;
-        }
-
-        .input-container button {
-            background: #4caf50;
-            border: none;
-            color: white;
-            padding: 10px 15px;
-            margin-left: 10px;
-            border-radius: 5px;
+        #sarufi-chatbox {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            z-index: 1000;
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="avatar" style="width: 30px; height: 30px; background: gray; border-radius: 50%;"></div>
-        <div class="username" style="margin-left: 10px;">Chat with GPT</div>
-    </div>
+    <script defer async>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get CSRF token from meta tag
+            const csrfToken = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
 
-    <div id="content-box" class="chat-box">
-        @if (isset($conversation))
-            @foreach ($conversation as $exchange)
-                <div class="message user-message">
-                    {{ $exchange['user'] }}
-                </div>
-                <div class="message bot-response">
-                    {{ $exchange['bot'] }}
-                </div>
-            @endforeach
-        @endif
-    </div>
+            // setting global variables
+            window.botId = 3930;
 
-    <div class="footer input-container">
-        <input id="input" type="text" name="input" placeholder="Type your message here..." />
-        <button id="button-submit"><i class="fa fa-paper-plane"></i></button>
-    </div>
+            // create div with id = sarufi-chatbox
+            const div = document.createElement("div");
+            div.id = "sarufi-chatbox";
+            document.body.appendChild(div);
 
-    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            // create and attach script tag
+            const script = document.createElement("script");
+            script.crossOrigin = true;
+            script.type = "module";
+            script.src = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/script.js";
+            document.head.appendChild(script);
+
+            // create and attach css
+            const style = document.createElement("link");
+            style.crossOrigin = true;
+            style.rel = "stylesheet";
+            style.href = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/style.css";
+            document.head.appendChild(style);
+
+            // Override send function to capture user questions and bot responses
+            function overrideSendFunction() {
+                const originalSend = window.sarufiChatbox.sendMessage;
+                window.sarufiChatbox.sendMessage = function(message) {
+                    // Send user question to the backend
+                    fetch('/save-conversation', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        body: JSON.stringify({ question: message, response: '' })
+                    })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error('Error:', error));
+
+                    // Call the original send function
+                    originalSend.apply(window.sarufiChatbox, arguments);
+                };
+
+                // Override the function that handles bot responses
+                const originalHandleResponse = window.sarufiChatbox.handleResponse;
+                window.sarufiChatbox.handleResponse = function(response) {
+                    // Send bot response to the backend
+                    fetch('/save-conversation', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken
+                        },
+                        body: JSON.stringify({ question: '', response: response })
+                    })
+                    .then(response => response.json())
+                    .then(data => console.log(data))
+                    .catch(error => console.error('Error:', error));
+
+                    // Call the original handle response function
+                    originalHandleResponse.apply(window.sarufiChatbox, arguments);
+                };
             }
-        });
 
-        $('#button-submit').on('click', function() {
-            const value = $('#input').val();
-            if (!value) return;
-
-            $('#content-box').append(`
-                <div class="message user-message">
-                    ${value}
-                </div>
-            `);
-
-            $.ajax({
-                type: 'POST',
-                url: '{{ url('/sendChat') }}',
-                data: { prompt: value },
-                success: function(data) {
-                    $('#content-box').append(`
-                        <div class="message bot-response">
-                            ${data}
-                        </div>
-                    `);
-                    $('#input').val('');
-                    $('#content-box').scrollTop($('#content-box')[0].scrollHeight);
-                }
-            });
-        });
-
-        $('#input').on('keypress', function(e) {
-            if (e.which === 13) {
-                $('#button-submit').click();
-            }
+            // Wait until the chatbox script is loaded
+            script.onload = function() {
+                overrideSendFunction();
+            };
         });
     </script>
 </body>
