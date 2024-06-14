@@ -30,6 +30,8 @@
                                                 </li>
                                                 <li class="nav-item"><a href="{{ route('registered_mothers.showRegisteredExpectant') }}" class="nav-link">Registered Expectants</a>
                                                 </li>
+                                                <li class="nav-item"><a href="" class="nav-link">Report</a>
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>

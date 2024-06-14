@@ -24,20 +24,24 @@
                     </li>
 
                     <li>
-                         <a title="Landing Page" href="{{route('openAI.showAIPage')}}" aria-expanded="false">
-                            <span class="fas fa-comments" aria-hidden="true"></span>
+                         <a title="Landing Page" href="{{route('ConversationAI.showConversation')}}" aria-expanded="false">
+                            <span class="fas fa-chat" aria-hidden="true"></span>
                             <span class="mini-click-non">Chat</span>
                         </a>
-
                     </li>
-
 
                     <li>
                          <a title="Landing Page" href="{{route('motherDetails.showClinicProgress')}}" aria-expanded="false">
                             <span class="fas fa-book" aria-hidden="true"></span>
                             <span class="mini-click-non">Clinic card</span>
                         </a>
+                    </li>
 
+                    <li>
+                         <a title="Landing Page" href="" aria-expanded="false">
+                            <span class="far fa-file-alt" aria-hidden="true"></span>
+                            <span class="mini-click-non">Report</span>
+                        </a>
                     </li>
 
                     </ul>
