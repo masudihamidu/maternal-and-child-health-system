@@ -257,36 +257,42 @@ class MotherController extends Controller
         }
     }
 
+
     public function generatePdf(Request $request)
-{
-    try {
-        $id = $request->query('id');
+    {
+        try {
+            $id = $request->query('id');
 
-        // Fetch the mother along with her associated diseases
-        $mother = Mother::with('diseases')->find($id);
+            // Fetch the mother along with her associated diseases and immunities
+            $mother = Mother::with(['diseases', 'immunities'])->find($id);
 
-        // Check if the mother exists
-        if (!$mother) {
-            return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
+            // Check if the mother exists
+            if (!$mother) {
+                return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
+            }
+
+            // Extract necessary data
+            $mother_firstname = $mother->mother_firstname;
+            $mother_secondname = $mother->mother_secondname;
+            $mother_lastname = $mother->mother_lastname;
+            $diseases = $mother->diseases;
+            $immunities = $mother->immunities;
+
+            // Load the view and generate PDF
+            $pdf = Pdf::loadView('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases', 'immunities'))
+                      ->setOptions(['defaultFont' => 'Arial']);
+
+            // Create a dynamic filename
+            $filename = "{$mother_firstname}_{$mother_lastname}_details.pdf";
+
+            // Download the PDF file
+            return $pdf->download($filename);
+        } catch (Exception $e) {
+            // Log or handle the exception as needed
+            return redirect()->route('mother_register.index')->with('error', 'Failed to generate PDF.');
         }
-
-        // Extract necessary data
-        $id = $mother->id;
-        $mother_firstname = $mother->mother_firstname;
-        $mother_secondname = $mother->mother_secondname;
-        $mother_lastname = $mother->mother_lastname;
-        $diseases = $mother->diseases;
-
-        // Load the view and generate PDF
-        $pdf = Pdf::loadView('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases'))->setOptions(['defaultFont' => 'Arial']);
-
-        // Download the PDF file
-        return $pdf->download('mother_details.pdf');
-    } catch (Exception $e) {
-        // Log or handle the exception as needed
-        return redirect()->route('mother_register.index')->with('error', 'Failed to generate PDF.');
     }
-}
+
 
 
     public function getTotal()
