@@ -25,7 +25,7 @@
 
                     <li>
                          <a title="Landing Page" href="{{route('ConversationAI.showConversation')}}" aria-expanded="false">
-                            <span class="fas fa-chat" aria-hidden="true"></span>
+                            <span class="fas fa-comments" aria-hidden="true"></span>
                             <span class="mini-click-non">Chat</span>
                         </a>
                     </li>
