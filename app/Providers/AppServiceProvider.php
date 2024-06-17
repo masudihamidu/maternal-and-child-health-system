@@ -16,6 +16,10 @@ use App\Observers\DiseaseObserver;
 
 use App\Observers\ImmunityObserver;
 
+use App\Models\PregnancySummary;
+
+use App\Observers\PregnancySummaryObserver;
+
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,5 +39,7 @@ class AppServiceProvider extends ServiceProvider
         Mother::observe(MotherObserver::class);
         Disease::observe(DiseaseObserver::class);
         Immunity::observe(ImmunityObserver::class);
+        PregnancySummary::observe(PregnancySummaryObserver::class);
+
     }
 }
