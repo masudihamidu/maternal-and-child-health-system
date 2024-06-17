@@ -16,7 +16,7 @@ class CliniCardController extends Controller
             $id = $request->query('id');
 
             // Fetch the mother along with her associated diseases and immunities
-            $mother = Mother::with(['diseases', 'immunities'])->find($id);
+            $mother = Mother::with(['diseases', 'immunities', 'father'])->find($id);
 
             // Check if the mother exists
             if (!$mother) {
@@ -29,6 +29,13 @@ class CliniCardController extends Controller
             $mother_lastname = $mother->mother_lastname;
             $diseases = $mother->diseases;
             $immunities = $mother->immunities;
+            $father_firstname = $mother->father->father_firstname ?? '';
+            $father_middlename = $mother->father->father_middlename ?? '';
+            $father_surname = $mother->father->father_surname ?? '';
+            $father_phone_number = $mother->father->father_phone_number ?? '';
+
+            //Mother Registration date
+            $registration_date = Carbon::parse($mother->created_at)->toFormattedDateString();
 
             // Build HTML content for the PDF
             $html = '<style>
@@ -47,10 +54,11 @@ class CliniCardController extends Controller
                     </style>';
 
             $html .= '<h1 style="font-weight: bold; font-size: 25px; text-align: center;">Tests/Diagnosis to be Done for Each Attendance</h1>';
-            $html .= '<p style="font-weight: bold; font-size: 15px; text-align: center;">This table should be used to remind the healthcare provider and the expectant mother which tests should be conducted and at what stage of pregnancy.</p>';
-            $html .= "<h1 style='font-size: 20px;'>Clinic Attendance for <b>{$mother_firstname} {$mother_secondname} {$mother_lastname}</b>. </h1>";
-            $html .= '<br/>';
-
+            $html .= '<p>This table should be used to remind the healthcare provider and the expectant mother which tests should be conducted and at what stage of pregnancy.</p>';
+            $html .= "<p><b>Clinic Attendance for: </b></p>";
+            $html .= "<p> Mother full name: <b>{$mother_firstname} {$mother_secondname} {$mother_lastname}</b></p>";
+            $html .= "<p> Father full name: <b>{$father_firstname} {$father_middlename} {$father_surname}</b>.  father phone number: <b>{$father_phone_number}</b></p>";
+            $html .= "<p> Mother registration Date: <b>{$registration_date}</b></p>";
             $html .= '<div id="printableTable">';
             $html .= '<h2><b>Diseases</b></h2>';
             $html .= '<table>';

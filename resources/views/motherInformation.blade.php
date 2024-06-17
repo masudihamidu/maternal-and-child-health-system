@@ -289,27 +289,27 @@
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                                             <div class="all-form-element-inner">
 
-                                                    <div class="form-group-inner">
-                                                        <div class="row">
-                                                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                <label class="login2 pull-right pull-right-pro">LNMP</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                            <input type="date" name="lnmp" class="form-control" required/>
-                                                        </div>
-                                                        </div>
-                                                    </div>
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <label class="login2 pull-right pull-right-pro">LNMP</label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                    <input type="date" name="lnmp" id="lnmp" class="form-control" required/>
+                </div>
+            </div>
+        </div>
 
-                                                    <div class="form-group-inner">
-                                                         <div class="row">
-                                                             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                                 <label class="login2 pull-right pull-right-pro">EDD</label>
-                                                            </div>
-                                                            <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
-                                                                 <input type="date" name="edd" class="form-control" required/>
-                                                            </div>
-                                                        </div>
-                                                            </div>
+        <div class="form-group-inner">
+            <div class="row">
+                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                    <label class="login2 pull-right pull-right-pro">EDD</label>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                    <input type="date" name="edd" id="edd" class="form-control" readonly/>
+                </div>
+            </div>
+        </div>
 
 
 
@@ -477,4 +477,21 @@
 </div>
 </div>
                 </div>
+
+                <script>
+        document.getElementById('lnmp').addEventListener('change', function() {
+            var lnmp = new Date(this.value);
+            var edd = new Date(lnmp);
+            edd.setMonth(edd.getMonth() + 9);
+
+            // Adjust the date if adding 9 months goes into the next year
+            if (edd.getDate() !== lnmp.getDate()) {
+                edd.setDate(0);
+            }
+
+            // Format the EDD date to yyyy-mm-dd
+            var eddFormatted = edd.toISOString().split('T')[0];
+            document.getElementById('edd').value = eddFormatted;
+        });
+    </script>
 @endsection

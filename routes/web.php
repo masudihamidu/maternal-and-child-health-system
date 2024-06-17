@@ -8,6 +8,7 @@ use App\Http\Controllers\HealthProfessionalController;
 use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\ImmunityController;
 use App\Http\Controllers\ConversationController;
+use App\Http\Controllers\CliniCardController;
 
 
 
@@ -30,7 +31,8 @@ Route::get('/motherDisease', [DiseaseController::class, 'addDisease'])->name('mo
 Route::get('/motherInformation', [MotherController::class, 'motherDetails'])->name('motherInformation.motherDetails');
 Route::get('/motherDetails', [MotherController::class, 'showClinicProgress'])->name('motherDetails.showClinicProgress');
 Route::get('/ConversationAI.conversationAI', [ConversationController::class, 'showConversation'])->name('ConversationAI.showConversation');
-Route::get('/mother/pdf', [MotherController::class, 'generatePdf'])->name('mother.pdf');
+Route::get('/mother/pdf', [CliniCardController::class, 'generatePdf'])->name('mother.pdf');
+
 
 route ::get('/mother_register',[MotherController::class,'index'])->name('mother_register.index');
 route ::get('registered_mothers',[MotherController::class,'showRegisteredExpectant'])->name('registered_mothers.showRegisteredExpectant');

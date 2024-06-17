@@ -43,7 +43,6 @@ class Mother extends Model
         return $this->hasOne(Father::class);
     }
 
-
     public function siblings()
     {
         return $this->hasMany(Sibling::class);
