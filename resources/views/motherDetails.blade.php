@@ -22,11 +22,12 @@
                             }
                         </style>
 
-                        <h1 style="font-weight: bold; font-size: 25px; text-align: center;">Tests/diagnosis to be done for each attendance</h1>
+                        <h1 style="font-weight: bold; font-size: 25px; text-align: center;">Tests/Diagnosis to be Done for Each Attendance</h1>
                         <p style="font-weight: bold; font-size: 15px; text-align: center;">This table should be used to remind the healthcare provider and the expectant mother which tests should be conducted and at what stage of pregnancy.</p>
-                        <h1 style="font-size: 20px;">Clinic attendance for <b>{{ $mother_firstname }} {{ $mother_secondname }} {{ $mother_lastname }}</b>. </h1>
+                        <h1 style="font-size: 20px;">Clinic Attendance for <b>{{ $mother_firstname }} {{ $mother_secondname }} {{ $mother_lastname }}</b>. </h1>
                         <br/>
                         <div id="printableTable">
+                            <h2><b>Diseases</b></h2>
                             <table>
                                 <thead>
                                     <tr>
@@ -58,6 +59,39 @@
                                     @endforeach
                                 </tbody>
                             </table>
+                            <br/>
+                            <h2><b>Immunities</b></h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">IMMUNITY DETAILS</th>
+                                        <th colspan="7">Weeks</th>
+                                    </tr>
+                                    <tr>
+                                        <th>12 weeks</th>
+                                        <th>20 weeks</th>
+                                        <th>26 weeks</th>
+                                        <th>30 weeks</th>
+                                        <th>36 weeks</th>
+                                        <th>38 weeks</th>
+                                        <th>40 weeks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($immunities as $immunity)
+                                    <tr>
+                                        <td>{{ $immunity->immunity_name }}</td>
+                                        <td>{!! $immunity->week12 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week20 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week26 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week30 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week36 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week38 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week40 ? '&#10004;' : '' !!}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
                             <p>The HIV retest for a person without an infection is done between weeks 32 and 36.</p>
                             <div class="form-group-inner">
                                 <div class="login-btn-inner">
@@ -65,42 +99,42 @@
                                         <div class="col-lg-3"></div>
                                         <div class="col-lg-9">
                                             <div class="login-horizental cancel-wp pull-left form-bc-ele">
-                                                <button onclick="printTable()" class="btn btn-sm btn-primary login-submit-cs">Print Table</button>
+                                                <a href="{{ route('mother.pdf', ['id' => $id]) }}" class="btn btn-sm btn-primary login-submit-cs">Download PDF</a>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <script defer async>
+                          document.addEventListener('DOMContentLoaded', function() {
+                            // setting global variables
+                            window.botId = 3930
+
+                            // create div with id = sarufi-chatbox
+                            const div = document.createElement("div")
+                            div.id = "sarufi-chatbox"
+                            document.body.appendChild(div)
+
+                            // create and attach script tag
+                            const script = document.createElement("script")
+                            script.crossOrigin = true
+                            script.type = "module"
+                            script.src = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/script.js"
+                            document.head.appendChild(script)
+
+                            // create and attach css
+                            const style = document.createElement("link")
+                            style.crossOrigin = true
+                            style.rel = "stylesheet"
+                            style.href = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/style.css"
+                            document.head.appendChild(style)
+                          });
+                        </script>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-    <script defer async>
-  document.addEventListener('DOMContentLoaded', function() {
-    // setting global variables
-    window.botId = 3930
-
-    // create div with id = sarufi-chatbox
-    const div = document.createElement("div")
-    div.id = "sarufi-chatbox"
-    document.body.appendChild(div)
-
-    // create and attach script tag
-    const script = document.createElement("script")
-    script.crossOrigin = true
-    script.type = "module"
-    script.src = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/script.js"
-    document.head.appendChild(script)
-
-    // create and attach css
-    const style = document.createElement("link")
-    style.crossOrigin = true
-    style.rel = "stylesheet"
-    style.href = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/style.css"
-    document.head.appendChild(style)
-  });
-</script>
 </div>
 @endsection

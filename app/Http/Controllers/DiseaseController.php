@@ -1,12 +1,9 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Models\Mother;
 use Illuminate\Http\Request;
 use App\Models\Disease;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
@@ -17,18 +14,10 @@ class DiseaseController extends Controller
     {
         // Validate the request data
         $request->validate([
-            // Disease information
             'disease_name' => 'required|string',
             'description' => 'required|string',
             'mother_id' => 'required|exists:mothers,id',
-            // Week columns
-            'week12' => 'sometimes|boolean',
-            'week20' => 'sometimes|boolean',
-            'week26' => 'sometimes|boolean',
-            'week30' => 'sometimes|boolean',
-            'week36' => 'sometimes|boolean',
-            'week38' => 'sometimes|boolean',
-            'week40' => 'sometimes|boolean',
+            'week' => 'required|in:12,20,26,30,36,38,40',
         ]);
 
         // Log request data for debugging
@@ -36,20 +25,24 @@ class DiseaseController extends Controller
 
         // Create a new Disease model and save the data
         try {
-            $disease = Disease::create([
+            // Prepare the data
+            $data = [
                 'disease_name' => $request->input('disease_name'),
                 'description' => $request->input('description'),
                 'mother_id' => $request->input('mother_id'),
-                'week12' => $request->input('week12', false),
-                'week20' => $request->input('week20', false),
-                'week26' => $request->input('week26', false),
-                'week30' => $request->input('week30', false),
-                'week36' => $request->input('week36', false),
-                'week38' => $request->input('week38', false),
-                'week40' => $request->input('week40', false),
+                'week12' => $request->input('week') == '12',
+                'week20' => $request->input('week') == '20',
+                'week26' => $request->input('week') == '26',
+                'week30' => $request->input('week') == '30',
+                'week36' => $request->input('week') == '36',
+                'week38' => $request->input('week') == '38',
+                'week40' => $request->input('week') == '40',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ]);
+            ];
+
+            // Create a new Disease model and save the data
+            $disease = Disease::create($data);
 
             // Log created disease
             Log::info('Created disease:', $disease->toArray());

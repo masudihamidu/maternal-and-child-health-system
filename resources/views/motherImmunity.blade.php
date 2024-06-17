@@ -10,7 +10,7 @@
                         <div class="main-sparkline12-hd">
                             <h1>Add Immunity for <b>{{ $mother_firstname }} {{ $mother_lastname }}</b>.</h1>
                             @if(Session::get('success'))
-                            <div class="alert alert-success">{{Session::get('success')}}</div>
+                            <div class="alert alert-success">{{ Session::get('success') }}</div>
                             @endif
                         </div>
                     </div>
@@ -80,7 +80,7 @@
                                                         <div class="col-lg-3"></div>
                                                         <div class="col-lg-9">
                                                             <div class="login-horizental cancel-wp pull-left form-bc-ele">
-                                                                <button class="btn btn-white" type="submit">Cancel</button>
+                                                                <button class="btn btn-white" type="button" onclick="window.location.href='{{ url()->previous() }}'">Cancel</button>
                                                                 <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save</button>
                                                             </div>
                                                         </div>

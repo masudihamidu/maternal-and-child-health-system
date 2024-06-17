@@ -11,6 +11,7 @@ use App\Models\PregnancySummary;
 use App\Models\LocalChairman;
 use App\Models\HealthProfessional;
 use Illuminate\Http\Request;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 
 class MotherController extends Controller
@@ -21,22 +22,24 @@ class MotherController extends Controller
     }
 
     public function motherDetails(Request $request)
-    {
+{
+    try {
         $id = $request->query('id');
         $mother_firstname = $request->query('name');
         $mother_secondname = $request->query('middlename');
         $mother_lastname = $request->query('sname');
 
-        // Fetch the mother along with her associated diseases
-        $mother = Mother::with('diseases')->find($id);
+        // Fetch the mother along with her associated diseases and immunities
+        $mother = Mother::with(['diseases', 'immunities'])->find($id);
 
         // Check if the mother exists
         if (!$mother) {
             return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
         }
 
-        // Get the diseases associated with the mother
+        // Get the diseases and immunities associated with the mother
         $diseases = $mother->diseases;
+        $immunities = $mother->immunities;
 
         // Check if the mother has associated data
         $hasAssociatedData = $mother->father()->exists() &&
@@ -47,44 +50,54 @@ class MotherController extends Controller
             $mother->motherBackground()->exists();
 
         if ($hasAssociatedData) {
-            return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases'));
+            return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases', 'immunities'));
         } else {
             return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
         }
+    } catch (Exception $e) {
+        return redirect()->route('mother_register.index')->with('error', 'Failed to fetch mother details.');
     }
-
-    public function showClinicProgress(Request $request)
-{
-    $id = $request->query('id');
-    $mother_firstname = $request->query('name');
-    $mother_secondname = $request->query('middlename');
-    $mother_lastname = $request->query('sname');
-
-    // Fetch the mother with her associated diseases and their details for weeks
-    $mother = Mother::with('diseases')->find($id);
-
-    if (!$mother) {
-        return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
-    }
-
-    // Extract diseases with their details for each week
-    $diseases = $mother->diseases()->get();
-
-    return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases'));
 }
 
 
+    public function showClinicProgress(Request $request)
+    {
+        try {
+            $id = $request->query('id');
+            $mother_firstname = $request->query('name');
+            $mother_secondname = $request->query('middlename');
+            $mother_lastname = $request->query('sname');
 
+            // Fetch the mother with her associated diseases and their details for weeks
+            $mother = Mother::with('diseases')->find($id);
+
+            if (!$mother) {
+                return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
+            }
+
+            // Extract diseases with their details for each week
+            $diseases = $mother->diseases()->get();
+
+            return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases'));
+        } catch (Exception $e) {
+            return redirect()->route('mother_register.index')->with('error', 'Failed to fetch clinic progress details.');
+        }
+    }
 
 
     public function showRegisteredExpectant()
     {
-        $mother = Mother::select('id', 'mother_firstname', 'mother_lastname', 'mother_dob', 'mother_phone_number', 'education', 'occupation', 'marital_status')
-            ->orderBy('mother_firstname')
-            ->get();
+        try {
+            $mother = Mother::select('id', 'mother_firstname', 'mother_lastname', 'mother_dob', 'mother_phone_number', 'education', 'occupation', 'marital_status')
+                ->orderBy('mother_firstname')
+                ->get();
 
-        return view('registered_mothers', compact('mother'));
+            return view('registered_mothers', compact('mother'));
+        } catch (Exception $e) {
+            return redirect()->route('mother_register.index')->with('error', 'Failed to fetch registered expectant mothers.');
+        }
     }
+
 
     public function store(Request $request)
     {
@@ -243,6 +256,38 @@ class MotherController extends Controller
             return redirect()->route('motherInformation.motherDetails')->with('error', 'Failed to save the form. Please try again.');
         }
     }
+
+    public function generatePdf(Request $request)
+{
+    try {
+        $id = $request->query('id');
+
+        // Fetch the mother along with her associated diseases
+        $mother = Mother::with('diseases')->find($id);
+
+        // Check if the mother exists
+        if (!$mother) {
+            return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
+        }
+
+        // Extract necessary data
+        $id = $mother->id;
+        $mother_firstname = $mother->mother_firstname;
+        $mother_secondname = $mother->mother_secondname;
+        $mother_lastname = $mother->mother_lastname;
+        $diseases = $mother->diseases;
+
+        // Load the view and generate PDF
+        $pdf = Pdf::loadView('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases'))->setOptions(['defaultFont' => 'Arial']);
+
+        // Download the PDF file
+        return $pdf->download('mother_details.pdf');
+    } catch (Exception $e) {
+        // Log or handle the exception as needed
+        return redirect()->route('mother_register.index')->with('error', 'Failed to generate PDF.');
+    }
+}
+
 
     public function getTotal()
     {

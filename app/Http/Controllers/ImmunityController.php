@@ -1,55 +1,48 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Mother;
 use App\Models\Immunity;
-use illuminate\Support\Facades\DB;
-use illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 
 class ImmunityController extends Controller
 {
-    //
     public function storeImmunity(Request $request)
     {
         // Validate the request data
         $request->validate([
-            //immunity information
             'immunity_name' => 'required|string',
             'description' => 'required|string',
             'mother_id' => 'required|exists:mothers,id',
-            // Week columns
-            'week12' => 'sometimes|boolean',
-            'week20' => 'sometimes|boolean',
-            'week26' => 'sometimes|boolean',
-            'week30' => 'sometimes|boolean',
-            'week36' => 'sometimes|boolean',
-            'week38' => 'sometimes|boolean',
-            'week40' => 'sometimes|boolean',
+            'weeks' => 'required|in:12,20,26,30,36,38,40',
         ]);
 
         try {
             // Log request data for debugging
             Log::info('Request data:', $request->all());
 
-            // Create a new ImmunityForm model and save the data
-            $immunity = Immunity::create([
+            // Prepare the data
+            $data = [
                 'immunity_name' => $request->input('immunity_name'),
                 'description' => $request->input('description'),
                 'mother_id' => $request->input('mother_id'),
-                'week12' => $request->input('week12', false),
-                'week20' => $request->input('week20', false),
-                'week26' => $request->input('week26', false),
-                'week30' => $request->input('week30', false),
-                'week36' => $request->input('week36', false),
-                'week38' => $request->input('week38', false),
-                'week40' => $request->input('week40', false),
+                'week12' => $request->input('weeks') == '12',
+                'week20' => $request->input('weeks') == '20',
+                'week26' => $request->input('weeks') == '26',
+                'week30' => $request->input('weeks') == '30',
+                'week36' => $request->input('weeks') == '36',
+                'week38' => $request->input('weeks') == '38',
+                'week40' => $request->input('weeks') == '40',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
-            ]);
+            ];
+
+            // Create a new Immunity model and save the data
+            $immunity = Immunity::create($data);
 
             // Log created immunity
             Log::info('Immunity disease:', $immunity->toArray());
@@ -71,7 +64,6 @@ class ImmunityController extends Controller
             return redirect()->route('motherImmunity.addImmunity')->with('error', 'Failed to save the Immunity form. Please try again.');
         }
     }
-
 
     public function addImmunity(Request $request)
     {
