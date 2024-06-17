@@ -8,6 +8,15 @@ use App\Observers\MotherObserver;
 
 use App\Models\Mother;
 
+use App\Models\Disease;
+
+use App\Models\Immunity;
+
+use App\Observers\DiseaseObserver;
+
+use App\Observers\ImmunityObserver;
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -24,5 +33,7 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Mother::observe(MotherObserver::class);
+        Disease::observe(DiseaseObserver::class);
+        Immunity::observe(ImmunityObserver::class);
     }
 }

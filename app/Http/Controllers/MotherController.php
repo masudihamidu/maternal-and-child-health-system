@@ -22,41 +22,43 @@ class MotherController extends Controller
     }
 
     public function motherDetails(Request $request)
-    {
-        try {
-            $id = $request->query('id');
-            $mother_firstname = $request->query('name');
-            $mother_secondname = $request->query('middlename');
-            $mother_lastname = $request->query('sname');
+{
+    try {
+        $id = $request->query('id');
+        $mother_firstname = $request->query('name');
+        $mother_secondname = $request->query('middlename');
+        $mother_lastname = $request->query('sname');
 
-            // Fetch the mother along with her associated diseases
-            $mother = Mother::with('diseases')->find($id);
+        // Fetch the mother along with her associated diseases and immunities
+        $mother = Mother::with(['diseases', 'immunities'])->find($id);
 
-            // Check if the mother exists
-            if (!$mother) {
-                return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
-            }
-
-            // Get the diseases associated with the mother
-            $diseases = $mother->diseases;
-
-            // Check if the mother has associated data
-            $hasAssociatedData = $mother->father()->exists() &&
-                $mother->siblings()->exists() &&
-                $mother->localChairman()->exists() &&
-                $mother->healthProfessional()->exists() &&
-                $mother->pregnancySummary()->exists() &&
-                $mother->motherBackground()->exists();
-
-            if ($hasAssociatedData) {
-                return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases'));
-            } else {
-                return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
-            }
-        } catch (Exception $e) {
-            return redirect()->route('mother_register.index')->with('error', 'Failed to fetch mother details.');
+        // Check if the mother exists
+        if (!$mother) {
+            return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
         }
+
+        // Get the diseases and immunities associated with the mother
+        $diseases = $mother->diseases;
+        $immunities = $mother->immunities;
+
+        // Check if the mother has associated data
+        $hasAssociatedData = $mother->father()->exists() &&
+            $mother->siblings()->exists() &&
+            $mother->localChairman()->exists() &&
+            $mother->healthProfessional()->exists() &&
+            $mother->pregnancySummary()->exists() &&
+            $mother->motherBackground()->exists();
+
+        if ($hasAssociatedData) {
+            return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases', 'immunities'));
+        } else {
+            return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
+        }
+    } catch (Exception $e) {
+        return redirect()->route('mother_register.index')->with('error', 'Failed to fetch mother details.');
     }
+}
+
 
     public function showClinicProgress(Request $request)
     {

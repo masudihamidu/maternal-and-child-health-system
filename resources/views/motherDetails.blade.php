@@ -27,6 +27,7 @@
                         <h1 style="font-size: 20px;">Clinic Attendance for <b>{{ $mother_firstname }} {{ $mother_secondname }} {{ $mother_lastname }}</b>. </h1>
                         <br/>
                         <div id="printableTable">
+                            <h2><b>Diseases</b></h2>
                             <table>
                                 <thead>
                                     <tr>
@@ -54,6 +55,39 @@
                                         <td>{!! $disease->week36 ? '&#10004;' : '' !!}</td>
                                         <td>{!! $disease->week38 ? '&#10004;' : '' !!}</td>
                                         <td>{!! $disease->week40 ? '&#10004;' : '' !!}</td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                            <br/>
+                            <h2><b>Immunities</b></h2>
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th rowspan="2">IMMUNITY DETAILS</th>
+                                        <th colspan="7">Weeks</th>
+                                    </tr>
+                                    <tr>
+                                        <th>12 weeks</th>
+                                        <th>20 weeks</th>
+                                        <th>26 weeks</th>
+                                        <th>30 weeks</th>
+                                        <th>36 weeks</th>
+                                        <th>38 weeks</th>
+                                        <th>40 weeks</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach($immunities as $immunity)
+                                    <tr>
+                                        <td>{{ $immunity->immunity_name }}</td>
+                                        <td>{!! $immunity->week12 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week20 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week26 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week30 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week36 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week38 ? '&#10004;' : '' !!}</td>
+                                        <td>{!! $immunity->week40 ? '&#10004;' : '' !!}</td>
                                     </tr>
                                     @endforeach
                                 </tbody>
