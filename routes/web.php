@@ -34,12 +34,10 @@ Route::get('/ConversationAI.conversationAI', [ConversationController::class, 'sh
 Route::get('/mother/pdf', [CliniCardController::class, 'generatePdf'])->name('mother.pdf');
 Route::get('/notify-unassociated-mothers', [MotherController::class, 'notifyUnassociatedMothers'])->name('notify.unassociated.mothers');
 
-
+Route::get('/import', [ConversationController::class, 'importJson']);
 
 route ::get('/mother_register',[MotherController::class,'index'])->name('mother_register.index');
 route ::get('registered_mothers',[MotherController::class,'showRegisteredExpectant'])->name('registered_mothers.showRegisteredExpectant');
-Route::post('/save-conversation', [ConversationController::class, 'store']);
-
 
 Route ::post('/mother_register',[MotherController::class,'store'])->name('mother_register.store');
 Route ::post('/motherImmunity',[ImmunityController::class,'storeImmunity'])->name('motherImmunity.storeImmunity');
