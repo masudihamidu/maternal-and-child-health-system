@@ -12,6 +12,10 @@ use App\Models\LocalChairman;
 use App\Models\HealthProfessional;
 use Illuminate\Http\Request;
 use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\Notification;
+use App\Notifications\NotifyUnassociatedMothers;
+use Illuminate\Support\Facades\DB;
+
 use Carbon\Carbon;
 
 class MotherController extends Controller
@@ -96,6 +100,31 @@ class MotherController extends Controller
         } catch (Exception $e) {
             return redirect()->route('mother_register.index')->with('error', 'Failed to fetch registered expectant mothers.');
         }
+    }
+
+    public function notifyUnassociatedMothers()
+    {
+
+        DB::enableQueryLog();
+
+        $unassociatedMothersCount = Mother::doesntHave('siblings')
+        ->doesntHave('father')
+        ->doesntHave('localChairman')
+        ->doesntHave('healthcareProfessional')
+        ->count();
+
+    // Log the queries executed
+    dd(DB::getQueryLog());
+
+                                      dd($unassociatedMothersCount);
+                                      logger()->info("Total unassociated mothers: $unassociatedMothersCount");
+                                      $healthcareProfessionals = HealthcareProfessional::all();
+                                      foreach ($healthcareProfessionals as $professional)
+                                      {
+                                        Notification::send($professional, new NotifyUnassociatedMothers($unassociatedMothers));
+                                    }
+
+        return back()->with('success', 'Notifications sent to healthcare professionals.');
     }
 
 

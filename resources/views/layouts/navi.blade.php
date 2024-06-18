@@ -52,19 +52,33 @@
                                                         </div>
                                                     </div>
                                                 </li>
-                                                <li class="nav-item"><a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle"><i class="educate-icon educate-bell" aria-hidden="true"></i><span class="indicator-nt"></span></a>
-                                                    <div role="menu" class="notification-author dropdown-menu animated zoomIn">
-                                                        <div class="notification-single-top">
-                                                            <h1>Notifications</h1>
-                                                        </div>
-                                                        <ul class="notification-menu">
 
-                                                        </ul>
-                                                        <div class="notification-view">
-                                                            <a href="#">View All Notification</a>
-                                                        </div>
-                                                    </div>
-                                                </li>
+                                                <li class="nav-item">
+    <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
+        <i class="educate-icon educate-bell" aria-hidden="true"></i>
+        <span class="indicator-nt">{{ auth()->user()->unreadNotifications->count() }}</span>
+    </a>
+    <div role="menu" class="notification-author dropdown-menu animated zoomIn">
+        <div class="notification-single-top">
+            <h1>Notifications</h1>
+        </div>
+        <ul class="notification-menu">
+            @foreach(auth()->user()->unreadNotifications as $notification)
+                <li>
+                    <a href="#">
+                        <div class="notification-content">
+                            <p>{{ $notification->data['total_unassociated'] }} mothers are not associated with required contacts.</p>
+                        </div>
+                    </a>
+                </li>
+            @endforeach
+        </ul>
+        <div class="notification-view">
+            <a href="#">View All Notification</a>
+        </div>
+    </div>
+</li>
+
                                                 <li class="nav-item">
                                                     <a href="#" data-toggle="dropdown" role="button" aria-expanded="false" class="nav-link dropdown-toggle">
 															<!-- <img src="img/product/pro4.jpg" alt="" /> -->
