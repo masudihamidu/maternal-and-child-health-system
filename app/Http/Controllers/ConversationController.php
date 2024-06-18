@@ -2,35 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Conversation;
-use Illuminate\Support\Facades\Log;
+use Illuminate\Http\Request;
 
 class ConversationController extends Controller
 {
-
-    public function showConversation()
+    public function importJson()
     {
-        return view('ConversationAI.conversationAI');
-    }
+        // Read JSON file from public directory
+        $json = file_get_contents(public_path('json/conversationData.json'));
 
+        // Decode JSON data
+        $data = json_decode($json, true);
 
-    public function store(Request $request)
-    {
-        Log::info('Incoming request data', $request->all());
+        // Loop through each item and save to database
+        foreach ($data as $item) {
+            Conversation::create([
+                'message' => $item['message'],
+                'response' => $item['response'] ?? null,
+                'created_at' => now(),
+                'updated_at' => now(),
+            ]);
+        }
 
-        $validated = $request->validate([
-            'question' => 'required|string|max:255',
-            'response' => 'required|string|max:255',
-        ]);
-
-        Log::info('Validation passed', $validated);
-
-        $conversation = new Conversation();
-        $conversation->question = $validated['question'];
-        $conversation->response = $validated['response'];
-        $conversation->save();
-
-        return response()->json(['success' => true]);
+        return response()->json(['message' => 'Data imported successfully']);
     }
 }
