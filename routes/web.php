@@ -32,6 +32,8 @@ Route::get('/motherInformation', [MotherController::class, 'motherDetails'])->na
 Route::get('/motherDetails', [MotherController::class, 'showClinicProgress'])->name('motherDetails.showClinicProgress');
 Route::get('/ConversationAI.conversationAI', [ConversationController::class, 'showConversation'])->name('ConversationAI.showConversation');
 Route::get('/mother/pdf', [CliniCardController::class, 'generatePdf'])->name('mother.pdf');
+Route::get('/notify-unassociated-mothers', [MotherController::class, 'notifyUnassociatedMothers'])->name('notify.unassociated.mothers');
+
 
 
 route ::get('/mother_register',[MotherController::class,'index'])->name('mother_register.index');
