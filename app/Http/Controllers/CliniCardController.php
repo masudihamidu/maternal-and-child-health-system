@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Mother;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
-
 use Illuminate\Http\Request;
 
 class CliniCardController extends Controller
@@ -38,7 +37,10 @@ class CliniCardController extends Controller
             $registration_date = Carbon::parse($mother->created_at)->toFormattedDateString();
 
             // Build HTML content for the PDF
-            $html = '<style>
+            $html = '<html lang="en">';
+            $html .= '<head>';
+            $html .= '<meta charset="UTF-8">';
+            $html .= '<style>
                         table {
                             width: 100%;
                             border-collapse: collapse;
@@ -52,7 +54,8 @@ class CliniCardController extends Controller
                             background-color: #f2f2f2;
                         }
                     </style>';
-
+            $html .= '</head>';
+            $html .= '<body>';
             $html .= '<h1 style="font-weight: bold; font-size: 25px; text-align: center;">Tests/Diagnosis to be Done for Each Attendance</h1>';
             $html .= '<p>This table should be used to remind the healthcare provider and the expectant mother which tests should be conducted and at what stage of pregnancy.</p>';
             $html .= "<p><b>Clinic Attendance for: </b></p>";
@@ -81,13 +84,13 @@ class CliniCardController extends Controller
             foreach ($diseases as $disease) {
                 $html .= '<tr>';
                 $html .= "<td>{$disease->disease_name}</td>";
-                $html .= '<td>' . ($disease->week12 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($disease->week20 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($disease->week26 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($disease->week30 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($disease->week36 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($disease->week38 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($disease->week40 ? '&#10004;' : '') . '</td>';
+                $html .= '<td>' . ($disease->week12 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($disease->week20 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($disease->week26 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($disease->week30 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($disease->week36 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($disease->week38 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($disease->week40 ? '✓' : '') . '</td>';
                 $html .= '</tr>';
             }
             $html .= '</tbody>';
@@ -115,19 +118,21 @@ class CliniCardController extends Controller
             foreach ($immunities as $immunity) {
                 $html .= '<tr>';
                 $html .= "<td>{$immunity->immunity_name}</td>";
-                $html .= '<td>' . ($immunity->week12 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week20 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week26 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week30 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week36 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week38 ? '&#10004;' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week40 ? '&#10004;' : '') . '</td>';
+                $html .= '<td>' . ($immunity->week12 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($immunity->week20 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($immunity->week26 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($immunity->week30 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($immunity->week36 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($immunity->week38 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($immunity->week40 ? '✓' : '') . '</td>';
                 $html .= '</tr>';
             }
             $html .= '</tbody>';
             $html .= '</table>';
             $html .= '<p>The HIV retest for a person without an infection is done between weeks 32 and 36.</p>';
             $html .= '</div>';
+            $html .= '</body>';
+            $html .= '</html>';
 
             // Load HTML content and generate PDF
             $pdf = PDF::loadHTML($html)
