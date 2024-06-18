@@ -68,4 +68,9 @@ class Mother extends Model
         return $this->hasOne(MotherBackground::class);
     }
 
+    public function ultrasoundImages()
+    {
+        return $this->hasMany(UltrasoundImage::class);
+    }
+
 }
