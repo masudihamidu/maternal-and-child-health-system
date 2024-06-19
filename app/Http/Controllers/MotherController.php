@@ -7,6 +7,7 @@ use App\Models\Father;
 use App\Models\Disease;
 use App\Models\MotherBackground;
 use App\Models\Sibling;
+use App\Models\UltrasoundImage;
 use App\Models\PregnancySummary;
 use App\Models\LocalChairman;
 use App\Models\HealthProfessional;
@@ -26,42 +27,45 @@ class MotherController extends Controller
     }
 
     public function motherDetails(Request $request)
-{
-    try {
-        $id = $request->query('id');
-        $mother_firstname = $request->query('name');
-        $mother_secondname = $request->query('middlename');
-        $mother_lastname = $request->query('sname');
+    {
+        try {
+            $id = $request->query('id');
+            $mother_firstname = $request->query('name');
+            $mother_secondname = $request->query('middlename');
+            $mother_lastname = $request->query('sname');
 
-        // Fetch the mother along with her associated diseases and immunities
-        $mother = Mother::with(['diseases', 'immunities'])->find($id);
+            // Fetch the mother along with her associated diseases, immunities, and ultrasound images
+            $mother = Mother::with(['diseases', 'immunities', 'ultrasoundImages'])->find($id);
 
-        // Check if the mother exists
-        if (!$mother) {
-            return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
+            // Check if the mother exists
+            if (!$mother) {
+                return redirect()->route('mother_register.index')->with('error', 'Mother not found.');
+            }
+
+            // Get the diseases, immunities, and ultrasound images associated with the mother
+            $diseases = $mother->diseases;
+            $immunities = $mother->immunities;
+            $ultrasoundImages = $mother->ultrasoundImages;
+
+            // Check if the mother has associated data
+            $hasAssociatedData = $mother->father()->exists() &&
+                $mother->siblings()->exists() &&
+                $mother->localChairman()->exists() &&
+                $mother->healthProfessional()->exists() &&
+                $mother->pregnancySummary()->exists() &&
+                $mother->motherBackground()->exists();
+
+            if ($hasAssociatedData) {
+                return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases', 'immunities', 'ultrasoundImages', 'mother'));
+            } else {
+                return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
+            }
+        } catch (Exception $e) {
+            return redirect()->route('mother_register.index')->with('error', 'Failed to fetch mother details.');
         }
-
-        // Get the diseases and immunities associated with the mother
-        $diseases = $mother->diseases;
-        $immunities = $mother->immunities;
-
-        // Check if the mother has associated data
-        $hasAssociatedData = $mother->father()->exists() &&
-            $mother->siblings()->exists() &&
-            $mother->localChairman()->exists() &&
-            $mother->healthProfessional()->exists() &&
-            $mother->pregnancySummary()->exists() &&
-            $mother->motherBackground()->exists();
-
-        if ($hasAssociatedData) {
-            return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases', 'immunities'));
-        } else {
-            return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
-        }
-    } catch (Exception $e) {
-        return redirect()->route('mother_register.index')->with('error', 'Failed to fetch mother details.');
     }
-}
+
+
 
 
     public function showClinicProgress(Request $request)

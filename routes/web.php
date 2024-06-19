@@ -37,6 +37,7 @@ Route::get('/notify-unassociated-mothers', [MotherController::class, 'notifyUnas
 Route::get('/import', [ConversationController::class, 'importJson']);
 
 route ::get('/mother_register',[MotherController::class,'index'])->name('mother_register.index');
+
 route ::get('registered_mothers',[MotherController::class,'showRegisteredExpectant'])->name('registered_mothers.showRegisteredExpectant');
 
 Route ::post('/mother_register',[MotherController::class,'store'])->name('mother_register.store');

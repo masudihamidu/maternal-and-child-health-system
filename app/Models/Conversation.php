@@ -10,9 +10,8 @@ class Conversation extends Model
     use HasFactory;
 
     protected $fillable = [
-        'contact',
-        'channel',
-        'date'
-
+        'time',
+        'message',
+        'response',
     ];
 }
