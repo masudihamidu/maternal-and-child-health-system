@@ -66,6 +66,7 @@
                                                 <div class="button-style-three ">
                                                     <a class="btn btn-custon-two btn-success" href="{{ route('motherDisease.addDisease', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Health test</a>
                                                 </div>
+
                                             </td>
                                             <td>
                                                 <div class="button-style-three">

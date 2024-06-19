@@ -9,7 +9,7 @@
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
                                 <h5>Total Expectant Registered</h5>
-                                <h2><span class="counter">{{(app(\App\Http\Controllers\MotherController::class)->getTotalToday())}}</span>
+                                <h2><span class="counter">{{(app(\App\Http\Controllers\HealthProfessionalController::class)->getTotalToday())}}</span>
                                 <span class="tuition-fees">Registered Today</span></h2>
                                 <span class="text-success"></span>
                                 <div class="progress m-b-0">
@@ -23,7 +23,7 @@
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
                                 <h5>Total Expectant Registered</h5>
-                                <h2><span class="counter">{{(app(\App\Http\Controllers\MotherController::class)->getTotalThisMonth())}}</span>
+                                <h2><span class="counter">{{(app(\App\Http\Controllers\HealthProfessionalController::class)->getTotalThisMonth())}}</span>
                                  <span class="tuition-fees">These Month</span></h2>
                                 <span class="text-success"></span>
                                 <div class="progress m-b-0">
@@ -37,7 +37,7 @@
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
                                 <h5>Total Expectant Registered</h5>
-                                <h2><span class="counter">{{(app(\App\Http\Controllers\MotherController::class)->getTotalThisYear())}}</span>
+                                <h2><span class="counter">{{(app(\App\Http\Controllers\HealthProfessionalController::class)->getTotalThisYear())}}</span>
                                  <span class="tuition-fees">These year</span></h2>
                                 <span class="text-success"></span>
                                 <div class="progress m-b-0">
@@ -51,7 +51,7 @@
                         <div class="analytics-sparkle-line reso-mg-b-30">
                             <div class="analytics-content">
                                 <h5>Total Expectant Registered</h5>
-                                <h2><span class="counter">{{(app(\App\Http\Controllers\MotherController::class)->getTotal())}}</span>
+                                <h2><span class="counter">{{(app(\App\Http\Controllers\HealthProfessionalController::class)->getTotal())}}</span>
                                  <span class="tuition-fees">Total Expectant</span></h2>
                                 <span class="text-success"></span>
                                 <div class="progress m-b-0">
