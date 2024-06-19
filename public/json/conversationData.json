@@ -1,55 +1,312 @@
-
 [
     {
-        "contact":"1718630237340",
-        "channel":"general channel",
-        "date":"17-June-2024, 13:19"
+        "id":287105,"time":"17 June 2024, 13:19",
+        "message":"Matatizo ya kutumia uzazi wa mpango",
+        "response":"Uzazi wa mpango ni njia au teknolojia zinazotumika kuzuia ujauzito au kupanga wakati wa kuwa na watoto. Pamoja na manufaa yake, matumizi ya njia za uzazi wa mpango yanaweza kuwa na matatizo au madhara yafuatayo:\n\n1. Madhara ya kiafya: Baadhi ya njia za uzazi wa mpango, hasa zile zinazohusisha homoni kama vile vidonge vya kuzuia mimba, sindano za uzazi wa mpango, au vipandikizi, zinaweza kusababisha madhara kama vile kichefuchefu, kuongezeka uzito, kutokwa damu kusiko kawaida, maumivu ya kichwa, na mabadiliko ya hisia.\n\n2. Hatari ya kiafya: Njia zingine za uzazi wa mpango kama vile vipandikizi au IUD (Intrauterine Device) zinaweza kusababisha hatari kama vile maambukizi, kupenya kwa kifaa ndani ya kuta za uterasi, au hata ectopic pregnancy (mimba inayotungwa nje ya uterasi).\n\n3. Athari za muda mrefu: Matumizi ya muda mrefu ya njia fulani za uzazi wa mpango yanaweza kuwa na athari za muda mrefu kwa afya ya mwanamke, kama vile kupunguza uwezekano wa kupata ujauzito baada ya kuacha kutumia njia hizo.\n\n4. Hatari za kiafya zinazohusiana na homoni: Njia zinazotegemea homoni zinaweza kuongeza hatari ya matatizo kama vile thrombosis (kuganda kwa damu), shinikizo la damu, na hata aina fulani za saratani.\n\n5. Mapungufu ya kiufanisi: Baadhi ya njia za uzazi wa mpango, kama vile kondomu au njia za asili kama kufuatilia m",
+        "media":""
+    },
+
+    {
+        "id":278877,
+        "time":"14 June 2024, 07:33",
+        "message":"what is a vaccine?",
+        "response":"Chanjo ni bidhaa ya kimatibabu ambayo hutolewa kwa lengo la kumpa mtu kinga dhidi ya magonjwa yanayosababishwa na vimelea kama vile virusi na bakteria. Chanjo inafanya kazi kwa kuiga maambukizi ya ugonjwa, hivyo kuchochea mfumo wa kinga ya mwili kujenga uwezo wa kutambua na kupambana na vimelea hivyo bila kusababisha ugonjwa kamili.\n\nChanjo inaweza kuwa na vimelea hai ambavyo vimefanywa dhaifu (attenuated), au vimelea vilivyokufa (inactivated), au sehemu za vimelea kama vile protini au polysaccharides, au hata vipande vya genetic material kama vile DNA au RNA (kama vile chanjo za mRNA zilizotengenezwa kwa ajili ya COVID-19).\n\nMara baada ya mtu kupokea chanjo, mfumo wa kinga hujifunza kutambua na kushambulia vimelea hivyo vya ugonjwa iwapo vitajitokeza baadaye, hivyo kumkinga mtu dhidi ya ugonjwa huo au kupunguza makali yake. Chanjo zimesaidia kupunguza au hata kumaliza kabisa magonjwa mengi yaliyokuwa yanaua au kusababisha ulemavu mkubwa kama vile ndui, polio, na surua."
+        ,"media":""
+    },
+
+    {
+        "id":277818,
+        "time":"13 June 2024, 16:16",
+        "message":"health",
+        "response":"Your question \"health\" is quite broad. Could you please provide more specific information or a particular context you'd like to know about health? Health can encompass many topics, including physical health, mental health, healthcare systems, diseases, wellness, nutrition, fitness, and preventive care, among others. If you can narrow down your query, I'd be more than happy to provide you with information or answer any questions you may have related to health."
+        ,"media":""
+    },
+
+    {
+        "id":277824,
+        "time":"13 June 2024, 16:17",
+        "message":"naumwa miguu",
+        "response":"Pole sana kwa maumivu unayopitia. Maumivu ya miguu yanaweza kusababishwa na sababu mbalimbali, kuanzia matatizo madogo hadi yale makubwa. Hapa kuna baadhi ya sababu za kawaida za maumivu ya miguu:\n\n1. Majeraha: Kama vile misuli iliyovunjika, kuchanika kwa ligamenti, au maumivu ya kawaida kama vile misuli iliyokaza au kuchanika.\n\n2. Mfadhaiko au matumizi mabaya: Kusimama kwa muda mrefu, kuvaa viatu visivyofaa, au matumizi ya mara kwa mara ya misuli bila kupumzika.\n\n3. Hali sugu za kiafya: Arthritis, neuropathy ya kisukari, au mzunguko wa damu usiofaa (kama vile katika hali ya mishipa ya varicose au ugonjwa wa mishipa ya pembeni).\n\n4. Maambukizi: Maambukizi katika miguu yanaweza kusababisha uvimbe, joto, na maumivu.\n\n5. Matatizo ya kimuundo: Matatizo ya muundo wa mguu kama vile miguu iliyopinda, visigino vya mguu, au matatizo ya mifupa.\n\n6. Upungufu wa virutubisho: Upungufu wa madini kama vile potasiamu, kalsiamu, au magnesiamu unaweza kusababisha cramps za misuli na maumivu.\n\nIkiwa maumivu ni makali, yanajitokeza ghafla, au yanaendelea kwa muda mrefu bila kupungua, ni muhimu kutafuta ushauri wa kitaalamu. Daktari anaweza kufanya uchunguzi wa kimwili, kuuliza kuhusu historia yako ya kiafya, na kufanya vipimo kama vile X-ray au MRI kubaini chanzo cha maumivu na kuto",
+        "media":""
+    },
+
+    {
+        "id":277828,
+        "time":"13 June 2024, 16:18",
+        "message":"Mimba",
+        "response":"Swali lako \"Mimba\" linaweza kuwa na maana mbalimbali kulingana na unachotaka kufahamu. Kwa mfano, unaweza kuwa unataka kujua kuhusu:\n\n1. Ishara na dalili za mwanzo za mimba: Kama vile kukosa hedhi, kichefuchefu (morning sickness), uchovu, kuvimba na kuuma kwa matiti, mara kwa mara kwenda haja ndogo, na mabadiliko ya hisia.\n\n2. Hatua za ukuaji wa mtoto tumboni: Kuanzia kutungwa kwa mimba, ukuaji wa kiinitete, hadi mtoto kukua na kuwa tayari kwa kuzaliwa.\n\n3. Jinsi ya kudumisha afya wakati wa ujauzito: Kupata lishe bora, kufanya mazoezi yanayofaa kwa ujauzito, kutembelea kliniki ya wajawazito kwa uchunguzi wa mara kwa mara, na kuepuka vitu vyenye madhara kama vile sigara na pombe.\n\n4. Matatizo yanayoweza kutokea wakati wa ujauzito: Kama vile ujauzito wa ectopic, pre-eclampsia, au gestational diabetes.\n\n5. Kujifungua: Mbinu mbalimbali za kujifungua, maumivu wakati wa kujifungua, na njia za kupunguza maumivu kama vile matumizi ya epidural.\n\n6. Baada ya kujifungua: Huduma kwa mama na mtoto, kupona baada ya kujifungua, na kuanza kunyonyesha.\n\nIkiwa una maswali mahususi kuhusu mimba, tafadhali uliza swali lako kwa ufasaha zaidi ili niweze kukupa majibu sahihi na yenye manufaa.",
+        "media":""
+    },
+
+    {
+        "id":277832,
+        "time":"13 June 2024, 16:21",
+        "message":"Niaje",
+        "response":"Niaje! Poa tu. Niko hapa kusaidia na kujibu maswali yako yoyote. Unataka kujua nini leo?",
+        "media":""
+    },
+
+    {
+        "id":277852,
+        "time":"13 June 2024, 16:24",
+        "message":"unatoa huduma gani",
+        "response":"Mimi ni boti iliyoundwa kutoa huduma mbalimbali za kielimu na kujibu maswali tofauti tofauti. Hizi hapa ni baadhi ya huduma ninazotoa:\n\n1. Kutoa Maelezo na Maarifa: Ninaweza kujibu maswali yanayohusu sayansi, historia, teknolojia, sanaa, na mada nyingine nyingi.\n2. Kusaidia na Masomo: Ninaweza kusaidia wanafunzi kuelewa dhana mbalimbali za kielimu na kutoa maelezo kuhusu masomo yao.\n3. Kutoa Taarifa za Kitaalam: Ninaweza kutoa taarifa na takwimu zinazohusiana na masuala ya kisasa na matukio ya hivi karibuni, hadi kufikia tarehe ya mwisho ya maarifa yangu.\n4. Kusaidia na Lugha: Ninaweza kusaidia kujibu maswali yaliyo katika lugha mbalimbali, ikiwa ni pamoja na Kiswahili, na kutoa tafsiri au maelezo ya maneno na misemo.\n5. Kujibu Maswali ya Kibinafsi na Maendeleo Binafsi: Ninaweza kutoa ushauri na rasilimali kuhusu maendeleo binafsi, afya ya akili, na masuala ya kijamii.\n\nKumbuka, mimi ni boti na sina uwezo wa kutoa ushauri wa kitaalamu kama vile matibabu, kisheria, au ushauri wa kifedha. Kwa masuala hayo, ni bora kushauriana na wataalamu husika. Je, kuna jambo mahususi unalotaka kujua au kujadili?",
+        "media":""
+    },
+
+
+    {
+        "id":277888,
+        "time":"13 June 2024, 16:35",
+        "message":"habari za saa hizi",
+        "response":"Habari nzuri, nipo hapa kukuhudumia. Je, una swali au jambo gani ningeweza kukusaidia nalo leo?",
+        "media":""
+    },
+
+    {
+        "id":277899,
+        "time":"13 June 2024, 16:39",
+        "message":"unatoa huduma gani",
+        "response":"Mimi ni boti ya kujibu maswali na kutoa taarifa mbalimbali. Huduma ninazotoa ni pamoja na:\n\n1. Kujibu maswali ya jumla: Unaweza kuuliza maswali kuhusu sayansi, historia, teknolojia, sanaa, lugha, na mambo mengine mengi.\n\n2. Kutoa ufafanuzi wa dhana: Kama unataka kuelewa maana ya neno au dhana fulani, ninaweza kukupa maelezo.\n\n3. Kusaidia na masomo: Kama una maswali kuhusu masomo yako au unahitaji maelezo kuhusu mambo yanayohusiana na elimu, ninaweza kusaidia.\n\n4. Kutoa ushauri wa kimsingi: Ninaweza kutoa ushauri juu ya masuala ya afya, teknolojia, na masuala mengine ya kila siku.\n\n5. Kuelezea juu ya matukio ya hivi karibuni: Ninaweza kukupa taarifa kuhusu matukio yanayotokea duniani kote kulingana na maarifa yangu ya hadi mwaka wa 2023.\n\nTafadhali kumbuka kuwa, ingawa ninatoa taarifa na majibu, siwezi kuchukua nafasi ya wataalamu kama madaktari, wanasheria, au wataalamu wengine wenye leseni. Kwa maswali yanayohitaji utaalamu wa kina au ushauri wa kitaalamu, ni muhimu kushauriana na wataalamu husika.",
+        "media":""
+    },
+
+    {
+        "id": 277908,
+        "time": "13 June 2024, 16:44",
+        "message": "chanjo ya pepopunda",
+        "response": "Chanjo ya pepopunda, ambayo pia hujulikana kama chanjo ya tetanus, ni sehemu ya mpango wa kinga dhidi ya ugonjwa wa pepopunda. Ugonjwa huu husababishwa na bakteria anayeitwa Clostridium tetani, ambaye spores zake zinaweza kuwa katika udongo, vumbi, na mbolea na zinaweza kuingia mwilini kupitia jeraha. Sumu inayozalishwa na bakteria hawa inaweza kusababisha misuli kukakamaa, na hali inaweza kuwa mbaya sana.\n\nChanjo ya pepopunda mara nyingi hutolewa kwa pamoja na chanjo za diphtheria na pertussis (kikohozi cha mzio) katika chanjo inayofahamika kama Tdap (tetanus, diphtheria, acellular pertussis) kwa watoto wakubwa na watu wazima, au DTaP (diphtheria, tetanus, acellular pertussis) kwa watoto wadogo. Chanjo hizi zinafuata ratiba ya dozi ambapo:\n\n1. Chanjo ya DTaP hutolewa kwa watoto wadogo kwa dozi tano, kwa kawaida katika umri wa miezi 2, 4, 6, kisha kati ya miezi 15-18, na dozi ya mwisho kati ya umri wa miaka 4-6.\n\n2. Chanjo ya Tdap inashauriwa kwa watoto wakubwa, vijana, na watu wazima kama booster. Mara nyingi hutolewa mara moja kwa vijana wa umri wa miaka 11-12, na inashauriwa kwa watu wazima ambao hawajawahi kupata Tdap au ambao wanahitaji booster.\n\n3. Watu wazima wanaweza kupewa chanjo ya Td (tetanus, diphtheria) kila baada ya miaka 10 kama booster, au inaweza kutolewa baada ya kuumia ikiwa k",
+        "media": ""
+    },
+
+
+    {
+        "id": 277947,
+        "time": "13 June 2024, 17:19",
+        "message": "habari",
+        "response": "Habari! Ninafurahi kusaidia. Je, kuna swali lolote unalotaka kuuliza au jambo lolote unalotaka kujua zaidi kuhusu?",
+        "media": ""
+    },
+
+    {
+        "id": 277996,
+        "time": "13 June 2024, 17:47",
+        "message": "hello",
+        "response": "Hello! How can I assist you today? If you have any questions or need information, feel free to ask.",
+        "media": ""
     },
     {
-        "contact":"1718403186742",
-        "channel":"general channel",
-        "date":"14-June-2024, 22:13"
+        "id": 277998,
+        "time": "13 June 2024, 17:47",
+        "message": "kipimo cha mkojo",
+        "response": "Kipimo cha mkojo ni uchunguzi wa kimatibabu unaotumika kutathmini afya ya mtu na kutambua magonjwa mbalimbali. Kipimo hiki kinaweza kufanyika kwa kutumia sampuli ya mkojo ambayo mgonjwa hukusanya. Sampuli hiyo kisha huchunguzwa maabara kwa kutumia njia mbalimbali ikiwemo:\n\n1. Uchunguzi wa Kimwonekano (Physical Examination): Hapa mkojo hupimwa rangi, uwazi, na harufu. Rangi isiyo ya kawaida au uwazi unaweza kuashiria tatizo fulani.\n\n2. Uchunguzi wa Kemikali (Chemical Examination): Kwa kutumia vipimo maalum vya kemikali, mkojo huchunguzwa kwa uwepo wa vitu kama glucose, ketones, protini, bilirubin, urobilinogen, na pH. Vipimo hivi vinaweza kugundua hali kama kisukari, maambukizi, na matatizo ya ini.\n\n3. Uchunguzi wa Kiseli (Microscopic Examination): Sampuli ya mkojo huwekwa chini ya darubini kwa kutazama uwepo wa seli, bakteria, chembechembe za damu, casts (vijitube vinavyoonekana kwenye mkojo wakati wa hali fulani za figo), na crystals. Uchunguzi huu unaweza kutoa taarifa kuhusu hali ya figo, njia ya mkojo, na mfumo wa kinga.\n\nKipimo cha mkojo kinaweza kutumika kwa madhumuni mbalimbali ikiwa ni pamoja na:\n\n- Kufuatilia hali ya ujauzito.\n- Kugundua maambukizi ya njia ya mkojo (UTIs).\n- Kuchunguza utendaji wa figo.\n- Kugundua matatizo kama kisukari, ugonjwa wa ini, na hali nyinginezo.\n- Kama se",
+        "media": ""
     },
     {
-        "contact":"1718402650420",
-        "channel":"general channel",
-        "date":"14-June-2024, 22:06"
+        "id": 278004,
+        "time": "13 June 2024, 17:48",
+        "message": "kipimo cha mkojo kwa mama mjamzito",
+        "response": "Kipimo cha mkojo kwa mama mjamzito ni sehemu muhimu ya ufuatiliaji wa afya wakati wa ujauzito. Kipimo hiki hufanywa mara kwa mara katika kliniki za prenatal ili kutathmini afya ya mama na mtoto anayekua. Hapa kuna baadhi ya mambo yanayotazamwa wakati wa kipimo cha mkojo kwa mama mjamzito:\n\n1. **Proteinuria (Protini katika Mkojo)**: Uwepo wa protini katika mkojo unaweza kuwa ishara ya preeclampsia, hali inayoweza kutokea katika ujauzito na inaweza kuwa hatari kwa mama na mtoto ikiwa haitatibiwa. Preeclampsia inahusishwa na shinikizo la damu lililo juu na protini katika mkojo.\n\n2. **Glucosuria (Glucose katika Mkojo)**: Glucose inaweza kuwepo katika mkojo kama kiwango cha sukari katika damu (glucose) kinakuwa juu sana. Hii inaweza kuwa ishara ya uwepo wa ugonjwa wa kisukari cha ujauzito, hali ambayo inaweza kutokea wakati wa ujauzito.\n\n3. **Bakteria na Leukocytes**: Uwepo wa bakteria na leukocytes (seli nyeupe za damu) katika mkojo unaweza kuashiria maambukizi ya njia ya mkojo (UTI), ambayo ni ya kawaida wakati wa ujauzito na inahitaji matibabu ili kuepuka madhara kwa mama na mtoto.\n\n4. **Ketones**: Ketones katika mkojo zinaweza kuonekana ikiwa mama mjamzito hana chakula cha kutosha au anapitia hali ya kutapika sana (hyperemesis gravidarum). Hii inaweza kuwa ishara ya kwamba mwili unatumia mafuta kwa aj",
+        "media": ""
+    },
+
+    {
+        "id": 277996,
+        "time": "13 June 2024, 17:47",
+        "message": "hello",
+        "response": "Hello! How can I assist you today? If you have any questions or need information, feel free to ask.",
+        "media": ""
     },
     {
-        "contact":"1718378605849",
-        "channel":"general channel"
-        ,"date":"14-June-2024, 15:24"
+        "id": 277998,
+        "time": "13 June 2024, 17:47",
+        "message": "kipimo cha mkojo",
+        "response": "Kipimo cha mkojo ni uchunguzi wa kimatibabu unaotumika kutathmini afya ya mtu na kutambua magonjwa mbalimbali. Kipimo hiki kinaweza kufanyika kwa kutumia sampuli ya mkojo ambayo mgonjwa hukusanya. Sampuli hiyo kisha huchunguzwa maabara kwa kutumia njia mbalimbali ikiwemo:\n\n1. Uchunguzi wa Kimwonekano (Physical Examination): Hapa mkojo hupimwa rangi, uwazi, na harufu. Rangi isiyo ya kawaida au uwazi unaweza kuashiria tatizo fulani.\n\n2. Uchunguzi wa Kemikali (Chemical Examination): Kwa kutumia vipimo maalum vya kemikali, mkojo huchunguzwa kwa uwepo wa vitu kama glucose, ketones, protini, bilirubin, urobilinogen, na pH. Vipimo hivi vinaweza kugundua hali kama kisukari, maambukizi, na matatizo ya ini.\n\n3. Uchunguzi wa Kiseli (Microscopic Examination): Sampuli ya mkojo huwekwa chini ya darubini kwa kutazama uwepo wa seli, bakteria, chembechembe za damu, casts (vijitube vinavyoonekana kwenye mkojo wakati wa hali fulani za figo), na crystals. Uchunguzi huu unaweza kutoa taarifa kuhusu hali ya figo, njia ya mkojo, na mfumo wa kinga.\n\nKipimo cha mkojo kinaweza kutumika kwa madhumuni mbalimbali ikiwa ni pamoja na:\n\n- Kufuatilia hali ya ujauzito.\n- Kugundua maambukizi ya njia ya mkojo (UTIs).\n- Kuchunguza utendaji wa figo.\n- Kugundua matatizo kama kisukari, ugonjwa wa ini, na hali nyinginezo.\n- Kama se",
+        "media": ""
     },
     {
-        "contact":"1718378376254",
-        "channel":"general channel",
-        "date":"14-June-2024, 15:20"
+        "id": 278004,
+        "time": "13 June 2024, 17:48",
+        "message": "kipimo cha mkojo kwa mama mjamzito",
+        "response": "Kipimo cha mkojo kwa mama mjamzito ni sehemu muhimu ya ufuatiliaji wa afya wakati wa ujauzito. Kipimo hiki hufanywa mara kwa mara katika kliniki za prenatal ili kutathmini afya ya mama na mtoto anayekua. Hapa kuna baadhi ya mambo yanayotazamwa wakati wa kipimo cha mkojo kwa mama mjamzito:\n\n1. **Proteinuria (Protini katika Mkojo)**: Uwepo wa protini katika mkojo unaweza kuwa ishara ya preeclampsia, hali inayoweza kutokea katika ujauzito na inaweza kuwa hatari kwa mama na mtoto ikiwa haitatibiwa. Preeclampsia inahusishwa na shinikizo la damu lililo juu na protini katika mkojo.\n\n2. **Glucosuria (Glucose katika Mkojo)**: Glucose inaweza kuwepo katika mkojo kama kiwango cha sukari katika damu (glucose) kinakuwa juu sana. Hii inaweza kuwa ishara ya uwepo wa ugonjwa wa kisukari cha ujauzito, hali ambayo inaweza kutokea wakati wa ujauzito.\n\n3. **Bakteria na Leukocytes**: Uwepo wa bakteria na leukocytes (seli nyeupe za damu) katika mkojo unaweza kuashiria maambukizi ya njia ya mkojo (UTI), ambayo ni ya kawaida wakati wa ujauzito na inahitaji matibabu ili kuepuka madhara kwa mama na mtoto.\n\n4. **Ketones**: Ketones katika mkojo zinaweza kuonekana ikiwa mama mjamzito hana chakula cha kutosha au anapitia hali ya kutapika sana (hyperemesis gravidarum). Hii inaweza kuwa ishara ya kwamba mwili unatumia mafuta kwa aj",
+        "media": ""
+    },
+
+    {
+        "id": 278014,
+        "time": "13 June 2024, 17:57",
+        "message": "habari za saa hizi",
+        "response": "Habari nzuri, nipo hapa kwa ajili yako. Je, kuna swali lolote au jambo unalotaka kujua au kujadili? Karibu!",
+        "media": ""
     },
     {
-        "contact":"1718378177189",
-        "channel":"general channel",
-        "date":"14-June-2024, 15:17"
+        "id": 278015,
+        "time": "13 June 2024, 17:58",
+        "message": "vitu vya kuzingatia kwa mama mjamzito",
+        "response": "Mama mjamzito anapaswa kuzingatia mambo mbalimbali ili kuhakikisha afya yake na ya mtoto aliye tumboni. Baadhi ya mambo muhimu ya kuzingatia ni pamoja na:\n\n1. **Ushauri na Ufuatiliaji wa Kitabibu:** Ni muhimu kwa mama mjamzito kuhudhuria kliniki ya prenatal (antenatal care) mara kwa mara ili kufuatilia maendeleo ya ujauzito na kutambua mapema dalili za hatari.\n\n2. **Lishe Bora:** Mama mjamzito anahitaji lishe bora iliyo na virutubisho muhimu kama vile protini, madini ya chuma, folic acid, calcium, na vitamini. Vyakula kama mboga za majani, matunda, nafaka, na protini kutoka kwa nyama na samaki ni muhimu.\n\n3. **Maji na Vinywaji:** Kunywa maji ya kutosha na kuepuka vinywaji vyenye caffeine na pombe.\n\n4. **Mazoezi:** Mazoezi mepesi kama kutembea na yoga inaweza kusaidia mama mjamzito kujisikia vizuri na kujiandaa kwa uzazi.\n\n5. **Kupumzika Vya Kutosha:** Mama mjamzito anapaswa kupata usingizi wa kutosha na kupumzika kwa kutosha wakati wa mchana.\n\n6. **Chanjo:** Chanjo fulani kama vile chanjo ya influenza na whooping cough (pertussis) zinaweza kupendekezwa wakati wa ujauzito kwa ajili ya kumlinda mama na mtoto.\n\n7. **Epuka Madawa Yasiyo Salama:** Epuka dawa zisizo salama na dawa za mitishamba ambazo hazijathibitishwa kwa matumizi wakati wa ujauzito bila ushauri wa daktari.\n\n8. **Kuepuka Uvutaji wa Sigara na Matumizi ya Pombe:** Matumizi ya t",
+        "media": ""
+    },
+
+    {
+        "id": 278085,
+        "time": "13 June 2024, 18:47",
+        "message": "masudi hamidu mfaume",
+        "response": "Inaonekana kama \"Masudi Hamidu Mfaume\" ni jina la mtu na sio swali lenye muktadha wa wazi. Je, unaweza kunipa maelezo zaidi au kuuliza swali mahususi kuhusu Masudi Hamidu Mfaume? Kama unahitaji taarifa kuhusu mtu huyo, tafadhali eleza ni aina gani ya taarifa unayotafuta.",
+        "media": ""
     },
     {
-        "contact":"1718377417064",
-        "channel":"general channel",
-        "date":"14-June-2024, 15:04"
+        "id": 278092,
+        "time": "13 June 2024, 18:47",
+        "message": "magufuli",
+        "response": "John Pombe Joseph Magufuli alikuwa mwanasiasa wa Tanzania na Rais wa tano wa nchi hiyo, akihudumu kuanzia Novemba 5, 2015, hadi kifo chake mnamo Machi 17, 2021. Alikuwa mwanachama wa Chama Cha Mapinduzi (CCM), chama tawala nchini Tanzania.\n\nMagufuli alijulikana kwa sera zake za kupambana na ufisadi na juhudi zake za kuboresha miundombinu, pamoja na kujenga reli mpya, kuboresha bandari, na kutekeleza miradi mikubwa ya umeme. Pia alianzisha mabadiliko katika sekta ya madini ili kuhakikisha Tanzania inafaidika zaidi kutokana na rasilimali zake.\n\nHata hivyo, utawala wake ulikosolewa kwa kubana uhuru wa vyombo vya habari, kukandamiza upinzani, na kushughulikia kwa njia inayozua utata janga la COVID-19, ambapo alihamasisha matumizi ya njia za asili na maombi badala ya kufuata mwongozo wa kisayansi na wa kimataifa.\n\nKifo cha Magufuli kilisababisha mabadiliko ya uongozi nchini Tanzania, na Makamu wa Rais Samia Suluhu Hassan aliapishwa kama Rais wa sita wa Tanzania, akiwa mwanamke wa kwanza kushika wadhifa huo katika historia ya nchi.",
+        "media": ""
     },
-    {"contact":"1718375538365","channel":"general channel","date":"14-June-2024, 14:37"},
-    {"contact":"1718373188669","channel":"general channel","date":"14-June-2024, 13:54"},
-    {"contact":"1718372986073","channel":"general channel","date":"14-June-2024, 13:53"},
-    {"contact":"1718369822619","channel":"general channel","date":"14-June-2024, 13:17"},
-    {"contact":"1718365836824","channel":"general channel","date":"14-June-2024, 11:51"},
-    {"contact":"1718354635394","channel":"general channel","date":"14-June-2024, 08:44"},
-    {"contact":"1718354517627","channel":"general channel","date":"14-June-2024, 08:43"},
-    {"contact":"4d6af96e-8c90-4c1a-8d77-a93565e8a9e1","channel":"playground channel","date":"14-June-2024, 07:33"},
-    {"contact":"1718304137025","channel":"general channel","date":"13-June-2024, 18:47"},
-    {"contact":"1718301552847","channel":"general channel","date":"13-June-2024, 18:40"},
-    {"contact":"1718301421065","channel":"general channel","date":"13-June-2024, 17:58"},
-    {"contact":"1718300814975","channel":"general channel","date":"13-June-2024, 17:48"},
-    {"contact":"1718299181074","channel":"general channel","date":"13-June-2024, 17:19"},
-    {"contact":"1718296994490","channel":"general channel","date":"13-June-2024, 16:44"},
-    {"contact":"1718296484244","channel":"general channel","date":"13-June-2024, 16:39"},
-    {"contact":"1718295660793","channel":"general channel","date":"13-June-2024, 16:24"},
-    {"contact":"1718295372672","channel":"general channel","date":"13-June-2024, 16:18"}
-]
+
+    {
+        "id": 279077,
+        "time": "14 June 2024, 08:42",
+        "message": "chanjo ya pepopunda kwa mama mjamzito\n\n",
+        "response": "Chanjo ya pepopunda kwa mama mjamzito ni muhimu sana kwa ajili ya kumlinda mama na mtoto ambaye hajazaliwa dhidi ya ugonjwa wa pepopunda. Ugonjwa huu unaweza kuwa hatari sana kwa watoto wachanga na unaweza kusababisha kifo.\n\nChanjo inayotolewa kwa mama mjamzito kwa ajili ya kuzuia pepopunda inaitwa chanjo ya TT au Td (tetanus toxoid au tetanus-diphtheria). Mwongozo wa chanjo unaweza kutofautiana kulingana na nchi, lakini kwa ujumla, mama mjamzito anapaswa kupata chanjo ya pepopunda katika ujauzito ili kuzuia pepopunda wa kitovu kwa mtoto mchanga, ambayo pia hujulikana kama neonatal tetanus.\n\nRatiba ya chanjo ya TT/Td kwa mama mjamzito inaweza kuwa kama ifuatavyo:\n\n- Dozi ya kwanza: Inapendekezwa kuchukuliwa mapema katika ujauzito.\n- Dozi ya pili: Inapaswa kutolewa angalau wiki 4 baada ya dozi ya kwanza.\n- Dozi ya tatu: Inapaswa kutolewa angalau wiki 6 baada ya dozi ya pili.\n\nIkiwa mama mjamzito amepata chanjo kamili ya pepopunda katika siku za nyuma, anaweza kuhitaji dozi za nyongeza tu wakati wa ujauzito kama sehemu ya mpango wa kinga.\n\nNi muhimu kwa mama mjamzito kuzungumza na mtoa huduma ya afya kuhusu chanjo zinazohitajika wakati wa ujauzito ili kuhakikisha usalama na afya ya mama na mtoto.",
+        "media": ""
+    },
+    {
+        "id": 279084,
+        "time": "14 June 2024, 08:43",
+        "message": "habari",
+        "response": "Habari! Ninaendelea vizuri, asante kwa kuuliza. Je, kuna jambo lolote maalum unalotaka kujua au kujadili? Nipo hapa kusaidia!",
+        "media": ""
+    },
+
+    {
+        "id": 279088,
+        "time": "14 June 2024, 08:44",
+        "message": "mambo",
+        "response": "Mambo poa! Karibu, niambie, nikupe huduma gani leo?",
+        "media": ""
+    },
+
+    {
+        "id": 279844,
+        "time": "14 June 2024, 11:51",
+        "message": "kipimo cha anemia",
+        "response": "Kipimo cha anemia kwa kawaida hufanyika kwa kupima kiwango cha hemoglobin na/au hematokriti kwenye damu. Vipimo hivi ni sehemu ya CBC (Complete Blood Count), ambayo ni kipimo cha kawaida cha damu kinachopima vipengele mbalimbali vya seli za damu. Hapa ni maelezo ya vipimo hivyo:\n\n1. **Hemoglobin (Hb or Hgb):** Hii ni protini iliyo ndani ya seli nyekundu za damu ambayo ina jukumu la kusafirisha oksijeni kutoka kwenye mapafu kwenda kwa tishu mbalimbali mwilini na kisha kurudisha kaboni dioksidi kutoka kwenye tishu kwenda kwenye mapafu ili kutoa nje ya mwili. Viwango vya chini vya hemoglobin vinaweza kuashiria anemia.\n\n2. **Hematokriti (Hct):** Hii ni asilimia ya ujazo wa seli nyekundu za damu ikilinganishwa na jumla ya damu (hii ni pamoja na plasma). Viwango vya chini vya hematokriti pia vinaweza kuashiria anemia.\n\n3. **CBC (Complete Blood Count):** Mbali na hemoglobin na hematokriti, CBC pia hupima idadi ya seli nyekundu za damu, seli nyeupe za damu, na plateleti. Uwiano na idadi ya seli hizi pia zinaweza kutoa taarifa kuhusu anemia na aina yake.\n\nKama mtu ana dalili za anemia, kama vile uchovu, kizunguzungu, ngozi kuwa na rangi ya bluu au pallor, au shida katika kupumua, daktari anaweza kuagiza vipimo hivi vya damu. Ikiwa vipimo vinaonyesha viwango vya chini vya hemoglobin au hematokriti, daktari anaweza kuendelea na vipimo vingine kubain",
+        "media": ""
+    },
+
+    {
+        "id": 280215,
+        "time": "14 June 2024, 13:13",
+        "message": "dalili za malaria",
+        "response": "Dalili za malaria kwa kawaida huanza kujitokeza kati ya siku 10 hadi 15 baada ya kuambukizwa na mbu wa Anopheles aliye na vimelea vya malaria. Dalili hizi zinaweza kujumuisha:\n\n1. Homa: Mara nyingi huwa ni homa ya ghafla.\n2. Kutetemeka: Mwili kutetemeka kunakoweza kutokea katika mzunguko wa homa.\n3. Maumivu ya kichwa: Hii ni dalili ya kawaida na inaweza kuwa kali.\n4. Kutokwa na jasho: Hasa baada ya vipindi vya homa na kutetemeka kupungua.\n5. Uchovu na udhaifu: Mwili kujisikia dhaifu na kutokuwa na nguvu.\n6. Maumivu ya misuli: Misuli kujihisi inauma na kulegea.\n7. Kichefuchefu na kutapika: Kuhisi kichefuchefu na mara nyingi kutapika.\n8. Maumivu ya tumbo: Mgonjwa anaweza kuhisi maumivu katika eneo la tumbo.\n9. Kuharisha: Wakati mwingine, ingawa si kawaida sana.\n10. Anemia: Kupungua kwa seli nyekundu za damu kunakosababishwa na vimelea vya malaria.\n11. Kuongezeka kwa spleen (ini kubwa): Hii inaweza kutokea kama matokeo ya mwili kujaribu kupambana na maambukizi.\n\nKuna aina tofauti za malaria, na baadhi yake, kama vile Malaria ya P. falciparum, inaweza kuwa hatari zaidi na kusababisha dalili kali zaidi na matatizo kama vile kushindwa kwa viungo, matatizo ya kupumua, kupoteza fahamu, na kifo.\n\nNi muhimu kutafuta matibabu mara moja unapohisi dalili hizi, has",
+        "media": ""
+    },
+    {
+        "id": 280229,
+        "time": "14 June 2024, 13:15",
+        "message": "what is physics",
+        "response": "",
+        "media": ""
+    },
+    {
+        "id": 280234,
+        "time": "14 June 2024, 13:16",
+        "message": "physics",
+        "response": "",
+        "media": ""
+    },
+    {
+        "id": 280235,
+        "time": "14 June 2024, 13:17",
+        "message": "homa",
+        "response": "Homa ni dalili inayoambatana na ongezeko la joto la mwili juu ya kiwango cha kawaida kinachopimwa kwa kawaida kuwa 36.5°C hadi 37.5°C (97.7°F hadi 99.5°F). Homa inaweza kusababishwa na sababu mbalimbali, ikiwa ni pamoja na maambukizi kama vile mafua, malaria, homa ya uti wa mgongo, na magonjwa mengine yanayosababishwa na virusi, bakteria, fangasi, na protozoa. Pia inaweza kutokea kutokana na hali zisizo za kuambukiza kama vile majeraha, uchochezi, au magonjwa ya autoimmune.\n\nDalili za homa zinaweza kujumuisha:\n\n1. Joto la mwili linalopanda juu ya kiwango cha kawaida.\n2. Kutetemeka na kuhisi baridi.\n3. Maumivu ya kichwa.\n4. Uchovu na kujisikia dhaifu.\n5. Kutokwa na jasho.\n6. Maumivu ya misuli na viungo.\n7. Kukosa hamu ya kula.\n8. Dehydration inayosababishwa na kupoteza maji kwa jasho.\n\nKutibu homa mara nyingi hujumuisha matumizi ya dawa za kupunguza joto kama vile acetaminophen (Tylenol) au ibuprofen (Advil, Motrin), pamoja na kupumzika na kunywa maji mengi. Hata hivyo, ni muhimu kutambua kwamba homa ni dalili tu na sio ugonjwa wenyewe. Kwa hivyo, ni muhimu kutafuta ushauri wa kitaalamu wa matibabu ili kubaini na kutibu chanzo cha homa na sio homa pekee.",
+        "media": ""
+    },
+
+    {
+        "id": 280595,
+        "time": "14 June 2024, 13:53",
+        "message": "kipi kinasababisha mama mjamzito kuzaa mtoto njiti",
+        "response": "Kuzaa mtoto njiti, ambayo inamaanisha kujifungua kabla ya wiki 37 za ujauzito kukamilika, kunaweza kusababishwa na sababu mbalimbali. Baadhi ya sababu hizi ni pamoja na:\n\n1. Matatizo ya kiafya ya mama: Hali kama vile shinikizo la damu lililo juu (preeclampsia), kisukari, magonjwa ya figo, magonjwa ya moyo, au maambukizi yanaweza kusababisha ujauzito wa njiti.\n\n2. Komplikesheni wakati wa ujauzito: Matatizo kama vile placenta previa (placenta inapokuwa chini ya tumbo karibu na mlango wa kizazi), ugonjwa wa kondo la nyuma (placental abruption), au utokaji wa maji mengi ya amniotic (polyhydramnios) yanaweza kuchangia kuzaliwa kwa mtoto njiti.\n\n3. Ujauzito wa mitoto zaidi ya mmoja: Wanawake wanaobeba mapacha au watoto zaidi wanakabiliwa na hatari kubwa ya kujifungua mapema.\n\n4. Historia ya kuzaa watoto njiti: Wanawake ambao wamezaa mtoto njiti hapo awali wana uwezekano mkubwa wa kujifungua njiti tena.\n\n5. Matumizi ya tumbaku, pombe, au dawa za kulevya: Tabia hizi zinaweza kuongeza hatari ya kuzaa mtoto njiti.\n\n6. Umri wa mama: Vijana walio chini ya umri wa miaka 18 na wanawake walio na umri wa miaka 35 na kuendelea wana hatari kubwa zaidi ya kuzaa watoto njiti.\n\n7. Magonjwa ya maambukizi: Magonjwa kama vile maambukizi ya njia ya mkojo, maambukizi ya ukeni, na maambukizi ya mfumo wa uzazi yan",
+        "media": ""
+    },
+
+    {
+        "id": 280596,
+        "time": "14 June 2024, 13:54",
+        "message": "Kipimo cha blood pressure",
+        "response": "Kipimo cha shinikizo la damu, au blood pressure, ni njia ya kupima nguvu ambayo damu inasukuma dhidi ya kuta za mishipa ya damu inapozunguka mwilini. Shinikizo la damu linapimwa kwa kutumia chombo kinachoitwa sphygmomanometer, ambacho kinaweza kuwa cha kielektroniki (digital) au cha mkono (manual). \n\nShinikizo la damu linajumuishwa na vipimo viwili:\n\n1. **Systolic Blood Pressure (SBP)**: Hiki ni kipimo cha juu kinachopimwa wakati moyo unapobana (contract) na kusukuma damu kwenda mwilini. Kinaonesha shinikizo lililopo kwenye kuta za mishipa ya damu wakati huo.\n\n2. **Diastolic Blood Pressure (DBP)**: Hiki ni kipimo cha chini kinachopimwa wakati moyo unapopumzika kati ya mapigo na kujaza tena damu. Kinaonesha shinikizo lililopo kwenye kuta za mishipa ya damu wakati moyo unapopumzika.\n\nShinikizo la damu la kawaida kwa watu wazima linapaswa kuwa chini ya 120/80 mmHg, ambapo 120 ni SBP na 80 ni DBP. Kama shinikizo la damu limepanda juu ya viwango hivi, inaweza kuwa dalili ya hali ya prehypertension au hypertension (shinikizo la damu la juu), ambalo linaweza kuongeza hatari ya matatizo ya kiafya kama vile ugonjwa wa moyo na kiharusi.\n\nKupima shinikizo la damu ni muhimu kwa sababu inaweza kusaidia kutambua na kuzuia matatizo ya kiafya mapema. Inashauriwa kwa watu wazima kupima shinikizo la damu angalau mara moja kila baada ya miaka miwili kama wana shinikizo la damu la kaw",
+        "media": ""
+    },
+
+    {
+        "id": 280809,
+        "time": "14 June 2024, 14:33",
+        "message": "PID",
+        "response": "PID inaweza kumaanisha mambo mengi, lakini katika muktadha wa afya na tiba, PID mara nyingi inarejelea \"Pelvic Inflammatory Disease\" au \"Ugonjwa wa Kuambukiza katika Nyonga.\" Hii ni maambukizi ya viungo vya uzazi vya mwanamke, ikiwa ni pamoja na mfuko wa uzazi (uterus), mirija ya uzazi (fallopian tubes), na ovari. Maambukizi haya yanaweza kusababishwa na bakteria, ikiwa ni pamoja na zile zinazosababisha magonjwa ya zinaa kama vile klamidia na gonorhea.\n\nDalili za PID zinaweze kuwa ni pamoja na maumivu ya chini ya tumbo, kutokwa na uchafu ukeni wenye harufu mbaya, homa, maumivu wakati wa tendo la ngono, au kutokwa na damu isiyokuwa ya kawaida kati ya vipindi vya hedhi. Ikiwa haijatibiwa, PID inaweza kusababisha matatizo makubwa ya kiafya, ikiwa ni pamoja na utasa, maumivu ya kudumu ya nyonga, na mimba iliyotungwa nje ya mfuko wa uzazi (ectopic pregnancy).\n\nMatibabu ya PID mara nyingi hujumuisha matumizi ya dawa za kuua viini (antibiotics), na ni muhimu kwa wenzi wa kimapenzi kupimwa na kutibiwa pia ili kuzuia maambukizi kurudi tena. Kuzuia PID kunaweza kujumuisha matumizi ya kondomu wakati wa tendo la ngono na kupata uchunguzi wa mara kwa mara kwa magonjwa ya zinaa.",
+        "media": ""
+    },
+    {
+        "id": 280810,
+        "time": "14 June 2024, 14:33",
+        "message": "Ugonjwa wa PID",
+        "response": "Ugonjwa wa PID, au Pelvic Inflammatory Disease kwa Kiingereza, ni maambukizi ya viungo vya uzazi vya mwanamke, ambavyo viko kwenye eneo la pelvis. PID kwa kawaida husababishwa na maambukizi ya bakteria ambayo kwanza huanza kwenye uke au mlango wa kizazi (cervix) na kusambaa kwenda kwenye viungo vya juu kama vile uterasi, mirija ya fallopian, na ovari.\n\nDalili za PID zinaweza kuwa tofauti kwa kila mwanamke na zinaweza kujumuisha:\n\n- Maumivu ya chini ya tumbo\n- Kutokwa na uchafu ukeni wenye harufu mbaya\n- Maumivu wakati wa tendo la ndoa\n- Maumivu wakati wa kukojoa\n- Homa na kutetemeka\n- Kutokwa damu kati ya hedhi au baada ya tendo la ndoa\n\nMaambukizi yanayosababisha PID mara nyingi yanatokana na magonjwa ya zinaa, kama vile klamidia na gono. Ikiwa haitatibiwa, PID inaweza kusababisha matatizo makubwa ya afya kama vile utasa, mimba ectopic (mimba iliyotungwa nje ya uterasi), maumivu ya kudumu ya pelvis, na matatizo mengine.\n\nMatibabu ya PID kwa kawaida yanajumuisha dawa za antibiotiki ili kuondoa maambukizi. Ni muhimu kwa mwenza wa kike na wa kiume kupata matibabu ili kuzuia maambukizi kurudi tena. Kuzuia PID kunajumuisha kutumia kondomu wakati wa tendo la ndoa, kupunguza idadi ya wenzi wa ngono, na kupata uchunguzi wa mara kwa mara wa magonjwa ya zinaa.",
+        "media": ""
+    },
+    {
+        "id": 280811,
+        "time": "14 June 2024, 14:37",
+        "message": "ugonjwa wa kichocho",
+        "response": "Ugonjwa wa kichocho, unaojulikana pia kama schistosomiasis, ni ugonjwa unaosababishwa na minyoo ya jamii ya Schistosoma. Maambukizi hutokea pale watu wanapowasiliana na maji yaliyo na miracidia ya kichocho, ambayo huingia mwilini kupitia ngozi. Miracidia haya huwa yametokana na mayai ya kichocho yanayotolewa kupitia mkojo au kinyesi cha mtu aliyeambukizwa, ambayo huendelea kuishi kwenye maji na kuambukiza konokono wa majini, ambao hutumika kama wenyeji wa kati.\n\nMara tu miracidia inapoingia kwenye mwili wa mwanadamu, hukua na kuwa minyoo ya kiume na kike ambayo huishi katika mishipa ya damu ya viungo mbalimbali, kama vile ini, utumbo, na kibofu cha mkojo. Huko, minyoo huzaliana na kutaga mayai, ambayo yanaweza kusababisha uharibifu wa tishu na kusababisha dalili mbalimbali.\n\nDalili za kichocho zinaweza kujumuisha:\n\n- Maumivu ya tumbo\n- Kuharisha\n- Damu katika mkojo\n- Maumivu wakati wa kukojoa\n- Maumivu ya misuli na homa\n- Kupungua uzito na uchovu\n\nBaadhi ya matatizo ya muda mrefu ya kichocho yanaweza kujumuisha:\n\n- Uharibifu wa ini na kujaa kwa maji kwenye tumbo (ascites)\n- Shida za kibofu na figo\n- Matatizo ya utumbo\n- Katika hali nadra, minyoo inaweza kusafiri kwenda kwenye ubongo au uti wa mgongo, ikisababisha dalili kali za neva.\n\nMatibabu ya kichocho mara nyingi hujumuisha dawa za anthelmintic",
+        "media": ""
+    },
+
+    {
+        "id": 280893,
+        "time": "14 June 2024, 15:04",
+        "message": "Maternal health",
+        "response": "Afya ya uzazi inahusu afya ya wanawake wakati wa ujauzito, wakati wa kujifungua, na kipindi cha baada ya kujifungua (postpartum). Lengo la huduma ya afya ya uzazi ni kuhakikisha wanawake wanapata huduma bora na wanabaki na afya nzuri wakati wa michakato hii yote.\n\nMambo muhimu ya afya ya uzazi ni pamoja na:\n\n1. Huduma Kabla ya Kujifungua (Antenatal Care): Hii ni huduma ambayo mwanamke anapaswa kupokea wakati wa ujauzito. Inajumuisha vipimo vya mara kwa mara, ushauri wa lishe, na usimamizi wa matatizo yoyote yanayoweza kutokea wakati wa ujauzito.\n\n2. Huduma Wakati wa Kujifungua: Huduma hii inahakikisha kuwa wanawake wanapokea msaada unaostahili wakati wa kujifungua, ikiwa ni pamoja na upatikanaji wa wataalamu wa afya wenye ujuzi na vifaa vya kutosha ili kuhakikisha usalama wa mama na mtoto.\n\n3. Huduma Baada ya Kujifungua: Hii inahusisha kufuatilia afya ya mama na mtoto baada ya kujifungua, kutoa chanjo kwa mtoto, na kuhakikisha mama anapata muda wa kupona na kurejea katika hali yake ya kawaida.\n\n4. Chanjo na Kinga: Wanawake wajawazito wanashauriwa kupata chanjo dhidi ya magonjwa kama vile homa ya mafua na kifaduro (whooping cough) ili kulinda afya zao na ile ya watoto wao.\n\n5. Afya ya Akili: Afya ya akili ni muhimu kwa mama wajawazito na wale waliokwisha jifungua, kwani hali kama vile msongo wa mawazo baada",
+        "media": ""
+    },
+
+    {
+        "id": 280940,
+        "time": "14 June 2024, 15:17",
+        "message": "Maternal health",
+        "response": "Maternal health refers to the health of women during pregnancy, childbirth, and the postpartum period. It encompasses the healthcare dimensions of family planning, preconception, prenatal, and postnatal care in order to ensure a positive and fulfilling experience, in most cases, and reduce maternal morbidity and mortality, in other cases. Here are some key aspects of maternal health:\n\n1. **Preconception Care**: This includes any health service provided to women and couples before pregnancy. It involves assessing and advising on health and lifestyle to ensure optimal health prior to conception. This may include nutritional supplementation, vaccination, and management of chronic diseases.\n\n2. **Prenatal Care (Antenatal Care)**: Regular check-ups during pregnancy to monitor the health of the mother and the developing fetus. It typically includes screening tests, monitoring of the fetus's growth, checking for high blood pressure, and providing dietary and lifestyle advice.\n\n3. **Safe Childbirth**: This involves skilled health care during delivery to ensure the health of both mother and baby. It includes managing pain, monitoring the progress of labor, and performing interventions when necessary, such as cesarean sections.\n\n4. **Postnatal Care**: Care provided to the mother and her newborn immediately after delivery and during the first six weeks postpartum. This period is critical for monitoring recovery from childbirth, ensuring the health and well-being of the newborn, and providing support for breastfeeding and caring for the infant.\n\n5. **Family Planning**: Services that enable women and couples to anticipate and attain their desired number of children and the spacing and timing of their births. This is achieved through use of contraceptive methods and the treatment of involuntary infertility.\n\n6. **Education and Empowerment**: Educating women about their health rights, birth preparedness, and the importance of seeking healthcare services can empower them to make informed decisions about their health and that of their children.\n\n7. **Access to Healthcare Services**: Ensuring that women have access to quality healthcare services, regardless of their location or socioeconomic status, is crucial for improving maternal health outcomes.\n\n8. **Addressing Complications**: Timely management of complications such as pre-eclampsia, infections, and postpartum hemorrhage is vital for preventing maternal deaths.\n\n9. **Mental Health**: Maternal mental health, including the prevention and treatment of postpartum depression and anxiety, is an important aspect of maternal care.\n\nImproving maternal health is one of the World Health Organization's (WHO) key priorities and was one of the Millennium Development Goals (MDGs",
+        "media": ""
+    },
+
+    {
+        "id": 280963,
+        "time": "14 June 2024, 15:20",
+        "message": "afya ya mama mjamzito",
+        "response": "Afya ya mama mjamzito ni muhimu sana kwa sababu inaathiri si tu afya yake binafsi bali pia afya na maendeleo ya mtoto anayekua tumboni. Ili kuhakikisha afya bora kwa mama mjamzito na mtoto, kuna mambo kadhaa muhimu ya kuzingatia:\n\n1. Lishe Bora: Mama mjamzito anahitaji kula chakula kilicho na virutubisho vya kutosha kusaidia ukuaji wa mtoto. Hii inajumuisha protini, wanga, mafuta muhimu, vitamini na madini kama vile chuma, kalsiamu, na folate.\n\n2. Uchunguzi wa Kliniki: Mama mjamzito anapaswa kufanya ziara za mara kwa mara kwa mtaalam wa afya kwa uchunguzi wa kimatibabu ili kufuatilia maendeleo ya ujauzito na kutambua mapema matatizo yoyote yanayoweza kutokea.\n\n3. Chanjo: Chanjo zinaweza kusaidia kulinda afya ya mama na mtoto dhidi ya magonjwa hatari. Mjamzito anashauriwa kupata chanjo dhidi ya influenza na pertussis (kikohozi cha mzazi).\n\n4. Matumizi ya Dawa: Mama mjamzito anapaswa kuepuka dawa zisizopendekezwa na mtaalam wa afya kwa sababu zingine zinaweza kuwa na madhara kwa mtoto anayekua.\n\n5. Zoezi: Zoezi la wastani linaweza kusaidia kudumisha afya njema na kusaidia katika kudhibiti uzito wakati wa ujauzito.\n\n6. Epuka Pombe na Sigara: Matumizi ya pombe na sigara wakati wa ujauzito yanaweza kusababisha matatizo ya kiafya kwa mtoto, ikiwa ni pamoja na tatizo la fetal alcohol spectrum disorders (FASD",
+        "media": ""
+    },
+
+    {
+        "id": 280972,
+        "time": "14 June 2024, 15:24",
+        "message": "mimi mjamzito naumwa kiuno",
+        "response": "Kama wewe ni mjamzito na unapata maumivu ya kiuno, ni muhimu kuchukua hatua zifuatazo:\n\n1. **Pata Mapumziko**: Maumivu ya kiuno wakati wa ujauzito ni ya kawaida kutokana na mabadiliko yanayotokea mwilini mwako. Kupumzika kunaweza kusaidia kupunguza mzigo kwenye kiuno chako.\n\n2. **Tumia Mbinu za Kupunguza Maumivu**: Mbinu kama vile kutumia joto au barafu, kufanya mazoezi ya viungo kwa ushauri wa mtaalamu, au kutumia vifaa vya kusaidia kama vile mikanda ya kiuno inayotengenezwa kwa ajili ya wanawake wajawazito inaweza kusaidia.\n\n3. **Mazoezi**: Mazoezi mepesi kama vile kuogelea, kutembea, au yoga kwa wanawake wajawazito yanaweza kusaidia kuimarisha misuli ya mgongo na kupunguza maumivu.\n\n4. **Msimamo na Mkao Mzuri**: Hakikisha unakaa na kusimama kwa mkao mzuri ili kupunguza shinikizo kwenye kiuno chako.\n\n5. **Wasiliana na Mtaalam wa Afya**: Kama maumivu yanaendelea au yanakusumbua sana, ni muhimu kuzungumza na daktari wako au mkunga. Wanaweza kukupa ushauri maalum, kukupima ili kuhakikisha hakuna matatizo mengine, na kama inahitajika, kukupatia matibabu sahihi.\n\n6. **Dawa za Maumivu**: Usitumie dawa yoyote bila ushauri wa kitaalamu kwani dawa zingine zinaweza kuwa hatari kwa mtoto anayekua tumboni.\n\n7. **Angalia Uzito Wako**: Kudhibiti uzito wako wakati wa",
+        "media": ""
+    },
+
+    {
+        "id": 281497,
+        "time": "14 June 2024, 22:06",
+        "message": "UTI",
+        "response": "UTI, ambayo ni kifupi cha Urinary Tract Infection, ni maambukizi yanayotokea katika mfumo wa mkojo. UTI zinaweza kuathiri sehemu yoyote ya mfumo wa mkojo, ikiwa ni pamoja na figo, ureta (mirija inayounganisha figo na kibofu), kibofu, na urethra (mirija inayotoa mkojo nje ya mwili).\n\nDalili za UTI zinaweza kujumuisha:\n\n1. Kuungua au maumivu wakati wa kukojoa.\n2. Mara kwa mara au haraka ya kuhitaji kukojoa.\n3. Mkojo wenye rangi ya giza, mawingu, au wenye harufu kali.\n4. Maumivu katika eneo la chini la tumbo au mgongo.\n5. Joto la mwili kuwa juu (homa), hasa kama maambukizi yamefikia figo.\n6. Uchovu na hisia za kuchoka.\n7. Kwa wazee, dalili zinaweze kuwa zisizo wazi, kama vile kuchanganyikiwa au mabadiliko katika hali ya akili.\n\nUTI inaweza kusababishwa na bakteria, kama vile Escherichia coli, ambayo kwa kawaida hupatikana katika utumbo wa mwanadamu. Wanawake wako katika hatari kubwa zaidi ya kupata UTI kuliko wanaume kwa sababu ya urethra yao iko karibu na anus na pia ni fupi, hivyo bakteria wana nafasi ndogo ya kusafiri ili kufikia kibofu.\n\nMatibabu ya UTI mara nyingi yanajumuisha matumizi ya antibiotiki ili kuua bakteria wanaosababisha maambukizi. Ni muhimu kunywa dawa zote kama ilivyoagizwa na daktari, hata kama dalili zitaondoka mapema, ili kuhakikisha kwamba maamb",
+        "media": ""
+    },
+
+    {
+        "id": 281498,
+        "time": "14 June 2024, 22:13",
+        "message": "Habari",
+        "response": "Habari! Nipo hapa kusaidia na kujibu maswali yako. Je, kuna kitu unataka kujua au kujadili? Feel free to ask in either English or Kiswahili.",
+        "media": ""
+    }
+
+
+    ]

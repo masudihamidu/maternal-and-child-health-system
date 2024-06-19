@@ -14,8 +14,8 @@ class CliniCardController extends Controller
         try {
             $id = $request->query('id');
 
-            // Fetch the mother along with her associated diseases and immunities
-            $mother = Mother::with(['diseases', 'immunities', 'father'])->find($id);
+            // Fetch the mother along with her associated diseases, immunities, and ultrasound images
+            $mother = Mother::with(['diseases', 'immunities', 'father', 'ultrasoundImages'])->find($id);
 
             // Check if the mother exists
             if (!$mother) {
@@ -33,10 +33,10 @@ class CliniCardController extends Controller
             $father_surname = $mother->father->father_surname ?? '';
             $father_phone_number = $mother->father->father_phone_number ?? '';
 
-            //Mother Registration date
+            // Mother Registration date
             $registration_date = Carbon::parse($mother->created_at)->toFormattedDateString();
 
-            // Build HTML content for the PDF
+            // Start building HTML for PDF
             $html = '<html lang="en">';
             $html .= '<head>';
             $html .= '<meta charset="UTF-8">';
@@ -53,6 +53,12 @@ class CliniCardController extends Controller
                         th {
                             background-color: #f2f2f2;
                         }
+                        .ultrasound-image {
+                            width: 700px;
+                            height: 500px;
+                            display: block;
+                            margin-bottom: 10px;
+                        }
                     </style>';
             $html .= '</head>';
             $html .= '<body>';
@@ -60,8 +66,9 @@ class CliniCardController extends Controller
             $html .= '<p>This table should be used to remind the healthcare provider and the expectant mother which tests should be conducted and at what stage of pregnancy.</p>';
             $html .= "<p><b>Clinic Attendance for: </b></p>";
             $html .= "<p> Mother full name: <b>{$mother_firstname} {$mother_secondname} {$mother_lastname}</b></p>";
-            $html .= "<p> Father full name: <b>{$father_firstname} {$father_middlename} {$father_surname}</b>.  father phone number: <b>{$father_phone_number}</b></p>";
+            $html .= "<p> Father full name: <b>{$father_firstname} {$father_middlename} {$father_surname}</b>. Father phone number: <b>{$father_phone_number}</b></p>";
             $html .= "<p> Mother registration Date: <b>{$registration_date}</b></p>";
+
             $html .= '<div id="printableTable">';
             $html .= '<h2><b>Diseases</b></h2>';
             $html .= '<table>';
@@ -130,16 +137,36 @@ class CliniCardController extends Controller
             $html .= '</tbody>';
             $html .= '</table>';
             $html .= '<p>The HIV retest for a person without an infection is done between weeks 32 and 36.</p>';
+
+            if ($mother->ultrasoundImages->isNotEmpty()) {
+                $html .= '<h2><b>Ultrasound Images</b></h2>';
+                $html .= '<div class="ultrasound-images">';
+                foreach ($mother->ultrasoundImages as $ultrasoundImage) {
+                    
+                    // Get image contents and convert to base64
+                    $imagePath = storage_path("app/public/ultrasound/{$ultrasoundImage->image_path}");
+                    if (file_exists($imagePath)) {
+                        $imageData = file_get_contents($imagePath);
+                        $base64Image = base64_encode($imageData);
+                        $html .= '<img src="data:image/jpeg;base64,' . $base64Image . '" alt="Ultrasound Image" class="ultrasound-image">';
+                    } else {
+                        $html .= '<p>Image not found: ' . $ultrasoundImage->image_path . '</p>';
+                    }
+                }
+                $html .= '</div>';
+            } else {
+                $html .= '<p>No ultrasound images found.</p>';
+            }
             $html .= '</div>';
+
             $html .= '</body>';
             $html .= '</html>';
 
             // Load HTML content and generate PDF
-            $pdf = PDF::loadHTML($html)
-                      ->setOptions(['defaultFont' => 'Arial']);
+            $pdf = PDF::loadHTML($html)->setOptions(['defaultFont' => 'Arial']);
 
             // Create a dynamic filename for the downloaded PDF file
-            $filename = "{$mother_firstname} {$mother_lastname}_clinicAttendance.pdf";
+            $filename = "{$mother_firstname}_{$mother_lastname}_clinicAttendance.pdf";
 
             // Download the PDF file
             return $pdf->download($filename);

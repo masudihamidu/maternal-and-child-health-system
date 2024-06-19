@@ -4,10 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Conversation;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
 
 class ConversationController extends Controller
 {
-
     public function showConversation()
     {
         return view('openAI.openAi');
@@ -29,10 +29,20 @@ class ConversationController extends Controller
 
             // Loop through each item and save to database
             foreach ($data as $item) {
+                $validator = Validator::make($item, [
+                    'time' => 'required|string',
+                    'message' => 'required|string',
+                    'response' => 'required|string',
+                ]);
+
+                if ($validator->fails()) {
+                    throw new \Exception('Validation failed: ' . implode(', ', $validator->errors()->all()));
+                }
+
                 Conversation::create([
-                    'contact' => $item['contact'],
-                    'channel' => $item['channel'],
-                    'date' => now()->parse($item['date']),
+                    'message' => $item['message'],
+                    'response' => $item['response'],
+                    'time' => $item['time'],
                 ]);
             }
 

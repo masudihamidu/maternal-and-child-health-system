@@ -4,31 +4,48 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 use App\Models\Conversation;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\File;
 
 class ImportConversations extends Command
 {
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
     protected $signature = 'import:conversations';
 
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
     protected $description = 'Import conversations from JSON file';
 
+    /**
+     * Execute the console command.
+     *
+     * @return int
+     */
     public function handle()
     {
         $filePath = public_path('json/conversationData.json');
 
-        if (!file_exists($filePath)) {
+        if (!File::exists($filePath)) {
             $this->error('JSON file not found: ' . $filePath);
             return 1;
         }
 
-        $json = file_get_contents($filePath);
+        $json = File::get($filePath);
         $data = json_decode($json, true);
 
         foreach ($data as $item) {
             Conversation::create([
-                'contact' => $item['contact'],
-                'channel' => $item['channel'],
-                'date' => now()->parse($item['date']),
+                'time' => $item['time'] ?? null,
+                'message' => $item['message'] ?? null,
+                'response' => $item['response'] ?? null,
+                'created_at' => now(),
+                'updated_at' => now(),
             ]);
         }
 
