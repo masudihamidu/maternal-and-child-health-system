@@ -9,16 +9,15 @@ use App\Http\Controllers\DiseaseController;
 use App\Http\Controllers\ImmunityController;
 use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\CliniCardController;
-
+use App\Http\Controllers\Auth\MotherLoginController;
+use App\Models\Mother;
 
 
 Route::get('/', function () {
     return view('auth/login');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -32,7 +31,10 @@ Route::get('/motherInformation', [MotherController::class, 'motherDetails'])->na
 Route::get('/motherDetails', [MotherController::class, 'showClinicProgress'])->name('motherDetails.showClinicProgress');
 Route::get('/ConversationAI.conversationAI', [ConversationController::class, 'showConversation'])->name('ConversationAI.showConversation');
 Route::get('/mother/pdf', [CliniCardController::class, 'generatePdf'])->name('mother.pdf');
-Route::get('/notify-unassociated-mothers', [MotherController::class, 'notifyUnassociatedMothers'])->name('notify.unassociated.mothers');
+
+Route::post('/mother/login', [MotherLoginController::class, 'login'])->name('mother.login');
+
+
 
 Route::get('/import', [ConversationController::class, 'importJson']);
 

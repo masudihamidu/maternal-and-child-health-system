@@ -28,26 +28,25 @@
                             }
                         </style>
 
-                        <h1 style="font-weight: bold; font-size: 25px; text-align: center;">Tests/Diagnosis to be Done for Each Attendance</h1>
-                        <p style="font-weight: bold; font-size: 15px; text-align: center;">This table should be used to remind the healthcare provider and the expectant mother which tests should be conducted and at what stage of pregnancy.</p>
-                        <h1 style="font-size: 20px;">Clinic Attendance for <b>{{ $mother_firstname }} {{ $mother_secondname }} {{ $mother_lastname }}</b>. </h1>
+                        <h1 style="font-weight: bold; font-size: 25px; text-align: center;">Vipimo/Maoni ya Kufanywa kwa Kila Hudhurio</h1>
+                        <p style="font-weight: bold; font-size: 15px; text-align: center;">Jedwali hili linapaswa kutumika kukumbusha mtoa huduma za afya na mama mjamzito ni vipimo gani vinapaswa kufanywa na wakati gani wa ujauzito.</p>
+                        <h1 style="font-size: 20px;">Hudhurio la Kliniki kwa <b>{{ $mother_firstname }} {{ $mother_secondname }} {{ $mother_lastname }}</b>. </h1>
                         <br/>
-                        <h2><b>Diseases</b></h2>
+                        <h2><b>Magonjwa</b></h2>
                         <table>
                             <thead>
                                 <tr>
-                                    <th rowspan="2">TESTS/DETAILS ABOUT</th>
-                                    <th colspan="7">Weeks</th>
-                                    <th rowspan="2">Ultrasound Image</th>
+                                    <th rowspan="2">VIPIMO/MAELEZO KUHUSU</th>
+                                    <th colspan="7">Wiki</th>
                                 </tr>
                                 <tr>
-                                    <th>12 weeks</th>
-                                    <th>20 weeks</th>
-                                    <th>26 weeks</th>
-                                    <th>30 weeks</th>
-                                    <th>36 weeks</th>
-                                    <th>38 weeks</th>
-                                    <th>40 weeks</th>
+                                    <th>Wiki 12</th>
+                                    <th>Wiki 20</th>
+                                    <th>Wiki 26</th>
+                                    <th>Wiki 30</th>
+                                    <th>Wiki 36</th>
+                                    <th>Wiki 38</th>
+                                    <th>Wiki 40</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -61,34 +60,27 @@
                                     <td>{!! $disease->week36 ? '&#10004;' : '' !!}</td>
                                     <td>{!! $disease->week38 ? '&#10004;' : '' !!}</td>
                                     <td>{!! $disease->week40 ? '&#10004;' : '' !!}</td>
-                                    <td>
-                                        @foreach ($ultrasoundImages as $ultrasoundImage)
-                                            @if ($ultrasoundImage->mother_id === $mother->id && $ultrasoundImage->disease_id === $disease->id)
-                                                <img src="{{ asset('storage/ultrasound/'.$ultrasoundImage->image_path) }}" alt="Ultrasound Image" class="ultrasound-image">
-                                                @break
-                                            @endif
-                                        @endforeach
-                                    </td>
+
                                 </tr>
                                 @endforeach
                             </tbody>
                         </table>
                         <br/>
-                        <h2><b>Immunities</b></h2>
+                        <h2><b>Kingamwili</b></h2>
                         <table>
                             <thead>
                                 <tr>
-                                    <th rowspan="2">IMMUNITY DETAILS</th>
-                                    <th colspan="7">Weeks</th>
+                                    <th rowspan="2">MAELEZO YA KINGAMWILI</th>
+                                    <th colspan="7">Wiki</th>
                                 </tr>
                                 <tr>
-                                    <th>12 weeks</th>
-                                    <th>20 weeks</th>
-                                    <th>26 weeks</th>
-                                    <th>30 weeks</th>
-                                    <th>36 weeks</th>
-                                    <th>38 weeks</th>
-                                    <th>40 weeks</th>
+                                    <th>Wiki 12</th>
+                                    <th>Wiki 20</th>
+                                    <th>Wiki 26</th>
+                                    <th>Wiki 30</th>
+                                    <th>Wiki 36</th>
+                                    <th>Wiki 38</th>
+                                    <th>Wiki 40</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -106,20 +98,21 @@
                                 @endforeach
                             </tbody>
                         </table>
+                        <p><b>Kipimo cha HIV kwa mtu ambaye hana maambukizi hufanywa kati ya wiki 32 na 36.</b></p>
                         <br/>
-                        <p>The HIV retest for a person without an infection is done between weeks 32 and 36.</p>
+
 
                         @if($ultrasoundImages->isNotEmpty())
-    <h2><b>Ultrasound Images</b></h2>
-    <div class="ultrasound-images">
-        @foreach($ultrasoundImages as $ultrasoundImage)
-            <img src="{{ asset('storage/ultrasound/'.$ultrasoundImage->image_path) }}" alt="Ultrasound Image" class="ultrasound-image">
-        @endforeach
-    </div>
-@else
-    <p>No ultrasound images found.</p>
-@endif
-
+                            <h2><b>Picha za Ultrasound</b></h2>
+                            <div class="ultrasound-images">
+                                @foreach($ultrasoundImages as $ultrasoundImage)
+                                    <img src="{{ asset('storage/ultrasound/'.$ultrasoundImage->image_path) }}" alt="Picha ya Ultrasound" class="ultrasound-image">
+                                    <p>{{ $disease->description }}</p>
+                                @endforeach
+                            </div>
+                        @else
+                            <p>Hakuna picha za ultrasound zilizopatikana.</p>
+                        @endif
 
                         <div class="form-group-inner">
                             <div class="login-btn-inner">
@@ -127,7 +120,7 @@
                                     <div class="col-lg-3"></div>
                                     <div class="col-lg-9">
                                         <div class="login-horizental cancel-wp pull-left form-bc-ele">
-                                            <a href="{{ route('mother.pdf', ['id' => $id]) }}" class="btn btn-sm btn-primary login-submit-cs">Download PDF</a>
+                                            <a href="{{ route('mother.pdf', ['id' => $id]) }}" class="btn btn-sm btn-primary login-submit-cs">Pakua PDF</a>
                                         </div>
                                     </div>
                                 </div>
