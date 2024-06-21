@@ -604,11 +604,13 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
     );
 
     public static $classMap = array (
+        'App\\Console\\Commands\\ImportConversations' => __DIR__ . '/../..' . '/app/Console/Commands/ImportConversations.php',
         'App\\Console\\Commands\\SendAutoSMS' => __DIR__ . '/../..' . '/app/Console/Commands/SendAutoSMS.php',
         'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
         'App\\Http\\Controllers\\Auth\\ConfirmablePasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ConfirmablePasswordController.php',
         'App\\Http\\Controllers\\Auth\\EmailVerificationNotificationController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/EmailVerificationNotificationController.php',
         'App\\Http\\Controllers\\Auth\\EmailVerificationPromptController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/EmailVerificationPromptController.php',
+        'App\\Http\\Controllers\\Auth\\MotherLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/MotherLoginController.php',
         'App\\Http\\Controllers\\Auth\\NewPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/NewPasswordController.php',
         'App\\Http\\Controllers\\Auth\\PasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/PasswordController.php',
         'App\\Http\\Controllers\\Auth\\PasswordResetLinkController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/PasswordResetLinkController.php',
@@ -633,8 +635,11 @@ class ComposerStaticInitda9b7a1dc1dd923105198c572cc7df8d
         'App\\Models\\LocalChairman' => __DIR__ . '/../..' . '/app/Models/LocalChairman.php',
         'App\\Models\\Mother' => __DIR__ . '/../..' . '/app/Models/Mother.php',
         'App\\Models\\MotherBackground' => __DIR__ . '/../..' . '/app/Models/MotherBackground.php',
+        'App\\Models\\PregnancySummary' => __DIR__ . '/../..' . '/app/Models/PregnancySummary.php',
         'App\\Models\\Sibling' => __DIR__ . '/../..' . '/app/Models/Sibling.php',
+        'App\\Models\\UltrasoundImage' => __DIR__ . '/../..' . '/app/Models/UltrasoundImage.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
+        'App\\Notifications\\NotifyUnassociatedMothers' => __DIR__ . '/../..' . '/app/Notifications/NotifyUnassociatedMothers.php',
         'App\\Observers\\DiseaseObserver' => __DIR__ . '/../..' . '/app/Observers/DiseaseObserver.php',
         'App\\Observers\\ImmunityObserver' => __DIR__ . '/../..' . '/app/Observers/ImmunityObserver.php',
         'App\\Observers\\MotherObserver' => __DIR__ . '/../..' . '/app/Observers/MotherObserver.php',

@@ -10,16 +10,16 @@
                         <div class="sparkline13-list">
                             <div class="sparkline13-hd">
                                 <div class="main-sparkline13-hd">
-                                    <h1>Expectant Registered <span class="table-project-n">Data</span> Table</h1>
+                                    <h1>Mama watarajiwa walioandikishwa <span class="table-project-n">Data</span> Jedwali</h1>
                                 </div>
                             </div>
                             <div class="sparkline13-graph">
                                 <div class="datatable-dashv1-list custom-datatable-overright">
                                     <div id="toolbar">
                                         <select class="form-control dt-tb">
-											<option value="">Export Basic</option>
-											<option value="all">Export All</option>
-											<option value="selected">Export Selected</option>
+											<option value="">Kuuza Msingi</option>
+											<option value="all">Kuuza Yote</option>
+											<option value="selected">Kuuza Iliyochaguliwa</option>
 										</select>
                                     </div>
                                     <table id="table" data-toggle="table" data-pagination="true" data-search="true" data-show-columns="true" data-show-pagination-switch="true" data-show-refresh="true" data-key-events="true" data-show-toggle="true" data-resizable="true" data-cookie="true"
@@ -28,13 +28,13 @@
                                             <tr>
                                                 <th data-field="state" data-checkbox="true"></th>
                                                 <th data-field="id">No</th>
-                                                <th data-field="mother_firstname" data-editable="true">first name</th>
-                                                <th data-field="mother_lastname" data-editable="true">Surname</th>
-                                                 <th data-field="mother_phone_number" data-editable="true">phone number</th>
-                                                <th data-field="marital_status" data-editable="true">marital status</th>
-                                                <th data-field="immunity">Immunity</th>
-                                                <th data-field="tests">Tests</th>
-                                                <th data-field="details">Details</th>
+                                                <th data-field="mother_firstname" data-editable="true">Jina la kwanza</th>
+                                                <th data-field="mother_lastname" data-editable="true">Jina la ukoo</th>
+                                                <th data-field="mother_phone_number" data-editable="true">Namba ya simu</th>
+                                                <th data-field="marital_status" data-editable="true">Hali ya ndoa</th>
+                                                <th data-field="immunity">Kinga</th>
+                                                <th data-field="tests">Vipimo</th>
+                                                <th data-field="details">Maelezo</th>
                                             </tr>
                                         </thead>
 
@@ -59,18 +59,18 @@
                                                 </td>
                                                 <td>
                                                 <div class="button-style-three ">
-                                                    <a class="btn btn-custon-two btn-success" href="{{ route('motherImmunity.addImmunity', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Immunity</a>
+                                                    <a class="btn btn-custon-two btn-success" href="{{ route('motherImmunity.addImmunity', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Kinga</a>
                                                 </div>
                                                 </td>
                                             <td>
                                                 <div class="button-style-three ">
-                                                    <a class="btn btn-custon-two btn-success" href="{{ route('motherDisease.addDisease', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Health test</a>
+                                                    <a class="btn btn-custon-two btn-success" href="{{ route('motherDisease.addDisease', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Vipimo vya Afya</a>
                                                 </div>
 
                                             </td>
                                             <td>
                                                 <div class="button-style-three">
-                                                <a class="btn btn-custon-two btn-success" href="{{ route('motherInformation.motherDetails', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Details</a>
+                                                <a class="btn btn-custon-two btn-success" href="{{ route('motherInformation.motherDetails', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Maelezo</a>
                                                 </div>
                                             </td>
                                             </tr>

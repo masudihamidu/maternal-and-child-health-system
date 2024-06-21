@@ -8,7 +8,7 @@
                 <div class="sparkline12-list">
                     <div class="sparkline12-hd">
                         <div class="main-sparkline12-hd">
-                            <h1>Add Immunity for <b>{{ $mother_firstname }} {{ $mother_lastname }}</b>.</h1>
+                            <h1>Ongeza kinga kwa <b>{{ $mother_firstname }} {{ $mother_lastname }}</b>.</h1>
                             @if(Session::get('success'))
                             <div class="alert alert-success">{{ Session::get('success') }}</div>
                             @endif
@@ -25,7 +25,7 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">Mother ID</label>
+                                                        <label class="login2 pull-right pull-right-pro">ID ya Mama</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <input type="text" name="mother_id" value="{{ $id }}" id="mother_id" class="form-control" readonly required/>
@@ -36,7 +36,7 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">Immunity name</label>
+                                                        <label class="login2 pull-right pull-right-pro">Jina la Kinga</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <select name="immunity_name" class="form-control" required>
@@ -49,7 +49,7 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">Description</label>
+                                                        <label class="login2 pull-right pull-right-pro">Maelezo</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <textarea name="description" class="form-control" rows="4" required></textarea>
@@ -65,7 +65,7 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">{{ $week }} Weeks</label>
+                                                        <label class="login2 pull-right pull-right-pro">{{ $week }} Wiki</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <input type="radio" name="weeks" value="{{ $week }}" required>
@@ -80,8 +80,8 @@
                                                         <div class="col-lg-3"></div>
                                                         <div class="col-lg-9">
                                                             <div class="login-horizental cancel-wp pull-left form-bc-ele">
-                                                                <button class="btn btn-white" type="button" onclick="window.location.href='{{ url()->previous() }}'">Cancel</button>
-                                                                <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save</button>
+                                                                <button class="btn btn-white" type="button" onclick="window.location.href='{{ url()->previous() }}'">Ghairi</button>
+                                                                <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Hifadhi</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -98,4 +98,30 @@
         </div>
     </div>
 </div>
+
+<script defer async>
+        document.addEventListener('DOMContentLoaded', function() {
+            // setting global variables
+            window.botId = 3930
+
+            // create div with id = sarufi-chatbox
+            const div = document.createElement("div")
+            div.id = "sarufi-chatbox"
+            document.body.appendChild(div)
+
+            // create and attach script tag
+            const script = document.createElement("script")
+            script.crossOrigin = true
+            script.type = "module"
+            script.src = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/script.js"
+            document.head.appendChild(script)
+
+            // create and attach css
+            const style = document.createElement("link")
+            style.crossOrigin = true
+            style.rel = "stylesheet"
+            style.href = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/style.css"
+            document.head.appendChild(style)
+        });
+    </script>
 @endsection

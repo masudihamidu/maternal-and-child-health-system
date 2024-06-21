@@ -6,11 +6,13 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Console\\Commands\\ImportConversations' => $baseDir . '/app/Console/Commands/ImportConversations.php',
     'App\\Console\\Commands\\SendAutoSMS' => $baseDir . '/app/Console/Commands/SendAutoSMS.php',
     'App\\Http\\Controllers\\Auth\\AuthenticatedSessionController' => $baseDir . '/app/Http/Controllers/Auth/AuthenticatedSessionController.php',
     'App\\Http\\Controllers\\Auth\\ConfirmablePasswordController' => $baseDir . '/app/Http/Controllers/Auth/ConfirmablePasswordController.php',
     'App\\Http\\Controllers\\Auth\\EmailVerificationNotificationController' => $baseDir . '/app/Http/Controllers/Auth/EmailVerificationNotificationController.php',
     'App\\Http\\Controllers\\Auth\\EmailVerificationPromptController' => $baseDir . '/app/Http/Controllers/Auth/EmailVerificationPromptController.php',
+    'App\\Http\\Controllers\\Auth\\MotherLoginController' => $baseDir . '/app/Http/Controllers/Auth/MotherLoginController.php',
     'App\\Http\\Controllers\\Auth\\NewPasswordController' => $baseDir . '/app/Http/Controllers/Auth/NewPasswordController.php',
     'App\\Http\\Controllers\\Auth\\PasswordController' => $baseDir . '/app/Http/Controllers/Auth/PasswordController.php',
     'App\\Http\\Controllers\\Auth\\PasswordResetLinkController' => $baseDir . '/app/Http/Controllers/Auth/PasswordResetLinkController.php',
@@ -35,8 +37,11 @@ return array(
     'App\\Models\\LocalChairman' => $baseDir . '/app/Models/LocalChairman.php',
     'App\\Models\\Mother' => $baseDir . '/app/Models/Mother.php',
     'App\\Models\\MotherBackground' => $baseDir . '/app/Models/MotherBackground.php',
+    'App\\Models\\PregnancySummary' => $baseDir . '/app/Models/PregnancySummary.php',
     'App\\Models\\Sibling' => $baseDir . '/app/Models/Sibling.php',
+    'App\\Models\\UltrasoundImage' => $baseDir . '/app/Models/UltrasoundImage.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
+    'App\\Notifications\\NotifyUnassociatedMothers' => $baseDir . '/app/Notifications/NotifyUnassociatedMothers.php',
     'App\\Observers\\DiseaseObserver' => $baseDir . '/app/Observers/DiseaseObserver.php',
     'App\\Observers\\ImmunityObserver' => $baseDir . '/app/Observers/ImmunityObserver.php',
     'App\\Observers\\MotherObserver' => $baseDir . '/app/Observers/MotherObserver.php',

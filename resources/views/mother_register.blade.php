@@ -7,7 +7,7 @@
                 <div class="sparkline12-list">
                     <div class="sparkline12-hd">
                         <div class="main-sparkline12-hd">
-                            <h1>Expectant register</h1>
+                            <h1>Sajili ya Wajawazito</h1>
                             @if(Session::get('success'))
                                 <div class="alert alert-success">{{ Session::get('success') }}</div>
                             @endif
@@ -23,7 +23,7 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">First Name</label>
+                                                        <label class="login2 pull-right pull-right-pro">Jina la Kwanza</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <input type="text" name="mother_firstname" id="mother_firstname" class="form-control" required/>
@@ -34,7 +34,7 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">Middle Name</label>
+                                                        <label class="login2 pull-right pull-right-pro">Jina la Kati</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <input type="text" name="mother_secondname" id="mother_secondname" class="form-control"/>
@@ -45,7 +45,7 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">Last Name</label>
+                                                        <label class="login2 pull-right pull-right-pro">Jina la Mwisho</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <input type="text" name="mother_lastname" id="mother_lastname" class="form-control"/>
@@ -56,7 +56,7 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">Date of birth</label>
+                                                        <label class="login2 pull-right pull-right-pro">Tarehe ya Kuzaliwa</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <input type="date" name="mother_dob" id="mother_dob" class="form-control" required/>
@@ -67,7 +67,7 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">Phone Number</label>
+                                                        <label class="login2 pull-right pull-right-pro">Namba ya Simu</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <input type="text" name="mother_phone_number" id="mother_phone_number" class="form-control"/>
@@ -78,18 +78,18 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">Education level</label>
+                                                        <label class="login2 pull-right pull-right-pro">Kiwango cha Elimu</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <select name="education" class="form-control">
-                                                            <option value="illiterate">Illiterate</option>
-                                                            <option value="primary">Primary School</option>
-                                                            <option value="secondary">Secondary School</option>
-                                                            <option value="higher secondary">Higher Secondary School</option>
-                                                            <option value="ordinary diploma">Ordinary diploma</option>
-                                                            <option value="bachelors">Bachelor's Degree</option>
-                                                            <option value="masters">Master's Degree</option>
-                                                            <option value="phd">Ph.D. or Equivalent</option>
+                                                            <option value="illiterate">Hana Elimu</option>
+                                                            <option value="primary">Shule ya Msingi</option>
+                                                            <option value="secondary">Shule ya Sekondari</option>
+                                                            <option value="higher secondary">Sekondari ya Juu</option>
+                                                            <option value="ordinary diploma">Stashahada ya Kawaida</option>
+                                                            <option value="bachelors">Shahada</option>
+                                                            <option value="masters">Shahada ya Uzamili</option>
+                                                            <option value="phd">Shahada ya Uzamivu (Ph.D.)</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -98,9 +98,9 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">Occupation</label>
+                                                        <label class="login2 pull-right pull-right-pro">Kazi</label>
                                                     </div>
-                                                    <div class="col-lg-9 col-md-9 col-smi-9 col-xs-12">
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <input type="text" name="occupation" class="form-control"/>
                                                     </div>
                                                 </div>
@@ -109,14 +109,14 @@
                                             <div class="form-group-inner">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
-                                                        <label class="login2 pull-right pull-right-pro">Marital status</label>
+                                                        <label class="login2 pull-right pull-right-pro">Hali ya Ndoa</label>
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <select name="marital_status" class="form-control">
-                                                            <option value="single">Single</option>
-                                                            <option value="married">Married</option>
-                                                            <option value="divorced">Divorced</option>
-                                                            <option value="widowed">Widowed</option>
+                                                            <option value="single">Sijaoa/Sijaolewa</option>
+                                                            <option value="married">Nimeoa/Nimeolewa</option>
+                                                            <option value="divorced">Nimeachika</option>
+                                                            <option value="widowed">Mjaane</option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -128,8 +128,8 @@
                                                         <div class="col-lg-3"></div>
                                                         <div class="col-lg-9">
                                                             <div class="login-horizental cancel-wp pull-left form-bc-ele">
-                                                                <button class="btn btn-white" type="submit">Cancel</button>
-                                                                <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Save Change</button>
+                                                                <button class="btn btn-white" type="submit">Ghairi</button>
+                                                                <button class="btn btn-sm btn-primary login-submit-cs" type="submit">Hifadhi</button>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -171,4 +171,30 @@
         </div>
     </div>
 </div>
+
+<script defer async>
+        document.addEventListener('DOMContentLoaded', function() {
+            // setting global variables
+            window.botId = 3930
+
+            // create div with id = sarufi-chatbox
+            const div = document.createElement("div")
+            div.id = "sarufi-chatbox"
+            document.body.appendChild(div)
+
+            // create and attach script tag
+            const script = document.createElement("script")
+            script.crossOrigin = true
+            script.type = "module"
+            script.src = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/script.js"
+            document.head.appendChild(script)
+
+            // create and attach css
+            const style = document.createElement("link")
+            style.crossOrigin = true
+            style.rel = "stylesheet"
+            style.href = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/style.css"
+            document.head.appendChild(style)
+        });
+    </script>
 @endsection

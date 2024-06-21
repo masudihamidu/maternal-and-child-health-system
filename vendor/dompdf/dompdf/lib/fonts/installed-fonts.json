@@ -1,0 +1,8 @@
+{
+    "dejavu sans": {
+        "bold": "\/Applications\/XAMPP\/xamppfiles\/htdocs\/maternal_health_system\/vendor\/dompdf\/dompdf\/lib\/fonts\/DejaVuSans-Bold",
+        "bold_italic": "\/Applications\/XAMPP\/xamppfiles\/htdocs\/maternal_health_system\/vendor\/dompdf\/dompdf\/lib\/fonts\/DejaVuSans-BoldOblique",
+        "italic": "\/Applications\/XAMPP\/xamppfiles\/htdocs\/maternal_health_system\/vendor\/dompdf\/dompdf\/lib\/fonts\/DejaVuSans-Oblique",
+        "normal": "dejavu_sans_normal_b3f85b160bb0d1f2c162c3ae7f5feecb"
+    }
+}

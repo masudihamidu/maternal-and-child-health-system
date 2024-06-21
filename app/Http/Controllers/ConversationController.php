@@ -13,6 +13,15 @@ class ConversationController extends Controller
         return view('openAI.openAi');
     }
 
+
+
+    public function showAnalytics()
+    {
+        $conversations = Conversation::all(); // Fetch all conversations
+        return view('analytics', compact('conversations')); // Pass conversations to the view
+    }
+
+
     public function importJson()
     {
         try {
