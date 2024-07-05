@@ -113,8 +113,8 @@
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <select name="marital_status" class="form-control">
-                                                            <option value="single">Sijaoa/Sijaolewa</option>
-                                                            <option value="married">Nimeoa/Nimeolewa</option>
+                                                            <option value="single">Sijaolewa</option>
+                                                            <option value="married">Nimeolewa</option>
                                                             <option value="divorced">Nimeachika</option>
                                                             <option value="widowed">Mjaane</option>
                                                         </select>

@@ -7,7 +7,7 @@ use Barryvdh\DomPDF\Facade\Pdf;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
-class CliniCardController extends Controller
+class SystemReportController extends Controller
 {
     public function generatePdf(Request $request)
     {
