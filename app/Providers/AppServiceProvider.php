@@ -20,6 +20,7 @@ use App\Models\PregnancySummary;
 
 use App\Observers\PregnancySummaryObserver;
 
+use Illuminate\Support\Facades\Blade;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -40,6 +41,11 @@ class AppServiceProvider extends ServiceProvider
         Disease::observe(DiseaseObserver::class);
         Immunity::observe(ImmunityObserver::class);
         PregnancySummary::observe(PregnancySummaryObserver::class);
+
+        Blade::component('label', \App\View\Components\Label::class);
+        Blade::component('input', \App\View\Components\Input::class);
+        Blade::component('input-error', \App\View\Components\InputError::class);
+        Blade::component('primary-button', \App\View\Components\PrimaryButton::class);
 
     }
 }

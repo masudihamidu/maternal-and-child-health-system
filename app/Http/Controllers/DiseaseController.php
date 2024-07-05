@@ -20,21 +20,14 @@ class DiseaseController extends Controller
             'description' => 'required|string',
             'mother_id' => 'required|exists:mothers,id',
             'week' => 'required|in:12,20,26,30,36,38,40',
-            // Validation for ultrasound image
             'ultrasound_image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
         // Retrieve mother_id from the request
         $mother_id = $request->input('mother_id');
 
-        // Log request data for debugging
-        Log::info('Request data:', $request->all());
-
         try {
-            // Start transaction for atomic operations
-            \DB::beginTransaction();
 
-            // Handle ultrasound image upload if provided
             if ($request->hasFile('ultrasound_image')) {
                 $image = $request->file('ultrasound_image');
                 $imageName = time().'.'.$image->getClientOriginalExtension();
