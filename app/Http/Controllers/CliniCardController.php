@@ -31,6 +31,12 @@ class CliniCardController extends Controller
             $father_surname = $mother->father->father_surname ?? '';
             $father_phone_number = $mother->father->father_phone_number ?? '';
 
+            // Group diseases by disease_name
+            $groupedDiseases = $diseases->groupBy('disease_name');
+
+            $groupedImmunity = $immunities->groupBy('immunity_name');
+
+
             // Mother Registration date
             $registration_date = Carbon::parse($mother->created_at)->locale('sw')->isoFormat('LL');
 
@@ -97,16 +103,16 @@ class CliniCardController extends Controller
                         </tr>
                     </thead>';
             $html .= '<tbody>';
-            foreach ($diseases as $disease) {
+            foreach ($groupedDiseases as $diseaseName => $group) {
                 $html .= '<tr>';
-                $html .= "<td>{$disease->disease_name}</td>";
-                $html .= '<td>' . ($disease->week12 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($disease->week20 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($disease->week26 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($disease->week30 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($disease->week36 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($disease->week38 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($disease->week40 ? '✓' : '') . '</td>';
+                $html .= "<td>{$diseaseName}</td>";
+                $html .= '<td>' . ($group->sum('week12') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week20') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week26') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week30') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week36') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week38') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week40') > 0 ? '✓' : '') . '</td>';
                 $html .= '</tr>';
             }
             $html .= '</tbody>';
@@ -132,16 +138,16 @@ class CliniCardController extends Controller
                         </tr>
                     </thead>';
             $html .= '<tbody>';
-            foreach ($immunities as $immunity) {
+            foreach ($groupedImmunity as $immunityName => $group) {
                 $html .= '<tr>';
-                $html .= "<td>{$immunity->immunity_name}</td>";
-                $html .= '<td>' . ($immunity->week12 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week20 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week26 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week30 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week36 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week38 ? '✓' : '') . '</td>';
-                $html .= '<td>' . ($immunity->week40 ? '✓' : '') . '</td>';
+                $html .= "<td>{$immunityName}</td>";
+                $html .= '<td>' . ($group->sum('week12') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week20') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week26') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week30') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week36') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week38') > 0 ? '✓' : '') . '</td>';
+                $html .= '<td>' . ($group->sum('week40') > 0 ? '✓' : '') . '</td>';
                 $html .= '</tr>';
             }
             $html .= '</tbody>';

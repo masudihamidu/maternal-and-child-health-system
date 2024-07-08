@@ -50,17 +50,16 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($diseases as $disease)
+                                @foreach($groupedDiseases as $diseaseName => $diseaseGroup)
                                 <tr>
-                                    <td>{{ $disease->disease_name }}</td>
-                                    <td>{!! $disease->week12 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $disease->week20 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $disease->week26 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $disease->week30 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $disease->week36 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $disease->week38 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $disease->week40 ? '&#10004;' : '' !!}</td>
-
+                                    <td>{{ $diseaseName }}</td>
+                                    <td>{!! $diseaseGroup->contains('week12', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $diseaseGroup->contains('week20', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $diseaseGroup->contains('week26', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $diseaseGroup->contains('week30', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $diseaseGroup->contains('week36', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $diseaseGroup->contains('week38', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $diseaseGroup->contains('week40', 1) ? '&#10004;' : '' !!}</td>
                                 </tr>
                                 @endforeach
                             </tbody>
@@ -84,30 +83,29 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach($immunities as $immunity)
-                                <tr>
-                                    <td>{{ $immunity->immunity_name }}</td>
-                                    <td>{!! $immunity->week12 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $immunity->week20 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $immunity->week26 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $immunity->week30 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $immunity->week36 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $immunity->week38 ? '&#10004;' : '' !!}</td>
-                                    <td>{!! $immunity->week40 ? '&#10004;' : '' !!}</td>
-                                </tr>
-                                @endforeach
-                            </tbody>
+    @foreach($groupedImmunity as $immunityName => $immunityGroup)
+    <tr>
+        <td>{{ $immunityName }}</td>
+        <td>{!! $immunityGroup->contains('week12', 1) ? '&#10004;' : '' !!}</td>
+        <td>{!! $immunityGroup->contains('week20', 1) ? '&#10004;' : '' !!}</td>
+        <td>{!! $immunityGroup->contains('week26', 1) ? '&#10004;' : '' !!}</td>
+        <td>{!! $immunityGroup->contains('week30', 1) ? '&#10004;' : '' !!}</td>
+        <td>{!! $immunityGroup->contains('week36', 1) ? '&#10004;' : '' !!}</td>
+        <td>{!! $immunityGroup->contains('week38', 1) ? '&#10004;' : '' !!}</td>
+        <td>{!! $immunityGroup->contains('week40', 1) ? '&#10004;' : '' !!}</td>
+    </tr>
+    @endforeach
+</tbody>
                         </table>
                         <p><b>Kipimo cha HIV kwa mtu ambaye hana maambukizi hufanywa kati ya wiki 32 na 36.</b></p>
                         <br/>
-
 
                         @if($ultrasoundImages->isNotEmpty())
                             <h2><b>Picha za Ultrasound</b></h2>
                             <div class="ultrasound-images">
                                 @foreach($ultrasoundImages as $ultrasoundImage)
                                     <img src="{{ asset('storage/ultrasound/'.$ultrasoundImage->image_path) }}" alt="Picha ya Ultrasound" class="ultrasound-image">
-                                    <p>{{ $disease->description }}</p>
+                                    <p>{{ $ultrasoundImage->description }}</p>
                                 @endforeach
                             </div>
                         @else
