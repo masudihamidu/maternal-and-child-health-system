@@ -47,6 +47,12 @@ class MotherController extends Controller
             $immunities = $mother->immunities;
             $ultrasoundImages = $mother->ultrasoundImages;
 
+            $groupedDiseases = $diseases->groupBy('disease_name');
+
+            $groupedImmunity = $immunities->groupBy('immunity_name');
+
+
+
             // Check if the mother has associated data
             $hasAssociatedData = $mother->father()->exists() &&
                 $mother->siblings()->exists() &&
@@ -56,7 +62,7 @@ class MotherController extends Controller
                 $mother->motherBackground()->exists();
 
             if ($hasAssociatedData) {
-                return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'diseases', 'immunities', 'ultrasoundImages', 'mother'));
+                return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'groupedDiseases', 'groupedImmunity', 'ultrasoundImages', 'mother'));
             } else {
                 return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
             }
