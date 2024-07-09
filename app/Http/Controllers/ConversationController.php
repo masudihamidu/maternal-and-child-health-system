@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Conversation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -12,16 +13,9 @@ class ConversationController extends Controller
         return view('openAI.openAi');
     }
 
-    public function showAnalytics()
-    {
-        $conversations = Conversation::all();
-        return view('analytics', compact('conversations'));
-    }
-
     public function importJson()
     {
         try {
-
             $json = file_get_contents(public_path('json/conversationData.json'));
 
             // Decode JSON data
@@ -54,4 +48,34 @@ class ConversationController extends Controller
             return response()->json(['error' => 'Failed to import data: ' . $e->getMessage()], 500);
         }
     }
+
+    public function showAnalytics()
+    {
+        $conversations = Conversation::all();
+        $wordFrequencies = $this->calculateWordFrequencies($conversations);
+
+        return view('dashboard', compact('wordFrequencies'));
+    }
+
+    private function calculateWordFrequencies($conversations)
+    {
+        $wordFrequencies = [];
+
+        foreach ($conversations as $conversation) {
+            $words = explode(' ', $conversation->message);
+            foreach ($words as $word) {
+                $word = strtolower(trim($word, ".,!?\"'")); // Normalize word
+                if (!empty($word)) {
+                    if (isset($wordFrequencies[$word])) {
+                        $wordFrequencies[$word]++;
+                    } else {
+                        $wordFrequencies[$word] = 1;
+                    }
+                }
+            }
+        }
+
+        return $wordFrequencies;
+    }
+
 }

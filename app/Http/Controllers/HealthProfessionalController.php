@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Mother;
@@ -18,9 +19,7 @@ class HealthProfessionalController extends Controller
             'mother_id' => 'required|exists:mothers,id',
         ]);
 
-
-
-        // Create a new ExpectantForm model and save the data
+        // Create a new HealthProfessional model and save the data
         $healthProfessional = HealthProfessional::create([
             'professional_name' => $request->input('professional_name'),
             'rank' => $request->input('rank'),
@@ -32,11 +31,10 @@ class HealthProfessionalController extends Controller
         // Redirect or return a response
         if ($healthProfessional->save()) {
             return redirect()->route('motherInformation.motherDetails')->with('success', 'Health professional form saved successfully.');
-        }else {
+        } else {
             // Return with an error message if save was not successful
             return redirect()->route('motherInformation.motherDetails')->with('error', 'Failed to save the health professional. Please try again.');
         }
-
     }
 
     public function getTotal()
@@ -59,5 +57,15 @@ class HealthProfessionalController extends Controller
     public function getTotalThisYear()
     {
         return Mother::whereYear('created_at', Carbon::now()->year)->count();
+    }
+
+    public function dashboard()
+    {
+        $totalMothers = $this->getTotal();
+        $totalMothersToday = $this->getTotalToday();
+        $totalMothersThisMonth = $this->getTotalThisMonth();
+        $totalMothersThisYear = $this->getTotalThisYear();
+
+        return view('dashboard', compact('totalMothers', 'totalMothersToday', 'totalMothersThisMonth', 'totalMothersThisYear'));
     }
 }

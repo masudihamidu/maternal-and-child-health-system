@@ -1,4 +1,5 @@
 @extends('layouts.app')
+
 @section('content')
 <div class="all-content-wrapper">
     <div class="container-fluid">
@@ -7,7 +8,7 @@
                 <div class="sparkline12-list">
                     <div class="sparkline12-hd">
                         <div class="main-sparkline12-hd">
-                            <h1>Sajili ya Wajawazito</h1>
+                            <h1>Sajili ya Mjamzito</h1>
                             @if(Session::get('success'))
                                 <div class="alert alert-success">{{ Session::get('success') }}</div>
                             @endif
@@ -71,6 +72,55 @@
                                                     </div>
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <input type="text" name="mother_phone_number" id="mother_phone_number" class="form-control"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        <label class="login2 pull-right pull-right-pro">Mkoa</label>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <select name="region" id="region" class="form-control">
+                                                            <option value="">Chagua Mkoa</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        <label class="login2 pull-right pull-right-pro">Halmashauri</label>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <select name="district" id="district" class="form-control">
+                                                            <option value="">Chagua Wilaya</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        <label class="login2 pull-right pull-right-pro">Kata</label>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <select name="ward" id="ward" class="form-control">
+                                                            <option value="">Chagua Kata</option>
+                                                        </select>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group-inner">
+                                                <div class="row">
+                                                    <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                                                        <label class="login2 pull-right pull-right-pro">Kijiji/Mtaa</label>
+                                                    </div>
+                                                    <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
+                                                        <input type="text" name="street" id="street" class="form-control"/>
                                                     </div>
                                                 </div>
                                             </div>
@@ -159,6 +209,66 @@
                                                 dobField.setAttribute('min', formatDate(minDate));
                                                 dobField.setAttribute('max', formatDate(maxDate));
                                             });
+
+                                            document.addEventListener('DOMContentLoaded', function() {
+                                                // Fetch regions
+                                                fetch('{{ route("getRegions") }}')
+                                                    .then(response => response.json())
+                                                    .then(data => {
+                                                        let regionSelect = document.getElementById('region');
+                                                        data.forEach(region => {
+                                                            let option = document.createElement('option');
+                                                            option.value = region.properties.region;
+                                                            option.text = region.properties.region;
+                                                            regionSelect.appendChild(option);
+                                                        });
+                                                    });
+
+                                                // Fetch districts based on selected region
+
+                                                document.getElementById('region').addEventListener('change', function() {
+    let region = this.value;
+    fetch(`{{ url('districts') }}/${region}`)
+        .then(response => response.json())
+        .then(data => {
+            console.log(data); // Check received data in console
+            let districtSelect = document.getElementById('district');
+            districtSelect.innerHTML = '<option value="">Chagua Wilaya</option>'; // Clear previous options
+            data.forEach(district => {
+                let option = document.createElement('option');
+                option.value = district.properties.District;
+                option.text = district.properties.District;
+                districtSelect.appendChild(option);
+            });
+        })
+        .catch(error => {
+            console.error('Error fetching districts:', error);
+        });
+});
+
+
+
+                                                // Fetch wards based on selected district
+                                                document.getElementById('district').addEventListener('change', function() {
+                                                    let district = this.value;
+                                                    fetch(`{{ url('wards') }}/${district}`)
+                                                        .then(response => response.json())
+                                                        .then(data => {
+                                                            let wardSelect = document.getElementById('ward');
+                                                            wardSelect.innerHTML = '<option value="">Chagua Kata</option>'; // Clear existing options
+                                                            data.forEach(ward => {
+                                                                let option = document.createElement('option');
+                                                                option.value = ward.properties.Ward;
+                                                                option.text = ward.properties.Ward;
+                                                                wardSelect.appendChild(option);
+                                                            });
+                                                        });
+                                                });
+
+                                                fetch(`{{ url('districts') }}/${region}`)
+
+
+                                            });
                                         </script>
 
                                     </div>
@@ -198,3 +308,4 @@
         });
     </script>
 @endsection
+
