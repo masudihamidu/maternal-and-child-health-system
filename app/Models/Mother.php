@@ -33,6 +33,10 @@ class Mother extends Authenticatable
         'marital_status',
         'occupation',
         'education',
+        'region',
+        'district',
+        'ward',
+        'street'
     ];
 
     public function immunities()
@@ -43,6 +47,11 @@ class Mother extends Authenticatable
     public function diseases()
     {
         return $this->hasMany(Disease::class);
+    }
+
+    public function services()
+    {
+        return $this->hasMany(Service::class);
     }
 
     public function father()

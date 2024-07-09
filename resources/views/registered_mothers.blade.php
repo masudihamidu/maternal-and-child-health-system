@@ -32,6 +32,7 @@
                                                 <th data-field="mother_lastname" data-editable="true">Jina la ukoo</th>
                                                 <th data-field="mother_phone_number" data-editable="true">Namba ya simu</th>
                                                 <th data-field="marital_status" data-editable="true">Hali ya ndoa</th>
+                                                <th data-field="service">Huduma</th>
                                                 <th data-field="immunity">Kinga</th>
                                                 <th data-field="tests">Vipimo</th>
                                                 <th data-field="details">Maelezo</th>
@@ -57,6 +58,13 @@
                                                 <td>
                                                     {{$item->marital_status}}
                                                 </td>
+
+                                                <td>
+                                                <div class="button-style-three">
+                                                    <a class="btn btn-custon-two btn-success" href="{{ route('motherService', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Huduma</a>
+                                                </div>
+                                                </td>
+
                                                 <td>
                                                 <div class="button-style-three ">
                                                     <a class="btn btn-custon-two btn-success" href="{{ route('motherImmunity.addImmunity', ['id' => $item->id, 'sname' => $item->mother_lastname, 'name' => $item->mother_firstname]) }}" style="color: white;">Kinga</a>

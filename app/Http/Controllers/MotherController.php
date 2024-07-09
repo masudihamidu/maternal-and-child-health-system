@@ -7,6 +7,7 @@ use App\Models\Father;
 use App\Models\Disease;
 use App\Models\MotherBackground;
 use App\Models\Sibling;
+use App\Models\Service;
 use App\Models\UltrasoundImage;
 use App\Models\PregnancySummary;
 use App\Models\LocalChairman;
@@ -34,8 +35,8 @@ class MotherController extends Controller
             $mother_secondname = $request->query('middlename');
             $mother_lastname = $request->query('sname');
 
-            // Fetch the mother along with her associated diseases, immunities, and ultrasound images
-            $mother = Mother::with(['diseases', 'immunities', 'ultrasoundImages'])->find($id);
+            // Fetch the mother along with her associated diseases, immunities, and ultrasound images, services
+            $mother = Mother::with(['diseases', 'immunities', 'ultrasoundImages', 'services'])->find($id);
 
             // Check if the mother exists
             if (!$mother) {
@@ -45,11 +46,15 @@ class MotherController extends Controller
             // Get the diseases, immunities, and ultrasound images associated with the mother
             $diseases = $mother->diseases;
             $immunities = $mother->immunities;
+            $services = $mother->services;
             $ultrasoundImages = $mother->ultrasoundImages;
 
             $groupedDiseases = $diseases->groupBy('disease_name');
 
             $groupedImmunity = $immunities->groupBy('immunity_name');
+
+            $groupedService = $services->groupBy('service_name');
+
 
 
 
@@ -62,7 +67,7 @@ class MotherController extends Controller
                 $mother->motherBackground()->exists();
 
             if ($hasAssociatedData) {
-                return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'groupedDiseases', 'groupedImmunity', 'ultrasoundImages', 'mother'));
+                return view('motherDetails', compact('id', 'mother_firstname', 'mother_secondname', 'mother_lastname', 'groupedDiseases', 'groupedImmunity', 'groupedService', 'ultrasoundImages', 'mother'));
             } else {
                 return view('motherInformation', compact('id', 'mother_firstname', 'mother_lastname'));
             }
@@ -151,6 +156,10 @@ class MotherController extends Controller
             'education' => 'required|string',
             'occupation' => 'required|string',
             'marital_status' => 'required|string',
+            'region' => 'required|string',
+            'district' => 'required|string',
+            'ward' => 'required|string',
+            'street' => 'required|string',
         ]);
 
         // Create a new Mother model and save the data
@@ -163,6 +172,10 @@ class MotherController extends Controller
             'education' => $request->input('education'),
             'occupation' => $request->input('occupation'),
             'marital_status' => $request->input('marital_status'),
+            'region' => $request->input('region'),
+            'district' => $request->input('district'),
+            'ward' => $request->input('ward'),
+            'street' => $request->input('street'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
         ]);

@@ -32,6 +32,8 @@
                         <p style="font-weight: bold; font-size: 15px; text-align: center;">Jedwali hili linapaswa kutumika kukumbusha mtoa huduma za afya na mama mjamzito ni vipimo gani vinapaswa kufanywa na wakati gani wa ujauzito.</p>
                         <h1 style="font-size: 20px;">Hudhurio la Kliniki kwa <b>{{ $mother_firstname }} {{ $mother_secondname }} {{ $mother_lastname }}</b>. </h1>
                         <br/>
+
+                        <!-- Diseases Table -->
                         <h2><b>Magonjwa</b></h2>
                         <table>
                             <thead>
@@ -64,7 +66,11 @@
                                 @endforeach
                             </tbody>
                         </table>
+
+                        <p><b>Kipimo cha HIV kwa mtu ambaye hana maambukizi hufanywa kati ya wiki 32 na 36.</b></p>
                         <br/>
+
+                        <!-- Immunity Table -->
                         <h2><b>Kingamwili</b></h2>
                         <table>
                             <thead>
@@ -83,21 +89,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-    @foreach($groupedImmunity as $immunityName => $immunityGroup)
-    <tr>
-        <td>{{ $immunityName }}</td>
-        <td>{!! $immunityGroup->contains('week12', 1) ? '&#10004;' : '' !!}</td>
-        <td>{!! $immunityGroup->contains('week20', 1) ? '&#10004;' : '' !!}</td>
-        <td>{!! $immunityGroup->contains('week26', 1) ? '&#10004;' : '' !!}</td>
-        <td>{!! $immunityGroup->contains('week30', 1) ? '&#10004;' : '' !!}</td>
-        <td>{!! $immunityGroup->contains('week36', 1) ? '&#10004;' : '' !!}</td>
-        <td>{!! $immunityGroup->contains('week38', 1) ? '&#10004;' : '' !!}</td>
-        <td>{!! $immunityGroup->contains('week40', 1) ? '&#10004;' : '' !!}</td>
-    </tr>
-    @endforeach
-</tbody>
+                                @foreach($groupedImmunity as $immunityName => $immunityGroup)
+                                <tr>
+                                    <td>{{ $immunityName }}</td>
+                                    <td>{!! $immunityGroup->contains('week12', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $immunityGroup->contains('week20', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $immunityGroup->contains('week26', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $immunityGroup->contains('week30', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $immunityGroup->contains('week36', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $immunityGroup->contains('week38', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $immunityGroup->contains('week40', 1) ? '&#10004;' : '' !!}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
-                        <p><b>Kipimo cha HIV kwa mtu ambaye hana maambukizi hufanywa kati ya wiki 32 na 36.</b></p>
                         <br/>
 
                         @if($ultrasoundImages->isNotEmpty())
@@ -111,6 +116,44 @@
                         @else
                             <p>Hakuna picha za ultrasound zilizopatikana.</p>
                         @endif
+
+                        <br/>
+
+
+                        <!-- Services Table -->
+                        <h1><b>Huduma zilizotolewa kwa kila hudhurio</b></h1>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th rowspan="2">MAELEZO YA HUDUMA</th>
+                                    <th colspan="7">Wiki</th>
+                                </tr>
+                                <tr>
+                                    <th>Wiki 12</th>
+                                    <th>Wiki 20</th>
+                                    <th>Wiki 26</th>
+                                    <th>Wiki 30</th>
+                                    <th>Wiki 36</th>
+                                    <th>Wiki 38</th>
+                                    <th>Wiki 40</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($groupedService as $serviceName => $serviceGroup)
+                                <tr>
+                                    <td>{{ $serviceName }}</td>
+                                    <td>{!! $serviceGroup->contains('week12', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week20', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week26', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week30', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week36', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week38', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week40', 1) ? '&#10004;' : '' !!}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+
 
                         <div class="form-group-inner">
                             <div class="login-btn-inner">
