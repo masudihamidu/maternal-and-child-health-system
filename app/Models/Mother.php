@@ -9,6 +9,8 @@ use Illuminate\Database\Eloquent\Relations\hasOne;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Spatie\Permission\Traits\HasRoles;
+use Illuminate\Support\Facades\DB;
+
 
 
 
@@ -38,6 +40,28 @@ class Mother extends Authenticatable
         'ward',
         'street'
     ];
+
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::created(function ($mother) {
+            $shortRegion = substr($mother->region, 0, 3);
+            $shortDistrict = substr($mother->district, 0, 3);
+            $shortWard = substr($mother->ward, 0, 3);
+            $shortStreet = is_string($mother->street) ? substr($mother->street, 0, 3) : '';
+
+            $maternalCard = "{$shortRegion}/{$shortDistrict}/{$shortWard}/{$shortStreet}/{$mother->id}";
+
+            DB::table('maternal_cards')->insert([
+                'maternalCard' => $maternalCard,
+                'mother_id' => $mother->id,
+                'created_at' => now(),
+                'updated_at' => now()
+            ]);
+        });
+    }
 
     public function immunities()
     {
@@ -87,6 +111,11 @@ class Mother extends Authenticatable
     public function ultrasoundImages()
     {
         return $this->hasMany(UltrasoundImage::class);
+    }
+
+    public function maternalHealthCard()
+    {
+        return $this->hasOne(MaternalCard::class);
     }
 
 }

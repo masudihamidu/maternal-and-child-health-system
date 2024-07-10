@@ -117,30 +117,6 @@ class MotherController extends Controller
         }
     }
 
-    public function notifyUnassociatedMothers()
-    {
-
-        DB::enableQueryLog();
-
-        $unassociatedMothersCount = Mother::doesntHave('siblings')
-        ->doesntHave('father')
-        ->doesntHave('localChairman')
-        ->doesntHave('healthcareProfessional')
-        ->count();
-
-    // Log the queries executed
-    dd(DB::getQueryLog());
-
-                                      dd($unassociatedMothersCount);
-                                      logger()->info("Total unassociated mothers: $unassociatedMothersCount");
-                                      $healthcareProfessionals = HealthcareProfessional::all();
-                                      foreach ($healthcareProfessionals as $professional)
-                                      {
-                                        Notification::send($professional, new NotifyUnassociatedMothers($unassociatedMothers));
-                                    }
-
-        return back()->with('success', 'Notifications sent to healthcare professionals.');
-    }
 
 
     public function store(Request $request)
@@ -152,7 +128,7 @@ class MotherController extends Controller
             'mother_secondname' => 'required|string',
             'mother_lastname' => 'required|string',
             'mother_dob' => 'required|date',
-            'mother_phone_number' => ['required','string','regex:/^255\d{9}$/'],
+            'mother_phone_number' => ['required', 'string', 'regex:/^255\d{9}$/'],
             'education' => 'required|string',
             'occupation' => 'required|string',
             'marital_status' => 'required|string',
@@ -210,8 +186,8 @@ class MotherController extends Controller
             'chairman_name' => 'required|string',
             'chairman_phone_number' => ['required', 'string', 'regex:/^255\d{9}$/'],
             // health care professional information
-            'professional_name' =>'required|string',
-            'rank' =>'required|string',
+            'professional_name' => 'required|string',
+            'rank' => 'required|string',
             // pregnancy summary
             'lnmp' => 'required|date',
             'edd' => 'required|date',
@@ -264,14 +240,14 @@ class MotherController extends Controller
             'updated_at' => Carbon::now(),
         ]);
 
-      //    Create and save healthcare professional
-       $healthCareProfessional = HealthProfessional::create([
-        'professional_name' => $request->input('professional_name'),
-        'rank' => $request->input('rank'),
-        'mother_id' => $request->input('mother_id'),
-        'created_at' => Carbon::now(),
-        'updated_at' => Carbon::now(),
-      ]);
+        //    Create and save healthcare professional
+        $healthCareProfessional = HealthProfessional::create([
+            'professional_name' => $request->input('professional_name'),
+            'rank' => $request->input('rank'),
+            'mother_id' => $request->input('mother_id'),
+            'created_at' => Carbon::now(),
+            'updated_at' => Carbon::now(),
+        ]);
 
         //    Create and save pregnancy summary
         $pregnancySummary = PregnancySummary::create([
@@ -282,9 +258,9 @@ class MotherController extends Controller
             'mother_id' => $request->input('mother_id'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-          ]);
+        ]);
 
-          //    Create and save mother background
+        //    Create and save mother background
         $motherBackground = MotherBackground::create([
             'allergy' => $request->input('allergy'),
             'gravidity' => $request->input('gravidity'),
@@ -297,11 +273,11 @@ class MotherController extends Controller
             'mother_id' => $request->input('mother_id'),
             'created_at' => Carbon::now(),
             'updated_at' => Carbon::now(),
-          ]);
+        ]);
 
 
         // Redirect or return a response
-        if ($father && $sibling && $localChairman && $healthCareProfessional && $pregnancySummary && $motherBackground ) {
+        if ($father && $sibling && $localChairman && $healthCareProfessional && $pregnancySummary && $motherBackground) {
             return redirect()->route('motherDetails.showClinicProgress')->with('success', 'Form saved successfully.');
         } else {
             // Return with an error message if save was not successful
