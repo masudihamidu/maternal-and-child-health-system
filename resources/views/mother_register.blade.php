@@ -213,11 +213,9 @@
                                                 var dobField = document.getElementById('mother_dob');
                                                 var today = new Date();
 
-                                                var minDate = new Date();
-                                                minDate.setFullYear(today.getFullYear() - 55);
-
+                                                // Set the maximum date to 10 years ago
                                                 var maxDate = new Date();
-                                                maxDate.setFullYear(today.getFullYear() - 12);
+                                                maxDate.setFullYear(today.getFullYear() - 10);
 
                                                 // Format dates to YYYY-MM-DD
                                                 var formatDate = function (date) {
@@ -227,9 +225,9 @@
                                                     return year + '-' + month + '-' + day;
                                                 }
 
-                                                dobField.setAttribute('min', formatDate(minDate));
                                                 dobField.setAttribute('max', formatDate(maxDate));
                                             });
+
 
                                             document.addEventListener('DOMContentLoaded', function () {
                                                 // Fetch regions
