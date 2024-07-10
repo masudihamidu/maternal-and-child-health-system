@@ -10,7 +10,7 @@
                         <div class="main-sparkline12-hd">
                             <h1>Sajili ya Mjamzito</h1>
                             @if(Session::get('success'))
-                                <div class="alert alert-success">{{ Session::get('success') }}</div>
+                            <div class="alert alert-success">{{ Session::get('success') }}</div>
                             @endif
                             @if ($errors->any())
                                 <div class="alert alert-danger">
