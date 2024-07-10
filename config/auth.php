@@ -41,10 +41,10 @@ return [
             'provider' => 'users',
         ],
 
-
-        'mother' => [
+        // Add a guard for maternal_cards provider
+        'maternal_cards' => [
             'driver' => 'session',
-            'provider' => 'mothers',
+            'provider' => 'maternal_cards',
         ],
     ],
 
@@ -71,9 +71,10 @@ return [
             'model' => env('AUTH_MODEL', App\Models\User::class),
         ],
 
-        'mothers' => [
+        // Add a new provider for maternal_cards
+        'maternal_cards' => [
             'driver' => 'eloquent',
-            'model' => App\Models\Mother::class,
+            'model' => App\Models\MaternalCard::class,
         ],
         // 'users' => [
         //     'driver' => 'database',

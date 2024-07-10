@@ -17,26 +17,31 @@ class LocationController extends Controller
 
 
     public function getDistricts($region)
-{
-    $path = public_path('json/districts.json');
-    $json = file_get_contents($path);
-    $data = json_decode($json, true);
+    {
+        // Log received region
+        error_log('Received region: ' . $region);
 
-    // Debugging: Log received region and data
-    error_log('Region: ' . $region);
-    error_log('Data:');
-    error_log(print_r($data, true));
+        $path = public_path('json/districts.json');
+        $json = file_get_contents($path);
+        $data = json_decode($json, true);
 
-    $districts = array_filter($data['features'], function ($item) use ($region) {
-        return $item['properties']['region'] == $region;
-    });
+        // Log entire data for debugging
+        error_log('All districts data:');
+        error_log(print_r($data, true));
 
-    // Debugging: Log filtered districts
-    error_log('Filtered Districts:');
-    error_log(print_r($districts, true));
+        // Filter districts based on region
+        $districts = array_filter($data['features'], function ($item) use ($region) {
+            return $item['properties']['region'] == $region;
+        });
 
-    return response()->json(array_values($districts));
-}
+        // Log filtered districts
+        error_log('Filtered districts:');
+        error_log(print_r($districts, true));
+
+        return response()->json(array_values($districts));
+    }
+
+
 
 
 
