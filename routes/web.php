@@ -34,14 +34,15 @@ Route::get('/motherDisease', [DiseaseController::class, 'addDisease'])->name('mo
 Route::get('/motherInformation', [MotherController::class, 'motherDetails'])->name('motherInformation.motherDetails');
 Route::get('/motherDetails', [MotherController::class, 'showClinicProgress'])->name('motherDetails.showClinicProgress');
 Route::get('/ConversationAI.conversationAI', [ConversationController::class, 'showConversation'])->name('ConversationAI.showConversation');
+Route::get('/dashboard', [ConversationController::class, 'showAnalytics'])->name('dashboard');
 Route::get('/mother/pdf', [CliniCardController::class, 'generatePdf'])->name('mother.pdf');
 
 Route::post('/mother/login', [MotherLoginController::class, 'login'])->name('mother.login');
 
 // locations api
 Route::get('/regions', [LocationController::class, 'getRegions'])->name('getRegions');
-Route::get('/districts/{region}', [LocationController::class, 'getDistricts']);
-Route::get('/wards/{district}', [LocationController::class, 'getWards']);
+Route::get('/districts/{region}', [LocationController::class, 'getDistricts'])->name('getDistricts');
+Route::get('/wards/{district}', [LocationController::class, 'getWards'])->name('getWards');
 // =================================
 
 Route::get('/import', [ConversationController::class, 'importJson']);

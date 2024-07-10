@@ -49,12 +49,18 @@ class ConversationController extends Controller
         }
     }
 
-    public function showAnalytics()
-    {
-        $conversations = Conversation::all();
-        $wordFrequencies = $this->calculateWordFrequencies($conversations);
 
-        return view('dashboard', compact('wordFrequencies'));
+
+    public function showAnalytics(Request $request)
+    {
+        try {
+            $conversations = Conversation::all();
+            $wordFrequencies = $this->calculateWordFrequencies($conversations);
+
+            return view('dashboard', compact('wordFrequencies'));
+        } catch (\Exception $e) {
+            return response()->json(['error' => 'Failed to fetch analytics data: ' . $e->getMessage()], 500);
+        }
     }
 
     private function calculateWordFrequencies($conversations)

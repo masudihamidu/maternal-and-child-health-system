@@ -64,25 +64,21 @@
             <div class="row">
                 <div class="col-lg-12">
                 <br/>
-                    <div class="wordcloud-container">
+                    <class="wordcloud-container">
                     <h1><b>Jumbe zilizoulizwa</b></h1>
                     <br/>
 
                         <div class="wordcloud">
-                            <span style="font-size: 45px; left: 50%; top: 30%;">habari</span>
-                            <span style="font-size: 40px; left: 70%; top: 50%;">mama</span>
-                            <span style="font-size: 35px; left: 30%; top: 70%;">mjanzito</span>
-                            <span style="font-size: 30px; left: 60%; top: 20%;">wa</span>
-                            <span style="font-size: 25px; left: 80%; top: 40%;">kipimo</span>
-                            <span style="font-size: 20px; left: 20%; top: 50%;">physics</span>
-                            <span style="font-size: 15px; left: 40%; top: 80%;">cha</span>
-                            <span style="font-size: 10px; left: 60%; top: 70%;">health</span>
-                            <span style="font-size: 50px; left: 50%; top: 50%;">jamzito</span>
-                            <span style="font-size: 5px; left: 10%; top: 20%;">what</span>
-                            <span style="font-size: 12px; left: 70%; top: 10%;">kwetu</span>
-                            <span style="font-size: 14px; left: 30%; top: 30%;">health</span>
+                        @foreach ($wordFrequencies as $word => $frequency)
+                @php
+                    $fontSize = max(8, $frequency); // Ensure minimum font size of 30 pixels
+                @endphp
+                <span style="font-size: {{ $fontSize }}px; left: {{ rand(0, 100) }}%; top: {{ rand(0, 100) }}%;">{{ $word }}</span>
+            @endforeach
+
+                </div>
                             <!-- Add more words as needed with varying font sizes -->
-                        </div>
+
                     </div>
                 </div>
             </div>
