@@ -6,6 +6,8 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Mother;
 use App\Models\HealthProfessional;
+use App\Models\Disease;
+use App\Models\Immunity;
 use Barryvdh\DomPDF\Facade\Pdf;
 
 class HealthProfessionalController extends Controller
@@ -14,9 +16,8 @@ class HealthProfessionalController extends Controller
     {
         // Validate the request data
         $request->validate([
-            //mother information
             'professional_name' => 'required|string',
-            'rank' => ['required|string'],
+            'rank' => 'required|string',
             'mother_id' => 'required|exists:mothers,id',
         ]);
 
@@ -62,16 +63,30 @@ class HealthProfessionalController extends Controller
 
     public function getMothersWithDiseaseToday()
     {
-        return Mother::whereHas('diseases', function ($query) {
-            $query->whereDate('created_at', Carbon::today());
-        })->count();
+        // Fetch diseases for today
+        $diseasesToday = Disease::whereDate('created_at', Carbon::today())->get();
+
+        // Format output: disease_name (count)
+        $result = [];
+        foreach ($diseasesToday as $disease) {
+            $result[] = $disease->disease_name . ' (' . $disease->mother->count() . ')';
+        }
+
+        return implode(', ', $result);
     }
 
     public function getMothersWithImmunityToday()
     {
-        return Mother::whereHas('immunities', function ($query) {
-            $query->whereDate('created_at', Carbon::today());
-        })->count();
+        // Fetch immunities for today
+        $immunitiesToday = Immunity::whereDate('created_at', Carbon::today())->get();
+
+        // Format output: immunity_name (count)
+        $result = [];
+        foreach ($immunitiesToday as $immunity) {
+            $result[] = $immunity->immunity_name . ' (' . $immunity->mother->count() . ')';
+        }
+
+        return implode(', ', $result);
     }
 
     public function dashboard()
@@ -81,10 +96,9 @@ class HealthProfessionalController extends Controller
         $totalMothersThisMonth = $this->getTotalThisMonth();
         $totalMothersThisYear = $this->getTotalThisYear();
         $mothersWithDiseaseToday = $this->getMothersWithDiseaseToday();
-        $mothersWithDiseaseToday = $this->getMothersWithDiseaseToday();
-        $getMothersWithImmunityToday = $this->getMothersWithImmunityToday();
+        $mothersWithImmunityToday = $this->getMothersWithImmunityToday();
 
-        return view('dashboard', compact('totalMothers', 'totalMothersToday', 'totalMothersThisMonth', 'totalMothersThisYear', 'mothersWithDiseaseToday', 'getMothersWithImmunityToday'));
+        return view('dashboard', compact('totalMothers', 'totalMothersToday', 'totalMothersThisMonth', 'totalMothersThisYear', 'mothersWithDiseaseToday', 'mothersWithImmunityToday'));
     }
 
     public function generatePdfReport()
@@ -98,17 +112,30 @@ class HealthProfessionalController extends Controller
             $mothersWithDiseaseToday = $this->getMothersWithDiseaseToday();
             $mothersWithImmunityToday = $this->getMothersWithImmunityToday();
 
+            // Get the current date for the printed date
+            $printedDate = now()->format('d-m-Y H:i:s');
+            $reportName = 'ripoti_ya_tarehe_' . $printedDate;
+
             // Start building HTML for PDF
             $html = '<html>';
-            $html .= '<head><meta charset="utf-8"></head>';
+            $html .= '<head>';
+            $html .= '<meta charset="utf-8">';
+            $html .= '<style>';
+            $html .= 'h2 { text-align: center; text-decoration: underline; }';
+            $html .= '.printed-date { text-align: right; margin-right: 10px; }';
+            $html .= '</style>';
+            $html .= '</head>';
             $html .= '<body>';
-            $html .= '<h1>PDF Report</h1>';
-            $html .= '<p>Total Mothers: ' . $totalMothers . '</p>';
-            $html .= '<p>Total Mothers Today: ' . $totalMothersToday . '</p>';
-            $html .= '<p>Total Mothers This Month: ' . $totalMothersThisMonth . '</p>';
-            $html .= '<p>Total Mothers This Year: ' . $totalMothersThisYear . '</p>';
-            $html .= '<p>Mothers with Disease Today: ' . $mothersWithDiseaseToday . '</p>';
-            $html .= '<p>Mothers with Immunity Today: ' . $mothersWithImmunityToday . '</p>';
+            $html .= '<p class="printed-date"><strong>Tarehe ya Kuchapishwa:</strong> ' . $printedDate . '</p>';
+            $html .= '<h2>Ripoti ya Siku</h2>';
+            // Display total counts
+            $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliosajiliwa:</strong> ' . $totalMothers . '</p>';
+            $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliosajiliwa Leo:</strong> ' . $totalMothersToday . '</p>';
+            $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliosajiliwa Mwezi Huu:</strong> ' . $totalMothersThisMonth . '</p>';
+            $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliosajiliwa Mwaka Huu:</strong> ' . $totalMothersThisYear . '</p>';
+            $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliofanyiwa Vipimo vya Maabara Leo:</strong> ' . $mothersWithDiseaseToday . '</p>';
+            $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliopewa Chanjo Leo:</strong> ' . $mothersWithImmunityToday . '</p>';
+
             $html .= '</body>';
             $html .= '</html>';
 
@@ -117,10 +144,11 @@ class HealthProfessionalController extends Controller
 
             // Optionally, you can save the PDF to a file or return it as a response
             // For download:
-            return $pdf->download('report.pdf');
+            return $pdf->download($reportName . '.pdf');
         } catch (\Exception $e) {
             // Handle exceptions
             return redirect()->back()->with('error', 'Failed to generate PDF report.');
         }
     }
+
 }
