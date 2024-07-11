@@ -29,12 +29,15 @@ Route::middleware('auth')->group(function () {
 
 Route::get('/motherService', [ServiceController::class, 'index'])->name('motherService');
 Route::get('/dashboard', [HealthProfessionalController::class, 'dashboard'])->name('dashboard');
+Route::get('/report', [HealthProfessionalController::class, 'generatePdfReport'])->name('generatePdfReport');
+
 Route::get('/motherImmunity', [ImmunityController::class, 'addImmunity'])->name('motherImmunity.addImmunity');
 Route::get('/motherDisease', [DiseaseController::class, 'addDisease'])->name('motherDisease.addDisease');
 Route::get('/motherInformation', [MotherController::class, 'motherDetails'])->name('motherInformation.motherDetails');
 Route::get('/motherDetails', [MotherController::class, 'showClinicProgress'])->name('motherDetails.showClinicProgress');
 Route::get('/ConversationAI.conversationAI', [ConversationController::class, 'showConversation'])->name('ConversationAI.showConversation');
 Route::get('/dashboard', [ConversationController::class, 'showAnalytics'])->name('dashboard');
+Route::get('/fetch-daily-data', [ConversationController::class, 'fetchDailyData'])->name('fetch-daily-data');
 Route::get('/mother/pdf', [CliniCardController::class, 'generatePdf'])->name('mother.pdf');
 
 Route::post('/mother/login', [MotherLoginController::class, 'login'])->name('mother.login');

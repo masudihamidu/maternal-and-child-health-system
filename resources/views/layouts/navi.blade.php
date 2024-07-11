@@ -30,7 +30,7 @@
                                                 </li>
                                                 <li class="nav-item"><a href="{{ route('registered_mothers.showRegisteredExpectant') }}" class="nav-link">Mama Watarajiwa</a>
                                                 </li>
-                                                <li class="nav-item"><a href="" class="nav-link">Ripoti</a>
+                                                <li class="nav-item"><a href="{{ route('generatePdfReport') }}" class="nav-link">Ripoti</a>
                                                 </li>
                                             </ul>
                                         </div>

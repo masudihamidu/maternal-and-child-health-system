@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Conversation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
+
+
 
 class ConversationController extends Controller
 {
@@ -12,6 +16,15 @@ class ConversationController extends Controller
     {
         return view('openAI.openAi');
     }
+
+    public function fetchDailyData()
+{
+    $data = Conversation::select(DB::raw('DATE(created_at) as date'), DB::raw('count(*) as count'))
+                        ->groupBy(DB::raw('DATE(created_at)'))
+                        ->get();
+
+    return response()->json($data);
+}
 
     public function importJson()
     {

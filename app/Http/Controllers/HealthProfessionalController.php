@@ -6,6 +6,7 @@ use Carbon\Carbon;
 use Illuminate\Http\Request;
 use App\Models\Mother;
 use App\Models\HealthProfessional;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class HealthProfessionalController extends Controller
 {
@@ -59,13 +60,67 @@ class HealthProfessionalController extends Controller
         return Mother::whereYear('created_at', Carbon::now()->year)->count();
     }
 
+    public function getMothersWithDiseaseToday()
+    {
+        return Mother::whereHas('diseases', function ($query) {
+            $query->whereDate('created_at', Carbon::today());
+        })->count();
+    }
+
+    public function getMothersWithImmunityToday()
+    {
+        return Mother::whereHas('immunities', function ($query) {
+            $query->whereDate('created_at', Carbon::today());
+        })->count();
+    }
+
     public function dashboard()
     {
         $totalMothers = $this->getTotal();
         $totalMothersToday = $this->getTotalToday();
         $totalMothersThisMonth = $this->getTotalThisMonth();
         $totalMothersThisYear = $this->getTotalThisYear();
+        $mothersWithDiseaseToday = $this->getMothersWithDiseaseToday();
+        $mothersWithDiseaseToday = $this->getMothersWithDiseaseToday();
+        $getMothersWithImmunityToday = $this->getMothersWithImmunityToday();
 
-        return view('dashboard', compact('totalMothers', 'totalMothersToday', 'totalMothersThisMonth', 'totalMothersThisYear'));
+        return view('dashboard', compact('totalMothers', 'totalMothersToday', 'totalMothersThisMonth', 'totalMothersThisYear', 'mothersWithDiseaseToday', 'getMothersWithImmunityToday'));
+    }
+
+    public function generatePdfReport()
+    {
+        try {
+            // Fetch data for your report
+            $totalMothers = $this->getTotal();
+            $totalMothersToday = $this->getTotalToday();
+            $totalMothersThisMonth = $this->getTotalThisMonth();
+            $totalMothersThisYear = $this->getTotalThisYear();
+            $mothersWithDiseaseToday = $this->getMothersWithDiseaseToday();
+            $mothersWithImmunityToday = $this->getMothersWithImmunityToday();
+
+            // Start building HTML for PDF
+            $html = '<html>';
+            $html .= '<head><meta charset="utf-8"></head>';
+            $html .= '<body>';
+            $html .= '<h1>PDF Report</h1>';
+            $html .= '<p>Total Mothers: ' . $totalMothers . '</p>';
+            $html .= '<p>Total Mothers Today: ' . $totalMothersToday . '</p>';
+            $html .= '<p>Total Mothers This Month: ' . $totalMothersThisMonth . '</p>';
+            $html .= '<p>Total Mothers This Year: ' . $totalMothersThisYear . '</p>';
+            $html .= '<p>Mothers with Disease Today: ' . $mothersWithDiseaseToday . '</p>';
+            $html .= '<p>Mothers with Immunity Today: ' . $mothersWithImmunityToday . '</p>';
+            $html .= '</body>';
+            $html .= '</html>';
+
+            // Load HTML content and generate PDF
+            $pdf = PDF::loadHTML($html)->setPaper('a4', 'portrait');
+
+            // Optionally, you can save the PDF to a file or return it as a response
+            // For download:
+            return $pdf->download('report.pdf');
+        } catch (\Exception $e) {
+            // Handle exceptions
+            return redirect()->back()->with('error', 'Failed to generate PDF report.');
+        }
     }
 }

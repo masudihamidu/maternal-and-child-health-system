@@ -29,7 +29,7 @@
                     </li>
 
                     <li>
-                        <a title="Landing Page" href="" aria-expanded="false">
+                        <a title="Landing Page" href="{{ route('generatePdfReport') }}" aria-expanded="false">
                             <span class="far fa-file-alt" aria-hidden="true"></span>
                             <span class="mini-click-non">Ripoti</span>
                         </a>
