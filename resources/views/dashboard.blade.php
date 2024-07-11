@@ -80,50 +80,56 @@
             </div>
             <br />
 
-            <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="analytics-sparkle-line reso-mg-b-30">
-                        <div class="analytics-content">
-                            <h5>Jumla ya Wajawazito Waliofanyiwa Vipimo</h5>
-                            <h2><span
-                                    class="counter">{{(app(\App\Http\Controllers\HealthProfessionalController::class)->getMothersWithDiseaseToday())}}</span>
-                                <span class="tuition-fees">Leo</span>
-                            </h2>
-                            <span class="text-success"></span>
-                            <div class="progress m-b-0">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50"
-                                    aria-valuemin="0" aria-valuemax="100" style="width:20%;"> <span class="sr-only">20%
-                                        Imekamilika</span> </div>
+            <div class="product-sales-area mg-tb-30">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" >
+                            <div class="product-sales-chart" >
+                                <div class="pie-bar-line-area mg-t-30 mg-b-15">
+                                    @include('layouts.bar');
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
 
-                <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12">
-                    <div class="analytics-sparkle-line reso-mg-b-30">
-                        <div class="analytics-content">
-                            <h5>Jumla ya Wajawazito Waliopewa Chanjo</h5>
-                            <h2><span
-                                    class="counter">{{(app(\App\Http\Controllers\HealthProfessionalController::class)->getMothersWithImmunityToday())}}</span>
-                                <span class="tuition-fees">Leo</span>
-                            </h2>
-                            <span class="text-success"></span>
-                            <div class="progress m-b-0">
-                                <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="50"
-                                    aria-valuemin="0" aria-valuemax="100" style="width:20%;"> <span class="sr-only">20%
-                                        Imekamilika</span> </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
+                            <div
+                                class="white-box analytics-info-cs mg-b-10 res-mg-b-30 res-mg-t-30 table-mg-t-pro-n tb-sm-res-d-n dk-res-t-d-n">
+                                <h3 class="box-title">Jumla ya Wajawazito Waliofanyiwa Vipimo Leo </h3>
+                                <ul class="list-inline two-part-sp">
+                                    <li>
+                                        <div id="sparklinedash"></div>
+                                    </li>
+                                    <li class="text-right sp-cn-r"><i class="fa fa-level-up" aria-hidden="true"></i>
+                                        <span
+                                            class="counter">{{(app(\App\Http\Controllers\HealthProfessionalController::class)->getMothersWithDiseaseSysToday())}}</span>
+
+                                    </li>
+                                </ul>
                             </div>
+
+                            <div class="white-box analytics-info-cs mg-b-10 res-mg-b-30 tb-sm-res-d-n dk-res-t-d-n">
+                            <h3 class="box-title">Jumla ya Wajawazito Waliopewa Chanjo Leo</h3>
+                            <ul class="list-inline two-part-sp">
+                                <li>
+                                    <div id="sparklinedash2"></div>
+                                </li>
+                                <li class="text-right graph-two-ctn"><i class="fa fa-level-up" aria-hidden="true"></i>
+                                <span
+                                    class="counter">{{(app(\App\Http\Controllers\HealthProfessionalController::class)->getMothersWithImmunitySysToday())}}</span>
+                                </li>
+                            </ul>
                         </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
-
 
             <!-- Word Cloud Section -->
             <div class="row">
                 <div class="col-lg-12">
                     <div class="wordcloud-container">
-                        <h1><b>Jumbe zilizoulizwa</b></h1>
+                        <h2><b>Jumbe zilizoulizwa</b></h2>
                         <br />
                         <div class="wordcloud">
                             @foreach ($wordFrequencies as $word => $frequency)
@@ -137,67 +143,38 @@
                     </div>
                 </div>
             </div>
-            <!-- Bar Chart Section -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="card">
-                        <div class="card-header">
-                            Daily Conversations
-                        </div>
-                        <div class="card-body">
-                            <canvas id="dailyDataChart" width="400" height="200"></canvas>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
     </div>
 </div>
-<div class="pie-bar-line-area mg-t-30 mg-b-15">
-                @include('layouts.bar');
-            </div>
-
 
 @endsection
 
-@section('scripts')
-<script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js') }}"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        fetch('{{ route("fetch-daily-data") }}')
-            .then(response => response.json())
-            .then(data => {
-                const labels = data.map(item => item.date);
-                const values = data.map(item => item.count);
+<script defer async>
+  document.addEventListener('DOMContentLoaded', function() {
+    // setting global variables
+    window.botId = 3930
 
-                const ctx = document.getElementById('dailyDataChart').getContext('2d');
-                new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: labels,
-                        datasets: [{
-                            label: 'Conversations per Day',
-                            data: values,
-                            backgroundColor: 'rgba(54, 162, 235, 0.6)',
-                            borderColor: 'rgba(54, 162, 235, 1)',
-                            borderWidth: 1
-                        }]
-                    },
-                    options: {
-                        scales: {
-                            yAxes: [{
-                                ticks: {
-                                    beginAtZero: true
-                                }
-                            }]
-                        }
-                    }
-                });
-            })
-            .catch(error => console.error('Error fetching data:', error));
-    });
+    // create div with id = sarufi-chatbox
+    const div = document.createElement("div")
+    div.id = "sarufi-chatbox"
+    document.body.appendChild(div)
+
+    // create and attach script tag
+    const script = document.createElement("script")
+    script.crossOrigin = true
+    script.type = "module"
+    script.src = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/script.js"
+    document.head.appendChild(script)
+
+    // create and attach css
+    const style = document.createElement("link")
+    style.crossOrigin = true
+    style.rel = "stylesheet"
+    style.href = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/style.css"
+    document.head.appendChild(style)
+  });
 </script>
-@endsection
 
 <style>
     .wordcloud-container {

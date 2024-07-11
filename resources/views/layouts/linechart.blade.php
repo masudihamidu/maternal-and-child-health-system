@@ -1,26 +1,26 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Daily Payments Data
-        var dailyPaymentsData = @json("");
+        // Mothers with Disease Today Data
+        var mothersWithDiseaseToday = @json("");
 
-        var paymentDates = dailyPaymentsData.map(function(item) {
+        var diseaseDates = mothersWithDiseaseToday.map(function(item) {
             return item.date;
         });
-        var paymentAmounts = dailyPaymentsData.map(function(item) {
-            return item.total_amount;
+        var mothersWithDiseaseCount = mothersWithDiseaseToday.map(function(item) {
+            return item.countMotherWITHdisease;
         });
 
-        // Generate Bar Chart for Daily Payments
+        // Generate Bar Chart for Mothers with Disease Today
         c3.generate({
-            bindto: '#dailyPaymentsChart',
+            bindto: '#barChart',
             data: {
                 x: 'x',
                 columns: [
-                    ['x'].concat(paymentDates),
-                    ['Total Amount'].concat(paymentAmounts)
+                    ['x'].concat(diseaseDates),
+                    ['Mothers with Disease'].concat(mothersWithDiseaseCount)
                 ],
                 colors: {
-                    'Total Amount': '#006DF0'
+                    'Mothers with Disease': '#006DF0'
                 },
                 type: 'bar'
             },
@@ -31,27 +31,27 @@
             }
         });
 
-        // Daily Tax Charges Data
-        var dailyChargesData = @json("");
+        // Mothers with Immunity Today Data
+        var mothersWithImmunityToday = @json("");
 
-        var chargeDates = dailyChargesData.map(function(item) {
+        var immunityDates = mothersWithImmunityToday.map(function(item) {
             return item.date;
         });
-        var chargeAmounts = dailyChargesData.map(function(item) {
-            return item.total_amount;
+        var mothersWithImmunityCount = mothersWithImmunityToday.map(function(item) {
+            return item.countMotherWITHimmunity;
         });
 
-        // Generate Line Chart for Daily Tax Charges
+        // Generate Line Chart for Mothers with Immunity Today
         c3.generate({
             bindto: '#lineChart',
             data: {
                 x: 'x',
                 columns: [
-                    ['x'].concat(chargeDates),
-                    ['Total Tax Charges'].concat(chargeAmounts)
+                    ['x'].concat(immunityDates),
+                    ['Mothers with Immunity'].concat(mothersWithImmunityCount)
                 ],
                 colors: {
-                    'Total Tax Charges': '#933EC5'
+                    'Mothers with Immunity': '#933EC5'
                 },
                 type: 'line'
             },
