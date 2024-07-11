@@ -56,8 +56,6 @@ class MotherController extends Controller
             $groupedService = $services->groupBy('service_name');
 
 
-
-
             // Check if the mother has associated data
             $hasAssociatedData = $mother->father()->exists() &&
                 $mother->siblings()->exists() &&
@@ -75,8 +73,6 @@ class MotherController extends Controller
             return redirect()->route('mother_register.index')->with('error', 'Failed to fetch mother details.');
         }
     }
-
-
 
 
     public function showClinicProgress(Request $request)

@@ -10,6 +10,9 @@
     <!-- price-slider JS
 		============================================ -->
     <script src="{{ asset('js/jquery-price-slider.js') }}"></script>
+
+    <script src="{{ asset('https://cdn.jsdelivr.net/npm/chart.js') }}"></script>
+
     <!-- meanmenu JS
 		============================================ -->
     <script src="{{ asset('js/jquery.meanmenu.js') }}"></script>
