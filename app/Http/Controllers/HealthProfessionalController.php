@@ -142,15 +142,18 @@ class HealthProfessionalController extends Controller
         // Get today's date
         $today = Carbon::today();
 
-        // Query distinct mother IDs from diseases and immunities registered today
+        // Query distinct mother IDs from diseases, immunities, and services registered today
         $totalAttendanceToday = Mother::whereHas('diseases', function ($query) use ($today) {
             $query->whereDate('created_at', $today);
         })->orWhereHas('immunities', function ($query) use ($today) {
+            $query->whereDate('created_at', $today);
+        })->orWhereHas('services', function ($query) use ($today) {
             $query->whereDate('created_at', $today);
         })->distinct('id')->count('id');
 
         return $totalAttendanceToday;
     }
+
 
 
     public function dashboard()
@@ -385,15 +388,18 @@ class HealthProfessionalController extends Controller
         $firstDayOfMonth = Carbon::now()->startOfMonth();
         $lastDayOfMonth = Carbon::now()->endOfMonth();
 
-        // Query distinct mother IDs from diseases and immunities registered in the current month
+        // Query distinct mother IDs from diseases, immunities, and services registered in the current month
         $totalAttendanceThisMonth = Mother::whereHas('diseases', function ($query) use ($firstDayOfMonth, $lastDayOfMonth) {
             $query->whereBetween('created_at', [$firstDayOfMonth, $lastDayOfMonth]);
         })->orWhereHas('immunities', function ($query) use ($firstDayOfMonth, $lastDayOfMonth) {
+            $query->whereBetween('created_at', [$firstDayOfMonth, $lastDayOfMonth]);
+        })->orWhereHas('services', function ($query) use ($firstDayOfMonth, $lastDayOfMonth) {
             $query->whereBetween('created_at', [$firstDayOfMonth, $lastDayOfMonth]);
         })->distinct('id')->count('id');
 
         return $totalAttendanceThisMonth;
     }
+
 
 
     public function generateMonthlyPdfReport()
@@ -487,32 +493,32 @@ class HealthProfessionalController extends Controller
             $html .= '</table>';
 
 
-             // Calculate total service for the month
-             $totalServiceThisMonth = array_sum($getMothersWithServicesThisMonth);
+            // Calculate total service for the month
+            $totalServiceThisMonth = array_sum($getMothersWithServicesThisMonth);
 
-              // Services this month table
-              $html .= '<h4>Huduma za kawaida zilizotolewa kwa Mwezi Huu:</h4>';
-              $html .= '<table>';
-              $html .= '<thead>';
-              $html .= '<tr>';
-              $html .= '<th>Jina la Huduma</th>';
-              $html .= '<th>Idadi</th>';
-              $html .= '</tr>';
-              $html .= '</thead>';
-              $html .= '<tbody>';
-              foreach ($getMothersWithServicesThisMonth as $serviceName => $count) {
-                  $html .= '<tr>';
-                  $html .= '<td>' . $serviceName . '</td>';
-                  $html .= '<td>' . $count . '</td>';
-                  $html .= '</tr>';
-              }
-              // total row
-              $html .= '<tr>';
-              $html .= '<td><strong>Jumla</strong></td>';
-              $html .= '<td><strong>' . $totalServiceThisMonth . '</strong></td>';
-              $html .= '</tr>';
-              $html .= '</tbody>';
-              $html .= '</table>';
+            // Services this month table
+            $html .= '<h4>Huduma za kawaida zilizotolewa kwa Mwezi Huu:</h4>';
+            $html .= '<table>';
+            $html .= '<thead>';
+            $html .= '<tr>';
+            $html .= '<th>Jina la Huduma</th>';
+            $html .= '<th>Idadi</th>';
+            $html .= '</tr>';
+            $html .= '</thead>';
+            $html .= '<tbody>';
+            foreach ($getMothersWithServicesThisMonth as $serviceName => $count) {
+                $html .= '<tr>';
+                $html .= '<td>' . $serviceName . '</td>';
+                $html .= '<td>' . $count . '</td>';
+                $html .= '</tr>';
+            }
+            // total row
+            $html .= '<tr>';
+            $html .= '<td><strong>Jumla</strong></td>';
+            $html .= '<td><strong>' . $totalServiceThisMonth . '</strong></td>';
+            $html .= '</tr>';
+            $html .= '</tbody>';
+            $html .= '</table>';
 
             $html .= '</body>';
             $html .= '</html>';
