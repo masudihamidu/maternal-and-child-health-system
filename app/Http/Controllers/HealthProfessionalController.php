@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Mother;
 use App\Models\HealthProfessional;
 use App\Models\Disease;
+use App\Models\Service;
 use App\Models\Immunity;
 use Barryvdh\DomPDF\Facade\Pdf;
 
@@ -90,6 +91,20 @@ class HealthProfessionalController extends Controller
         return implode(', ', $result);
     }
 
+    public function getMothersWithServiceToday()
+    {
+        // Fetch diseases for today
+        $serviceToday = Service::whereDate('created_at', Carbon::today())->get();
+
+        // Format output: disease_name (count)
+        $result = [];
+        foreach ($serviceToday as $service) {
+            $result[] = $service->disease_name . ' (' . $service->mother->count() . ')';
+        }
+
+        return implode(', ', $result);
+    }
+
     public function getMothersWithImmunityToday()
     {
         // Fetch immunities for today
@@ -122,6 +137,22 @@ class HealthProfessionalController extends Controller
     }
 
 
+    public function getTotalClinicAttendanceToday()
+    {
+        // Get today's date
+        $today = Carbon::today();
+
+        // Query distinct mother IDs from diseases and immunities registered today
+        $totalAttendanceToday = Mother::whereHas('diseases', function ($query) use ($today) {
+            $query->whereDate('created_at', $today);
+        })->orWhereHas('immunities', function ($query) use ($today) {
+            $query->whereDate('created_at', $today);
+        })->distinct('id')->count('id');
+
+        return $totalAttendanceToday;
+    }
+
+
     public function dashboard()
     {
         $totalMothers = $this->getTotal();
@@ -147,8 +178,31 @@ class HealthProfessionalController extends Controller
             $totalMothersToday = $this->getTotalToday();
             $totalMothersThisMonth = $this->getTotalThisMonth();
             $totalMothersThisYear = $this->getTotalThisYear();
-            $getMothersWithDiseaseSysToday = $this->getMothersWithDiseaseSysToday();
-            $getMothersWithImmunitySysToday = $this->getMothersWithImmunitySysToday();
+            $totalClinicAttendanceToday = $this->getTotalClinicAttendanceToday();
+
+
+            // Get today's disease and immunity counts
+            $diseasesToday = Disease::whereDate('created_at', Carbon::today())
+                ->groupBy('disease_name')
+                ->selectRaw('disease_name, count(*) as total')
+                ->get();
+
+            $immunitiesToday = Immunity::whereDate('created_at', Carbon::today())
+                ->groupBy('immunity_name')
+                ->selectRaw('immunity_name, count(*) as total')
+                ->get();
+
+            $serviceToday = Service::whereDate('created_at', Carbon::today())
+                ->groupBy('service_name')
+                ->selectRaw('service_name, count(*) as total')
+                ->get();
+
+
+            // Calculate total diseases and immunities for today
+            $totalDiseasesToday = $diseasesToday->sum('total');
+            $totalImmunitiesToday = $immunitiesToday->sum('total');
+            $totalServicesToday = $serviceToday->sum('total');
+
 
             // Get the current date for the printed date
             $printedDate = now()->format('d-m-Y H:i:s');
@@ -163,6 +217,7 @@ class HealthProfessionalController extends Controller
             $html .= '.printed-date { text-align: right; margin-right: 10px; }';
             $html .= 'table { width: 100%; border-collapse: collapse; margin-top: 10px; }';
             $html .= 'table th, table td { border: 1px solid #000; padding: 8px; text-align: left; }';
+            $html .= 'th { background-color: #f2f2f2; }';
             $html .= '</style>';
             $html .= '</head>';
             $html .= '<body>';
@@ -173,51 +228,83 @@ class HealthProfessionalController extends Controller
             $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliosajiliwa Leo:</strong> ' . $totalMothersToday . '</p>';
             $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliosajiliwa Mwezi Huu:</strong> ' . $totalMothersThisMonth . '</p>';
             $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliosajiliwa Mwaka Huu:</strong> ' . $totalMothersThisYear . '</p>';
-            $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliofanyiwa Vipimo vya Maabara Leo:</strong> ' . $getMothersWithDiseaseSysToday . '</p>';
+            $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliohudhuria Kliniki Leo:</strong> ' . $totalClinicAttendanceToday . '</p>';
 
             // Diseases today table
-            $html .= '<h3>Vipimo:</h3>';
+            $html .= '<h4>Vipimo vya maabara:</h4>';
             $html .= '<table>';
+            $html .= '<caption>Jumla ya Mama Watarajiwa Waliofanyiwa Vipimo vya Maabara Leo: ' . $totalDiseasesToday . '</caption>';
             $html .= '<thead>';
             $html .= '<tr>';
             $html .= '<th>Jina la Kipimo</th>';
-            $html .= '<th>Jumla</th>';
+            $html .= '<th>Idadi</th>';
             $html .= '</tr>';
             $html .= '</thead>';
             $html .= '<tbody>';
-            $diseasesToday = Disease::whereDate('created_at', Carbon::today())
-                ->groupBy('disease_name')
-                ->selectRaw('disease_name, count(*) as total')
-                ->get();
             foreach ($diseasesToday as $disease) {
                 $html .= '<tr>';
                 $html .= '<td>' . $disease->disease_name . '</td>';
                 $html .= '<td>' . $disease->total . '</td>';
                 $html .= '</tr>';
             }
+            // Add total row
+            $html .= '<tr>';
+            $html .= '<td><strong>Jumla</strong></td>';
+            $html .= '<td><strong>' . $totalDiseasesToday . '</strong></td>';
+            $html .= '</tr>';
             $html .= '</tbody>';
             $html .= '</table>';
+            $html .= '<br/>';
 
             // Immunities today table
-            $html .= '<h3>Chanjo:</h3>';
+            $html .= '<h4>Chanjo:</h4>';
             $html .= '<table>';
+            $html .= '<caption>Jumla ya Mama Watarajiwa Waliopatiwa Chanjo Leo: ' . $totalImmunitiesToday . '</caption>';
             $html .= '<thead>';
             $html .= '<tr>';
             $html .= '<th>Jina la Chanjo</th>';
-            $html .= '<th>Jumla</th>';
+            $html .= '<th>Idadi</th>';
             $html .= '</tr>';
             $html .= '</thead>';
             $html .= '<tbody>';
-            $immunitiesToday = Immunity::whereDate('created_at', Carbon::today())
-                ->groupBy('immunity_name')
-                ->selectRaw('immunity_name, count(*) as total')
-                ->get();
             foreach ($immunitiesToday as $immunity) {
                 $html .= '<tr>';
                 $html .= '<td>' . $immunity->immunity_name . '</td>';
                 $html .= '<td>' . $immunity->total . '</td>';
                 $html .= '</tr>';
             }
+
+            $html .= '<tr>';
+            $html .= '<td><strong>Jumla</strong></td>';
+            $html .= '<td><strong>' . $totalImmunitiesToday . '</strong></td>';
+            $html .= '</tr>';
+            $html .= '</tbody>';
+            $html .= '</table>';
+
+
+            // Serive today table
+            $html .= '<br/>';
+            $html .= '<h4>Huduma za kawaida kwa Mama Wajawazito Wafikapo Kliniki:</h4>';
+            $html .= '<table>';
+            $html .= '<caption>Jumla ya Mama Watarajiwa Waliopatiwa Huduma za Kawaida Leo: ' . $totalServicesToday . '</caption>';
+            $html .= '<thead>';
+            $html .= '<tr>';
+            $html .= '<th>Jina la Huduma</th>';
+            $html .= '<th>Idadi</th>';
+            $html .= '</tr>';
+            $html .= '</thead>';
+            $html .= '<tbody>';
+            foreach ($serviceToday as $service) {
+                $html .= '<tr>';
+                $html .= '<td>' . $service->service_name . '</td>';
+                $html .= '<td>' . $service->total . '</td>';
+                $html .= '</tr>';
+            }
+
+            $html .= '<tr>';
+            $html .= '<td><strong>Jumla</strong></td>';
+            $html .= '<td><strong>' . $totalServicesToday . '</strong></td>';
+            $html .= '</tr>';
             $html .= '</tbody>';
             $html .= '</table>';
 
@@ -235,6 +322,213 @@ class HealthProfessionalController extends Controller
             return redirect()->back()->with('error', 'Failed to generate PDF report.');
         }
     }
+
+
+
+    public function getMothersWithDiseasesThisMonth()
+    {
+        // Get the first and last day of the current month
+        $firstDayOfMonth = Carbon::now()->startOfMonth();
+        $lastDayOfMonth = Carbon::now()->endOfMonth();
+
+        // Query diseases registered between the first and last day of the current month
+        $diseasesThisMonth = Disease::whereBetween('created_at', [$firstDayOfMonth, $lastDayOfMonth])
+            ->groupBy('disease_name')
+            ->selectRaw('disease_name, count(*) as total')
+            ->get()
+            ->pluck('total', 'disease_name')
+            ->toArray();
+
+        return $diseasesThisMonth;
+    }
+
+
+    public function getMothersWithImmunitiesThisMonth()
+    {
+        // Get the first and last day of the current month
+        $firstDayOfMonth = Carbon::now()->startOfMonth();
+        $lastDayOfMonth = Carbon::now()->endOfMonth();
+
+        // Query immunities registered between the first and last day of the current month
+        $immunitiesThisMonth = Immunity::whereBetween('created_at', [$firstDayOfMonth, $lastDayOfMonth])
+            ->groupBy('immunity_name')
+            ->selectRaw('immunity_name, count(*) as total')
+            ->get()
+            ->pluck('total', 'immunity_name')
+            ->toArray();
+
+        return $immunitiesThisMonth;
+    }
+
+
+    public function getMothersWithServicesThisMonth()
+    {
+        // Get the first and last day of the current month
+        $firstDayOfMonth = Carbon::now()->startOfMonth();
+        $lastDayOfMonth = Carbon::now()->endOfMonth();
+
+        // Query immunities registered between the first and last day of the current month
+        $servicesThisMonth = Service::whereBetween('created_at', [$firstDayOfMonth, $lastDayOfMonth])
+            ->groupBy('service_name')
+            ->selectRaw('service_name, count(*) as total')
+            ->get()
+            ->pluck('total', 'service_name')
+            ->toArray();
+
+        return $servicesThisMonth;
+    }
+
+
+    public function getTotalClinicAttendanceThisMonth()
+    {
+        // Get the first and last day of the current month
+        $firstDayOfMonth = Carbon::now()->startOfMonth();
+        $lastDayOfMonth = Carbon::now()->endOfMonth();
+
+        // Query distinct mother IDs from diseases and immunities registered in the current month
+        $totalAttendanceThisMonth = Mother::whereHas('diseases', function ($query) use ($firstDayOfMonth, $lastDayOfMonth) {
+            $query->whereBetween('created_at', [$firstDayOfMonth, $lastDayOfMonth]);
+        })->orWhereHas('immunities', function ($query) use ($firstDayOfMonth, $lastDayOfMonth) {
+            $query->whereBetween('created_at', [$firstDayOfMonth, $lastDayOfMonth]);
+        })->distinct('id')->count('id');
+
+        return $totalAttendanceThisMonth;
+    }
+
+
+    public function generateMonthlyPdfReport()
+    {
+        try {
+            // Fetch data for your report
+            $totalMothers = $this->getTotal();
+            $totalMothersThisMonth = $this->getTotalThisMonth();
+            $getMothersWithDiseasesThisMonth = $this->getMothersWithDiseasesThisMonth();
+            $getMothersWithImmunitiesThisMonth = $this->getMothersWithImmunitiesThisMonth();
+            $totalClinicAttendanceThisMonth = $this->getTotalClinicAttendanceThisMonth();
+            $getMothersWithServicesThisMonth = $this->getMothersWithServicesThisMonth();
+
+            // Get the current date for the printed date
+            $printedDate = now()->format('d-m-Y H:i:s');
+            $reportName = 'ripoti_ya_mwezi_' . now()->format('F_Y');
+
+            // Start building HTML for PDF
+            $html = '<html>';
+            $html .= '<head>';
+            $html .= '<meta charset="utf-8">';
+            $html .= '<style>';
+            $html .= 'h2 { text-align: center; text-decoration: underline; }';
+            $html .= '.printed-date { text-align: right; margin-right: 10px; }';
+            $html .= 'table { width: 100%; border-collapse: collapse; margin-top: 10px; }';
+            $html .= 'table th, table td { border: 1px solid #000; padding: 8px; text-align: left; }';
+            $html .= 'th { background-color: #f2f2f2; }';
+            $html .= '</style>';
+            $html .= '</head>';
+            $html .= '<body>';
+            $html .= '<p class="printed-date"><strong>Tarehe ya Kuchapishwa:</strong> ' . $printedDate . '</p>';
+            $html .= '<h2>Ripoti ya Mwezi</h2>';
+            // Display total counts
+            $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliosajiliwa:</strong> ' . $totalMothers . '</p>';
+            $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliosajiliwa Mwezi Huu:</strong> ' . $totalMothersThisMonth . '</p>';
+            $html .= '<p><strong>Jumla ya Mama Watarajiwa Waliohudhuria Kliniki Mwezi Huu:</strong> ' . $totalClinicAttendanceThisMonth . '</p>';
+
+            // Calculate total diseases for the month
+            $totalDiseasesThisMonth = array_sum($getMothersWithDiseasesThisMonth);
+
+            // Diseases this month table
+            $html .= '<h4>Vipimo vya maabara kwa Mwezi Huu:</h4>';
+            $html .= '<table>';
+            $html .= '<thead>';
+            $html .= '<tr>';
+            $html .= '<th>Jina la Kipimo</th>';
+            $html .= '<th>Idadi</th>';
+            $html .= '</tr>';
+            $html .= '</thead>';
+            $html .= '<tbody>';
+            foreach ($getMothersWithDiseasesThisMonth as $diseaseName => $count) {
+                $html .= '<tr>';
+                $html .= '<td>' . $diseaseName . '</td>';
+                $html .= '<td>' . $count . '</td>';
+                $html .= '</tr>';
+            }
+            // total row
+            $html .= '<tr>';
+            $html .= '<td><strong>Jumla</strong></td>';
+            $html .= '<td><strong>' . $totalDiseasesThisMonth . '</strong></td>';
+            $html .= '</tr>';
+            $html .= '</tbody>';
+            $html .= '</table>';
+            $html .= '<br/>';
+
+            // Calculate total immunities for the month
+            $totalImmunitiesThisMonth = array_sum($getMothersWithImmunitiesThisMonth);
+
+            // Immunities this month table
+            $html .= '<h4>Chanjo kwa Mwezi Huu:</h4>';
+            $html .= '<table>';
+            $html .= '<thead>';
+            $html .= '<tr>';
+            $html .= '<th>Jina la Chanjo</th>';
+            $html .= '<th>Idadi</th>';
+            $html .= '</tr>';
+            $html .= '</thead>';
+            $html .= '<tbody>';
+            foreach ($getMothersWithImmunitiesThisMonth as $immunityName => $count) {
+                $html .= '<tr>';
+                $html .= '<td>' . $immunityName . '</td>';
+                $html .= '<td>' . $count . '</td>';
+                $html .= '</tr>';
+            }
+            // total row
+            $html .= '<tr>';
+            $html .= '<td><strong>Jumla</strong></td>';
+            $html .= '<td><strong>' . $totalImmunitiesThisMonth . '</strong></td>';
+            $html .= '</tr>';
+            $html .= '</tbody>';
+            $html .= '</table>';
+
+
+             // Calculate total service for the month
+             $totalServiceThisMonth = array_sum($getMothersWithServicesThisMonth);
+
+              // Services this month table
+              $html .= '<h4>Huduma za kawaida zilizotolewa kwa Mwezi Huu:</h4>';
+              $html .= '<table>';
+              $html .= '<thead>';
+              $html .= '<tr>';
+              $html .= '<th>Jina la Huduma</th>';
+              $html .= '<th>Idadi</th>';
+              $html .= '</tr>';
+              $html .= '</thead>';
+              $html .= '<tbody>';
+              foreach ($getMothersWithServicesThisMonth as $serviceName => $count) {
+                  $html .= '<tr>';
+                  $html .= '<td>' . $serviceName . '</td>';
+                  $html .= '<td>' . $count . '</td>';
+                  $html .= '</tr>';
+              }
+              // total row
+              $html .= '<tr>';
+              $html .= '<td><strong>Jumla</strong></td>';
+              $html .= '<td><strong>' . $totalServiceThisMonth . '</strong></td>';
+              $html .= '</tr>';
+              $html .= '</tbody>';
+              $html .= '</table>';
+
+            $html .= '</body>';
+            $html .= '</html>';
+
+            // Load HTML content and generate PDF
+            $pdf = PDF::loadHTML($html)->setPaper('a4', 'portrait');
+
+            // Optionally, you can save the PDF to a file or return it as a response
+            // For download:
+            return $pdf->download($reportName . '.pdf');
+        } catch (\Exception $e) {
+            // Handle exceptions
+            return redirect()->back()->with('error', 'Failed to generate PDF report.');
+        }
+    }
+
 
 
 

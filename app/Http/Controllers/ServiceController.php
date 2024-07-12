@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Mother;
 use Illuminate\Http\Request;
 use App\Models\Service;
-use App\Models\UltrasoundImage;
 use Illuminate\Support\Facades\Log;
 use Carbon\Carbon;
 

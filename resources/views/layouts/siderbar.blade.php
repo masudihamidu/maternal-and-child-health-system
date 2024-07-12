@@ -31,7 +31,14 @@
                     <li>
                         <a title="Landing Page" href="{{ route('generatePdfReport') }}" aria-expanded="false">
                             <span class="far fa-file-alt" aria-hidden="true"></span>
-                            <span class="mini-click-non">Ripoti</span>
+                            <span class="mini-click-non">Ripoti ya siku</span>
+                        </a>
+                    </li>
+
+                    <li>
+                        <a title="Landing Page" href="{{ route('generateMonthlyPdfReport') }}" aria-expanded="false">
+                            <span class="fa fa-line-chart" aria-hidden="true"></span>
+                            <span class="mini-click-non">Ripoti ya mwezi</span>
                         </a>
                     </li>
                     @endrole

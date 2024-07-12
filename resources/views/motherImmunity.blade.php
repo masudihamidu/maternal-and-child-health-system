@@ -50,6 +50,7 @@
                                                     <div class="col-lg-9 col-md-9 col-sm-9 col-xs-12">
                                                         <select name="immunity_name" class="form-control" required>
                                                             <option value="Tetanus">Tetanus</option>
+                                                            <option value="Flu">Flu</option>
                                                         </select>
                                                     </div>
                                                 </div>
