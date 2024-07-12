@@ -173,13 +173,20 @@ class CliniCardController extends Controller
             if ($mother->ultrasoundImages->isNotEmpty()) {
                 $html .= '<h2><b>Picha za Ultrasound</b></h2>';
                 $html .= '<div class="ultrasound-images">';
+
                 foreach ($mother->ultrasoundImages as $ultrasoundImage) {
                     // Get image contents and convert to base64
                     $imagePath = storage_path("app/public/ultrasound/{$ultrasoundImage->image_path}");
+
                     if (file_exists($imagePath)) {
                         $imageData = file_get_contents($imagePath);
                         $base64Image = base64_encode($imageData);
+
+                        // Fetch associated disease description
+                        $diseaseDescription = $mother->diseases->first()->description ?? 'Maelezo hayajapatikana';
+
                         $html .= '<img src="data:image/jpeg;base64,' . $base64Image . '" alt="Picha ya Ultrasound" class="ultrasound-image">';
+                        $html .= "<p>Maelezo ya ugonjwa: <b>{$diseaseDescription}</b></p>";
                     } else {
                         $html .= '<p>Picha haipatikani: ' . $ultrasoundImage->image_path . '</p>';
                     }
@@ -188,6 +195,7 @@ class CliniCardController extends Controller
             } else {
                 $html .= '<p>Hakuna picha za ultrasound zilizopatikana.</p>';
             }
+
 
 
             // Services Table

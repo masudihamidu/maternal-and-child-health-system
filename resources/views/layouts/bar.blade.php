@@ -61,7 +61,7 @@
                         <div class="sparkline-list" style="width: 100%;">
                             <div class="smart-sparkline-hd" style="width: 100%;">
                                 <div class="smart-main-spark-hd" style="width: 100%;">
-                                    <h1>Daily <span class="c3-ds-n">Mama Wajawazito</span> Walihudhuria Kliniki Leo <span class="c3-ds-n"></span></h1>
+                                    <h1><span class="c3-ds-n">Mama Wajawazito</span> Walihudhuria Kliniki Leo <span class="c3-ds-n"></span></h1>
                                 </div>
                             </div>
                             <div class="smart-sparkline-list" style="width: 100%;">

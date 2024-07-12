@@ -6,6 +6,7 @@ use App\Models\Conversation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\DB;
+use App\Models\Mother;
 use Carbon\Carbon;
 
 
@@ -70,7 +71,11 @@ class ConversationController extends Controller
             $conversations = Conversation::all();
             $wordFrequencies = $this->calculateWordFrequencies($conversations);
 
-            return view('dashboard', compact('wordFrequencies'));
+            $mothersImmunity =  Mother::whereHas('immunities', function ($query) {
+                $query->whereDate('created_at', Carbon::today());
+            })->count();
+
+            return view('dashboard', compact('wordFrequencies','mothersImmunity'));
         } catch (\Exception $e) {
             return response()->json(['error' => 'Failed to fetch analytics data: ' . $e->getMessage()], 500);
         }

@@ -12,8 +12,6 @@ use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Support\Facades\DB;
 
 
-
-
 class Mother extends Authenticatable
 {
     use HasFactory;

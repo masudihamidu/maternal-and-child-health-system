@@ -1,7 +1,7 @@
 <script>
     document.addEventListener('DOMContentLoaded', function() {
         // Mothers with Disease Today Data
-        var mothersWithDiseaseToday = @json("");
+        var mothersWithDiseaseToday = @json("mothersDesease");
 
         var diseaseDates = mothersWithDiseaseToday.map(function(item) {
             return item.date;
@@ -32,7 +32,7 @@
         });
 
         // Mothers with Immunity Today Data
-        var mothersWithImmunityToday = @json("");
+        var mothersWithImmunityToday = @json("mothersImmunity");
 
         var immunityDates = mothersWithImmunityToday.map(function(item) {
             return item.date;
