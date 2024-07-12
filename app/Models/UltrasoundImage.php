@@ -17,11 +17,17 @@ class UltrasoundImage extends Model
      */
     protected $fillable = [
         'image_path',
+        'disease_id',
         'mother_id'
     ];
 
     public function mother()
     {
         return $this->belongsTo(Mother::class);
+    }
+
+    public function disease()
+    {
+        return $this->belongsTo(Disease::class);
     }
 }

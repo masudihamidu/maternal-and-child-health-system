@@ -62,14 +62,12 @@
                                                             <option value="Kaswende">Kaswende</option>
                                                             <option value="VVU">VVU</option>
                                                             <option value="malaria">Malaria</option>
-
-
                                                         </select>
                                                     </div>
                                                 </div>
                                             </div>
 
-                                            <div class="form-group-inner ultrasound-image-field">
+                                            <div class="form-group-inner ultrasound-image-field" style="display: none;">
                                                 <div class="row">
                                                     <div class="col-lg-3 col-md-3 col-sm-3 col-xs-12">
                                                         <label class="login2 pull-right pull-right-pro">Picha ya Ultrasound</label>
@@ -160,30 +158,30 @@
 </script>
 
 <script defer async>
-        document.addEventListener('DOMContentLoaded', function() {
-            // setting global variables
-            window.botId = 3930
+    document.addEventListener('DOMContentLoaded', function() {
+        // setting global variables
+        window.botId = 3930
 
-            // create div with id = sarufi-chatbox
-            const div = document.createElement("div")
-            div.id = "sarufi-chatbox"
-            document.body.appendChild(div)
+        // create div with id = sarufi-chatbox
+        const div = document.createElement("div")
+        div.id = "sarufi-chatbox"
+        document.body.appendChild(div)
 
-            // create and attach script tag
-            const script = document.createElement("script")
-            script.crossOrigin = true
-            script.type = "module"
-            script.src = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/script.js"
-            document.head.appendChild(script)
+        // create and attach script tag
+        const script = document.createElement("script")
+        script.crossOrigin = true
+        script.type = "module"
+        script.src = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/script.js"
+        document.head.appendChild(script)
 
-            // create and attach css
-            const style = document.createElement("link")
-            style.crossOrigin = true
-            style.rel = "stylesheet"
-            style.href = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/style.css"
-            document.head.appendChild(style)
-        });
-    </script>
+        // create and attach css
+        const style = document.createElement("link")
+        style.crossOrigin = true
+        style.rel = "stylesheet"
+        style.href = "https://cdn.jsdelivr.net/gh/flexcodelabs/sarufi-chatbox/example/vanilla-js/style.css"
+        document.head.appendChild(style)
+    });
+</script>
 
 <style>
     .weeks-group {

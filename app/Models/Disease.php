@@ -33,5 +33,9 @@ class Disease extends Model
         return $this->belongsTo(Mother::class);
     }
 
+    public function ultrasoundImages()
+    {
+        return $this->hasMany(UltrasoundImage::class);
+    }
 
 }
