@@ -27,18 +27,8 @@ class DiseaseController extends Controller
         $mother_id = $request->input('mother_id');
 
         try {
-
-            if ($request->hasFile('ultrasound_image')) {
-                $image = $request->file('ultrasound_image');
-                $imageName = time().'.'.$image->getClientOriginalExtension();
-                $image->storeAs('public/ultrasound', $imageName);
-
-                // Create UltrasoundImage record
-                $ultrasoundImage = new UltrasoundImage();
-                $ultrasoundImage->mother_id = $mother_id;
-                $ultrasoundImage->image_path = $imageName;
-                $ultrasoundImage->save();
-            }
+            // Start a transaction
+            \DB::beginTransaction();
 
             // Prepare the data for Disease model
             $data = [
@@ -58,6 +48,20 @@ class DiseaseController extends Controller
 
             // Create a new Disease model and save the data
             $disease = Disease::create($data);
+
+            // Check if the disease is "ultrasound" and an image is uploaded
+            if ($request->input('disease_name') == 'ultrasound' && $request->hasFile('ultrasound_image')) {
+                $image = $request->file('ultrasound_image');
+                $imageName = time().'.'.$image->getClientOriginalExtension();
+                $image->storeAs('public/ultrasound', $imageName);
+
+                // Create UltrasoundImage record
+                $ultrasoundImage = new UltrasoundImage();
+                $ultrasoundImage->mother_id = $mother_id;
+                $ultrasoundImage->image_path = $imageName;
+                $ultrasoundImage->disease_id = $disease->id; // Associate with disease
+                $ultrasoundImage->save();
+            }
 
             // Log created disease
             Log::info('Created disease:', $disease->toArray());
@@ -84,6 +88,8 @@ class DiseaseController extends Controller
             return redirect()->route('motherDisease.addDisease')->with('error', 'Failed to save the Disease form. Please try again.');
         }
     }
+
+
 
     public function addDisease(Request $request)
     {
