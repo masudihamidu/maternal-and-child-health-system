@@ -12,13 +12,20 @@ use App\Http\Controllers\ConversationController;
 use App\Http\Controllers\CliniCardController;
 use App\Http\Controllers\Auth\MotherLoginController;
 use App\Http\Controllers\LocationController;
+use App\Http\Controllers\IndexController;
 use App\Models\Mother;
+use App\Http\Controllers\MaternalCardsAuthController;
+use App\Http\Controllers\Auth\MaternalCardLoginController;
+
 
 
 Route::get('/', function () {
-    return view('auth/login');
+    return view('index');
 });
 
+Route::get('/index', [IndexController::class, 'index'])->name('optionPage');
+Route::get('/auth/login', [IndexController::class, 'professional'])->name('professional');
+Route::get('/maternal/Auth', [IndexController::class, 'maternal'])->name('maternal');
 
 
 Route::middleware('auth')->group(function () {
@@ -26,6 +33,20 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
+Route::middleware(['auth.maternal_cards'])->group(function () {
+    Route::get('maternal-cards/dashboard', [MaternalCardsAuthController::class, 'dashboard'])->name('maternal-cards.dashboard');
+});
+
+// Routes for maternal cards
+Route::prefix('maternal-cards')->group(function () {
+    Route::get('login', [MaternalCardsAuthController::class, 'showLoginForm'])->name('maternal-cards.login');
+    Route::post('login', [MaternalCardsAuthController::class, 'login']);
+    Route::post('logout', [MaternalCardsAuthController::class, 'logout'])->name('maternal-cards.logout');
+});
+
+Route::post('maternalAuth/login', [MaternalCardLoginController::class, 'login'])->name('maternalAuth.login');
 
 
 // Healthcare professional
@@ -58,7 +79,7 @@ Route::get('/report', [HealthProfessionalController::class, 'generatePdfReport']
 Route::get('/reportMonthly', [HealthProfessionalController::class, 'generateMonthlyPdfReport'])->name('generateMonthlyPdfReport');
 Route::get('/mother/pdf', [CliniCardController::class, 'generatePdf'])->name('mother.pdf');
 
-// =================================
+// =======================================
 
 
 Route::post('/mother/login', [MotherLoginController::class, 'login'])->name('mother.login');

@@ -22,6 +22,12 @@ use App\Observers\PregnancySummaryObserver;
 
 use Illuminate\Support\Facades\Blade;
 
+use App\Providers\MaternalCardUserProvider;
+
+use Illuminate\Support\Facades\Auth;
+
+
+
 class AppServiceProvider extends ServiceProvider
 {
     /**
@@ -46,6 +52,12 @@ class AppServiceProvider extends ServiceProvider
         Blade::component('input', \App\View\Components\Input::class);
         Blade::component('input-error', \App\View\Components\InputError::class);
         Blade::component('primary-button', \App\View\Components\PrimaryButton::class);
+
+        // Register maternal_card user provider
+        Auth::provider('maternal_card', function ($app, array $config) {
+            return new MaternalCardUserProvider($app['hash'], $config['model']);
+        });
+
 
     }
 }

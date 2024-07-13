@@ -3,11 +3,12 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Foundation\Auth\User as AuthenticatableUser;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 
-class MaternalCard extends Model
+class MaternalCard extends AuthenticatableUser implements Authenticatable
+
 {
     use HasFactory;
 
@@ -16,13 +17,25 @@ class MaternalCard extends Model
         'mother_id',
     ];
 
-    public function mother()
-    {
-        return $this->belongsTo(Mother::class);
-    }
-
+    // Override method to return maternalCard as the password
     public function getAuthPassword()
     {
         return $this->maternalCard;
+    }
+
+    // Optional: Override method if needed for custom logic
+    public function getAuthIdentifierName()
+    {
+        return 'maternalCard';
+    }
+
+    public function getAuthIdentifier()
+    {
+        return $this->attributes['maternalCard'];
+    }
+
+    public function mother()
+    {
+        return $this->belongsTo(Mother::class);
     }
 }
