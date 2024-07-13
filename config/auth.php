@@ -42,7 +42,7 @@ return [
         ],
 
         // Add a guard for maternal_cards provider
-        'maternal_cards' => [
+        'maternal' => [
             'driver' => 'session',
             'provider' => 'maternal_cards',
         ],
@@ -76,10 +76,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\MaternalCard::class,
         ],
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
+
     ],
 
     /*
@@ -108,6 +105,14 @@ return [
             'expire' => 60,
             'throttle' => 60,
         ],
+
+    'maternal_cards' =>[
+        'provider' => 'maternal_cards',
+        'table' => 'password_resets',
+        'expire' => 60,
+        'throttle' => 60,
+    ],
+
     ],
 
     /*
