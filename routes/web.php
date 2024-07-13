@@ -47,6 +47,8 @@ Route::prefix('maternal-cards')->group(function () {
 });
 
 Route::post('maternalAuth/login', [MaternalCardLoginController::class, 'login'])->name('maternalAuth.login');
+Route::post('maternalAuth/logout', [MaternalCardLoginController::class, 'destroy'])->name('maternal.logout');
+
 
 
 // Healthcare professional

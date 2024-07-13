@@ -17,32 +17,15 @@
     <form method="POST" action="{{ route('login') }}">
         @csrf
 
-        <!-- Login Type Dropdown -->
-        <div>
-            <x-input-label for="login_type" :value="__('Login as')" />
-            <select id="login_type" class="block mt-1 w-full" onchange="toggleLoginFields()">
-                <option value="professional">{{ __('Professional') }}</option>
-                <option value="expectant">{{ __('Expectant') }}</option>
-            </select>
-        </div>
+        <!-- Login Type Dropdown (Removed since only 'professional' option will be shown) -->
 
         <!-- Professional Login Fields -->
-        <div id="professional_fields">
+        <div>
             <!-- Name -->
             <div class="mt-4">
                 <x-input-label for="name" :value="__('Name')" />
                 <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
                 <x-input-error :messages="$errors->get('name')" class="mt-2" />
-            </div>
-        </div>
-
-        <!-- Expectant Login Fields -->
-        <div id="expectant_fields" style="display: none;">
-            <!-- ID -->
-            <div class="mt-4">
-                <x-input-label for="id" :value="__('ID')" />
-                <x-text-input id="id" class="block mt-1 w-full" type="text" name="id" :value="old('id')" />
-                <x-input-error :messages="$errors->get('id')" class="mt-2" />
             </div>
         </div>
 
@@ -75,25 +58,7 @@
     </form>
 
     <script>
-        function toggleLoginFields() {
-            const loginType = document.getElementById('login_type').value;
-            const professionalFields = document.getElementById('professional_fields');
-            const expectantFields = document.getElementById('expectant_fields');
-
-            console.log("Login Type: ", loginType);
-
-            if (loginType === 'professional') {
-                professionalFields.style.display = 'block';
-                expectantFields.style.display = 'none';
-            } else {
-                professionalFields.style.display = 'none';
-                expectantFields.style.display = 'block';
-            }
-        }
-
-        // Call the function initially to set the correct fields on page load
-        document.addEventListener('DOMContentLoaded', (event) => {
-            toggleLoginFields();
-        });
+        // Function to toggle login fields (removed toggleLoginFields() function as it's not needed anymore)
+        // Call the function initially to set the correct fields on page load (removed this part as well)
     </script>
 </x-guest-layout>
