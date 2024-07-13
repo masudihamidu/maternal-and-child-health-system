@@ -61,7 +61,7 @@
                                                             <option value="Kifua kikuu">Kifua kikuu</option>
                                                             <option value="Kaswende">Kaswende</option>
                                                             <option value="VVU">VVU</option>
-                                                            <option value="malaria">Malaria</option>
+                                                            <option value="malaria">malaria</option>
                                                         </select>
                                                     </div>
                                                 </div>
