@@ -24,9 +24,9 @@
          @include('layouts.siderbar')
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
 
-            @include('layouts.navi')
+            @include('layouts.maternalNavi')
 
-           
+
 
             <div>
                 @yield('content')
