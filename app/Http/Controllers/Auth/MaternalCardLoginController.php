@@ -9,7 +9,6 @@ use App\Models\Mother;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Redirect;
 
-
 class MaternalCardLoginController extends Controller
 {
     /**
@@ -71,6 +70,12 @@ class MaternalCardLoginController extends Controller
         }
     }
 
+    /**
+     * Log out the maternal user.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function destroy(Request $request)
     {
         Auth::guard('maternal')->logout();
@@ -79,9 +84,6 @@ class MaternalCardLoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return Redirect::to('/');
-
-
-     }
-
+        return redirect('/');
+    }
 }

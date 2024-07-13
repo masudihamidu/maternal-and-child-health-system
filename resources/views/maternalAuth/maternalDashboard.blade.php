@@ -40,7 +40,7 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th rowspan="2">VIPIMO/MAELEZO KUHUSU</th>
+                                    <th rowspan="2">Magonjwa</th>
                                     <th colspan="7">Wiki</th>
                                 </tr>
                                 <tr>
@@ -53,9 +53,21 @@
                                     <th>Wiki 40</th>
                                 </tr>
                             </thead>
+                            <tbody>
+                                @foreach ($diseases as $disease_name => $diseaseGroup)
+                                <tr>
+                                    <td>{{ $disease_name }}</td>
+                                    <td>{{ $diseaseGroup->sum('week12') }}</td>
+                                    <td>{{ $diseaseGroup->sum('week20') }}</td>
+                                    <td>{{ $diseaseGroup->sum('week26') }}</td>
+                                    <td>{{ $diseaseGroup->sum('week30') }}</td>
+                                    <td>{{ $diseaseGroup->sum('week36') }}</td>
+                                    <td>{{ $diseaseGroup->sum('week38') }}</td>
+                                    <td>{{ $diseaseGroup->sum('week40') }}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
-
-                        <p><b>Kipimo cha HIV kwa mtu ambaye hana maambukizi hufanywa kati ya wiki 32 na 36.</b></p>
                         <br/>
 
                         <!-- Immunity Table -->
@@ -76,10 +88,9 @@
                                     <th>Wiki 40</th>
                                 </tr>
                             </thead>
-
+                            <!-- You can populate this table similarly if needed -->
                         </table>
                         <br/>
-
 
                         <!-- Services Table -->
                         <h1><b>Huduma zilizotolewa kwa kila hudhurio</b></h1>
@@ -99,9 +110,21 @@
                                     <th>Wiki 40</th>
                                 </tr>
                             </thead>
-
+                            <tbody>
+                                @foreach ($services as $service_name => $serviceGroup)
+                                <tr>
+                                    <td>{{ $service_name }}</td>
+                                    <td>{!! $serviceGroup->contains('week12', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week20', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week26', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week30', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week36', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week38', 1) ? '&#10004;' : '' !!}</td>
+                                    <td>{!! $serviceGroup->contains('week40', 1) ? '&#10004;' : '' !!}</td>
+                                </tr>
+                                @endforeach
+                            </tbody>
                         </table>
-
 
                         <script defer async>
                             document.addEventListener('DOMContentLoaded', function() {
